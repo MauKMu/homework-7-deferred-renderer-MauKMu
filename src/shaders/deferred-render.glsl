@@ -12,6 +12,7 @@ uniform sampler2D u_gb1;
 uniform sampler2D u_gb2;
 
 uniform float u_Time;
+uniform float u_AspectRatio;
 
 uniform mat4 u_View;
 uniform vec4 u_CamPos;   
@@ -44,7 +45,7 @@ void main() {
         //col = abs(ndcPos - vec3(gb0.xy / 760.0, gb0.z)) * 0.1;
         //col = abs(ndcPos - vec3(gb0.x * 2.0 - 1.0, 1.0 - gb0.y, gb0.z)) * 1.0;
         float vert = CAMERA_TAN * abs(depth);
-        float hori = vert;
+        float hori = vert * u_AspectRatio;
         vec3 camPos = ndcPos * vec3(hori, vert, 1.0);
         //col = abs(camPos - gb0.xyz) * 1.0;
         //col = col.yyy;

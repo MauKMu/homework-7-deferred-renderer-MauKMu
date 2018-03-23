@@ -248,6 +248,7 @@ class OpenGLRenderer {
     let proj = camera.projectionMatrix;
     this.deferredShader.setViewMatrix(view);
     this.deferredShader.setProjMatrix(proj);
+    this.deferredShader.setAspectRatio(camera.aspectRatio);
 
     for (let i = 0; i < this.gbTargets.length; i ++) {
       gl.activeTexture(gl.TEXTURE0 + i);

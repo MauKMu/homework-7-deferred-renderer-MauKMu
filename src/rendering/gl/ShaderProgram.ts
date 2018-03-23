@@ -34,6 +34,7 @@ class ShaderProgram {
   unifProj: WebGLUniformLocation;
   unifColor: WebGLUniformLocation;
   unifTime: WebGLUniformLocation;
+  unifAspectRatio: WebGLUniformLocation;
 
   unifTexUnits: Map<string, WebGLUniformLocation>;
 
@@ -58,7 +59,8 @@ class ShaderProgram {
     this.unifView = gl.getUniformLocation(this.prog, "u_View");
     this.unifProj = gl.getUniformLocation(this.prog, "u_Proj");
     this.unifColor = gl.getUniformLocation(this.prog, "u_Color");
-    this.unifTime = gl.getUniformLocation(this.prog, "u_Time")
+    this.unifTime = gl.getUniformLocation(this.prog, "u_Time");
+    this.unifAspectRatio = gl.getUniformLocation(this.prog, "u_AspectRatio");
 
     this.unifTexUnits = new Map<string, WebGLUniformLocation>();
   }
@@ -140,6 +142,13 @@ class ShaderProgram {
     this.use();
     if (this.unifTime !== -1) {
       gl.uniform1f(this.unifTime, t);
+    }
+  }
+
+  setAspectRatio(aspectRatio: number) {
+    this.use();
+    if (this.unifAspectRatio !== -1) {
+      gl.uniform1f(this.unifAspectRatio, aspectRatio);
     }
   }
 
