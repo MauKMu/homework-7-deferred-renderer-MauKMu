@@ -6,7 +6,7 @@ in vec4 fs_Nor;
 in vec4 fs_Col;
 in vec2 fs_UV;
 
-in vec4 fs_WorldPos;
+//in vec4 fs_WorldPos;
 
 out vec4 fragColor[3]; // The data in the ith index of this array of outputs
                        // is passed to the ith index of OpenGLRenderer's
@@ -17,6 +17,7 @@ out vec4 fragColor[3]; // The data in the ith index of this array of outputs
 
 uniform sampler2D tex_Color;
 
+const float DEPTH_OFFSET = 0.125;
 
 void main() {
     // TODO: pass proper data into gbuffers
@@ -29,7 +30,7 @@ void main() {
     col = pow(col, vec3(2.2));
 
     // normal.xyz, depth
-    fragColor[0] = vec4(fs_WorldPos.xyz, fs_Pos.z - 5.0);
+    fragColor[0] = vec4(fs_Nor.xyz, fs_Pos.z - DEPTH_OFFSET);
     //fragColor[0] = vec4(fs_Nor.xyz, gl_FragCoord.w);
     fragColor[1] = vec4(fs_Pos.xyz, 0.0);
     //fragColor[1] = vec4(fs_Pos.xyz, 0.0);

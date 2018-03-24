@@ -17,7 +17,7 @@ out vec4 fs_Nor;
 out vec4 fs_Col;           
 out vec2 fs_UV;
 
-out vec4 fs_WorldPos;
+//out vec4 fs_WorldPos;
 
 void main()
 {
@@ -32,7 +32,7 @@ void main()
     fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);
     //fs_Pos = u_Model * vs_Pos;
     fs_Pos = u_View * u_Model * vs_Pos;
-    fs_WorldPos = u_Model * vs_Pos;
+    //fs_WorldPos = u_Model * vs_Pos;
     
     gl_Position = u_Proj * u_View * u_Model * vs_Pos;
 }
