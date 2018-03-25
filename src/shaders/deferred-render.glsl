@@ -18,7 +18,7 @@ uniform mat4 u_View;
 uniform vec4 u_CamPos;   
 
 const float CAMERA_TAN = tan(0.5 * 45.0 * 3.1415962 / 180.0);
-const float DEPTH_OFFSET = 0.125;
+const float DEPTH_OFFSET = 0.0;
 
 const vec3 LIGHT_POS = vec3(0, 20, 10);
 
@@ -58,6 +58,6 @@ void main() {
         vec3 worldPos = vec3(inverse(u_View) * vec4(camPos, 1.0));
         col = (0.2 + 0.8 * getLambert(worldPos, nor)) * albedo;
     }
-
+    col *= 5.0;
 	out_Col = vec4(col, 1.0);
 }

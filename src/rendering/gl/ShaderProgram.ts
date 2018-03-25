@@ -1,4 +1,4 @@
-import {vec4, mat4} from 'gl-matrix';
+import {vec2, vec4, mat4} from 'gl-matrix';
 import Drawable from './Drawable';
 import Texture from './Texture';
 import {gl} from '../../globals';
@@ -35,6 +35,7 @@ class ShaderProgram {
   unifColor: WebGLUniformLocation;
   unifTime: WebGLUniformLocation;
   unifAspectRatio: WebGLUniformLocation;
+  unifDims: WebGLUniformLocation;
 
   unifTexUnits: Map<string, WebGLUniformLocation>;
 
@@ -61,6 +62,7 @@ class ShaderProgram {
     this.unifColor = gl.getUniformLocation(this.prog, "u_Color");
     this.unifTime = gl.getUniformLocation(this.prog, "u_Time");
     this.unifAspectRatio = gl.getUniformLocation(this.prog, "u_AspectRatio");
+    this.unifDims = gl.getUniformLocation(this.prog, "u_Dims");
 
     this.unifTexUnits = new Map<string, WebGLUniformLocation>();
   }
@@ -142,6 +144,13 @@ class ShaderProgram {
     this.use();
     if (this.unifTime !== -1) {
       gl.uniform1f(this.unifTime, t);
+    }
+  }
+
+  setDims(dims: vec2) {
+    this.use();
+    if (this.unifDims !== -1) {
+      gl.uniform2fv(this.unifDims, dims);
     }
   }
 

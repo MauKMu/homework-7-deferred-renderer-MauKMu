@@ -17,7 +17,7 @@ out vec4 fragColor[3]; // The data in the ith index of this array of outputs
 
 uniform sampler2D tex_Color;
 
-const float DEPTH_OFFSET = 0.125;
+const float DEPTH_OFFSET = 0.0;
 
 void main() {
     // TODO: pass proper data into gbuffers
