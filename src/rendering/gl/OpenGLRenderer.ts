@@ -83,6 +83,7 @@ class OpenGLRenderer {
         //this.add8BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/examplePost2-frag.glsl'))));
 
         //this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/examplePost3-frag.glsl'))));
+        /*
         this.add32BitPrePass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/bloomHigh-frag.glsl'))));
         for (let i = 0; i < 2; i++) {
             this.add32BitPrePass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/blurX-frag.glsl'))));
@@ -90,6 +91,9 @@ class OpenGLRenderer {
         }
 
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/bloomAdd-frag.glsl'))));
+        */
+        this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurX-frag.glsl'))));
+        this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurY-frag.glsl'))));
 
         if (!gl.getExtension("OES_texture_float_linear")) {
             console.error("OES_texture_float_linear not available");
@@ -230,6 +234,9 @@ class OpenGLRenderer {
         for (let pass of this.pre32Passes) {
             pass.setDims(dims);
         }
+        for (let pass of this.post32Passes) {
+            pass.setDims(dims);
+        }
 
     }
 
@@ -317,6 +324,9 @@ class OpenGLRenderer {
         // put original framebuffer in texture 0
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, this.post32Targets[0]);
+        // put GBuffer0 in texture 2
+        gl.activeTexture(gl.TEXTURE2);
+        gl.bindTexture(gl.TEXTURE_2D, this.gbTargets[0]);
         for (j = 0; j < this.pre32Passes.length; j++) {
             // Pingpong framebuffers for each pass.
             // In other words, repeatedly flip between storing the output of the
