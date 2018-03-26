@@ -95,7 +95,8 @@ class OpenGLRenderer {
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurY-frag.glsl'))));
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/pointilism-frag.glsl'))));
         */
-        this.add8BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/paint-frag.glsl'))));
+        this.add32BitPrePass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/curl-frag.glsl'))));
+        this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/paint-frag.glsl'))));
 
         if (!gl.getExtension("OES_texture_float_linear")) {
             console.error("OES_texture_float_linear not available");
@@ -250,6 +251,7 @@ class OpenGLRenderer {
         this.deferredShader.setTime(currentTime);
         for (let pass of this.post8Passes) pass.setTime(currentTime);
         for (let pass of this.post32Passes) pass.setTime(currentTime);
+        for (let pass of this.pre32Passes) pass.setTime(currentTime);
         this.currentTime = currentTime;
     }
 
@@ -354,6 +356,8 @@ class OpenGLRenderer {
         }
 
         // now pre32Targets (0th or 1th, depending on j) has result of pre-pass
+        gl.activeTexture(gl.TEXTURE1);
+        gl.bindTexture(gl.TEXTURE_2D, this.pre32Targets[(j) % 2]);
 
         // actual post-processing
         let i = 0;
