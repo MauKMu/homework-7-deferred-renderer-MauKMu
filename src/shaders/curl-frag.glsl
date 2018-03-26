@@ -84,11 +84,27 @@ float getFBMFromRawPosition(vec2 pos, float startFreq) {
     //return pow(clamp(0.0, 1.0, (fbm - 0.25) / 0.6), 3.2) * 0.5;
 }
 
+const float SMOOTH_DELTA = 0.05;
+// not smoothstep... well, only partially
+float smoothStep(float t) {
+    float base = floor(t); // creates a step function
+    float f = fract(t); // gets fractional component
+    // sstep === smoothstep
+    // sstep(0.9, 1.1, f) creates a smooth increase from 0.9 to 1.0
+    // this handles smoothing the left half of the rising edge if we add it to base
+    // sstep(-0.1, 0.1, f) kind of looks like a smooth increase from 1.0 to 1.1, but it's "upside down"
+    // 1.0 - sstep(-0.1, 0.1, f) creates a smooth _decrease_ from 1.0 to 1.1
+    // so we multiply it by -1 to get a smooth _increase_ instead
+    // we can generalize 0.9 = 1.0 - SMOOTH_DELTA, 1.1 = 1.0 + SMOOTH_DELTA, for SMOOTH_DELTA = 0.1
+    float smoother = smoothstep(1.0 - SMOOTH_DELTA, 1.0 + SMOOTH_DELTA, f) - 1.0 + smoothstep(-SMOOTH_DELTA, SMOOTH_DELTA, f);
+    return base + smoother;
+}
+
 void main() {
     const float FREQ = 0.8;
     const float EPSILON = 0.00001;
     float n1, n2, a, b;
-    vec2 noisePos = fs_UV + vec2(-7.88 + u_Time * 0.00, 2.32);
+    vec2 noisePos = fs_UV + vec2(-7.88 + 0.5 * smoothStep(u_Time * 0.04), 2.32);
     n1 = getFBMFromRawPosition(noisePos + vec2(0.0, +EPSILON), FREQ);
     n2 = getFBMFromRawPosition(noisePos + vec2(0.0, -EPSILON), FREQ);
     a = (n1 - n2) / (2.0 * EPSILON);
