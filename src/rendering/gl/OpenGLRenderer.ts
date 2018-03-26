@@ -93,8 +93,9 @@ class OpenGLRenderer {
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/bloomAdd-frag.glsl'))));
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurX-frag.glsl'))));
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurY-frag.glsl'))));
-        */
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/pointilism-frag.glsl'))));
+        */
+        this.add8BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/paint-frag.glsl'))));
 
         if (!gl.getExtension("OES_texture_float_linear")) {
             console.error("OES_texture_float_linear not available");
@@ -236,6 +237,9 @@ class OpenGLRenderer {
             pass.setDims(dims);
         }
         for (let pass of this.post32Passes) {
+            pass.setDims(dims);
+        }
+        for (let pass of this.post8Passes) {
             pass.setDims(dims);
         }
 
