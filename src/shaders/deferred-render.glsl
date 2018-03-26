@@ -106,8 +106,8 @@ float getFBMFromRawPosition(vec2 pos, float startFreq) {
 
 vec3 getBGColor(float fbm) {
     float f = smoothstep(-0.8, 3.0, fbm);
-    const float H = 288.0;
-    float V = 0.8;
+    float H = mod(u_Time * 15.0, 360.0);
+    const float V = 0.8;
     float S = 0.7 * (1.0 - f);
     /*
     float f = smoothstep(0.0, 1.0, fbm);
@@ -118,11 +118,28 @@ vec3 getBGColor(float fbm) {
 
     float C = V * S;
     // h = H / 60
-    // const float h = 4.8;
-    // const float hMod2 = 0.8;
-    // float X = C * (1.0 - abs(hMod - 1.0);
-    float X = C * 0.8;
-    vec3 col = vec3(X, 0.0, C);
+    float h = H / 60.0;
+    float X = C * (1.0 - abs(mod(h, 2.0) - 1.0));
+    //float X = C * 0.8;
+    vec3 col;
+    if (h <= 1.0) {
+        col = vec3(C, X, 0.0);
+    }
+    else if (h <= 2.0) {
+        col = vec3(X, C, 0.0);
+    }
+    else if (h <= 3.0) {
+        col = vec3(0.0, C, X);
+    }
+    else if (h <= 4.0) {
+        col = vec3(0.0, X, C);
+    }
+    else if (h <= 5.0) {
+        col = vec3(X, 0.0, C);
+    }
+    else {
+        col = vec3(C, 0.0, X);
+    }
     float m = V - C;
     return pow(col + vec3(m), vec3(4.2));
 }
@@ -144,26 +161,12 @@ void main() {
     float time = u_Time * 0.03;
     // background
     if (depth >= -DEPTH_OFFSET) {
-        /*
-        const float FREQ = 0.8;
-        const float EPSILON = 0.00001;
-        float n1, n2, a, b;
-        vec2 noisePos = fs_UV + vec2(-9.88, 7.22);
-        n1 = getFBMFromRawPosition(noisePos + vec2(0.0, +EPSILON), FREQ);
-        n2 = getFBMFromRawPosition(noisePos + vec2(0.0, -EPSILON), FREQ);
-        a = (n1 - n2) / (2.0 * EPSILON);
-        n1 = getFBMFromRawPosition(noisePos + vec2(+EPSILON, 0.0), FREQ);
-        n2 = getFBMFromRawPosition(noisePos + vec2(-EPSILON, 0.0), FREQ);
-        b = (n1 - n2) / (2.0 * EPSILON);
-        col = vec3(0.1 * length(vec2(a, b)));
-        */
         float fbm = getFBMFromRawPosition(fs_UV + vec2(-8.88 + cos(time * 5.0), 7.22 + time * 1.5), 1.0 + 0.5 * sin(time * 2.0));
         col = getBGColor(fbm);
     }
     // shade
     else {
         depth += DEPTH_OFFSET;
-        //col = albedo;
         // get cam-space position
         vec3 ndcPos = vec3(fs_UV.xy * 2.0 - 1.0, depth);
         float vert = CAMERA_TAN * abs(depth);
