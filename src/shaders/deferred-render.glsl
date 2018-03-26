@@ -27,6 +27,106 @@ float getLambert(vec3 worldPos, vec3 normal) {
     return clamp(0.0, 1.0, dot(toLight, normal));
 }
 
+// noise helper functions
+
+// from Adam's demo
+vec2 random2(vec2 p) {
+    //vec2 sinVec = sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))));
+    //return sinVec * 0.5 + vec2(0.5);
+    //return fract(sinVec * 123.45);
+    //return fract(sinVec * 43758.5453);
+    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);
+}
+
+float surflet(vec2 P, vec2 gridPoint)
+{
+    //return (P.x * P.x) * 0.07;
+    // Compute falloff function by converting linear distance to a polynomial
+    float distX = abs(P.x - gridPoint.x);
+    float distY = abs(P.y - gridPoint.y);
+    float tX = 1.0 - 6.0 * pow(distX, 5.0) + 15.0 * pow(distX, 4.0) - 10.0 * pow(distX, 3.0);
+    float tY = 1.0 - 6.0 * pow(distY, 5.0) + 15.0 * pow(distY, 4.0) - 10.0 * pow(distY, 3.0);
+
+    // Get the random vector for the grid point
+    vec2 gradient = random2(gridPoint);
+    // Get the vector from the grid point to P
+    vec2 diff = P - gridPoint;
+    // Get the value of our height field by dotting grid->P with our gradient
+    float height = dot(diff, gradient);
+    // Scale our height field (i.e. reduce it) by our polynomial falloff function
+    return height * tX * tY;
+}
+
+float PerlinNoise(vec2 uv)
+{
+    // Tile the space
+    vec2 uvXLYL = floor(uv);
+    vec2 uvXHYL = uvXLYL + vec2(1, 0);
+    vec2 uvXHYH = uvXLYL + vec2(1, 1);
+    vec2 uvXLYH = uvXLYL + vec2(0, 1);
+
+    return surflet(uv, uvXLYL) + surflet(uv, uvXHYL) + surflet(uv, uvXHYH) + surflet(uv, uvXLYH);
+}
+
+
+float normalizedPerlinNoise(vec2 v) {
+    return clamp(0.0, 1.0, PerlinNoise(v) + 0.5);
+}
+
+/* FBM (uses Perlin) */
+float getFBM(vec2 pt, float startFreq) {
+    float noiseSum = 0.0;
+    float amplitudeSum = 0.0;
+    float amplitude = 1.0;
+    float frequency = startFreq;
+    for (int i = 0; i < 6; i++) {
+        float perlin = normalizedPerlinNoise(pt * frequency);
+        noiseSum += perlin * amplitude;
+        amplitudeSum += amplitude;
+        amplitude *= 0.5;
+        frequency *= 2.0;
+    }
+    return noiseSum / amplitudeSum;
+}
+
+// "normalizes" coordinate before calling FBM
+float getFBMFromRawPosition(vec2 pos, float startFreq) {
+    vec2 coord = pos;
+    coord += vec2(3.14, 5.01);// +vec2(u_PerlinSeed);
+                              //return pow(sin(coord.x + coord.y), 2.0);
+    float fbm = getFBM(coord, startFreq);
+    // [0.1, 0.8]
+    //return pow((fbm - 0.05) / 0.7, 3.2);
+    fbm = pow((fbm - 0.05) / 0.7, 3.2);
+    fbm = smoothstep(0.0, 1.3, fbm);
+    return fbm;
+    //return pow(1.0 - fbm, 2.2);
+    //return pow(clamp(0.0, 1.0, (fbm - 0.25) / 0.6), 3.2) * 0.5;
+}
+
+vec3 getBGColor(float fbm) {
+    float f = smoothstep(-0.8, 3.0, fbm);
+    const float H = 288.0;
+    float V = 0.8;
+    float S = 0.7 * (1.0 - f);
+    /*
+    float f = smoothstep(0.0, 1.0, fbm);
+    const float H = 288.0;
+    float V = 1.0;
+    float S = 0.5 * (1.0 - f);
+    */
+
+    float C = V * S;
+    // h = H / 60
+    // const float h = 4.8;
+    // const float hMod2 = 0.8;
+    // float X = C * (1.0 - abs(hMod - 1.0);
+    float X = C * 0.8;
+    vec3 col = vec3(X, 0.0, C);
+    float m = V - C;
+    return pow(col + vec3(m), vec3(4.2));
+}
+
 void main() { 
 	// read from GBuffers
 	vec4 gb0 = texture(u_gb0, fs_UV);
@@ -41,9 +141,24 @@ void main() {
     // final color of this fragment
     vec3 col;
 
+    float time = u_Time * 0.03;
     // background
     if (depth >= -DEPTH_OFFSET) {
-        col = vec3(fs_UV, 0.2);
+        /*
+        const float FREQ = 0.8;
+        const float EPSILON = 0.00001;
+        float n1, n2, a, b;
+        vec2 noisePos = fs_UV + vec2(-9.88, 7.22);
+        n1 = getFBMFromRawPosition(noisePos + vec2(0.0, +EPSILON), FREQ);
+        n2 = getFBMFromRawPosition(noisePos + vec2(0.0, -EPSILON), FREQ);
+        a = (n1 - n2) / (2.0 * EPSILON);
+        n1 = getFBMFromRawPosition(noisePos + vec2(+EPSILON, 0.0), FREQ);
+        n2 = getFBMFromRawPosition(noisePos + vec2(-EPSILON, 0.0), FREQ);
+        b = (n1 - n2) / (2.0 * EPSILON);
+        col = vec3(0.1 * length(vec2(a, b)));
+        */
+        float fbm = getFBMFromRawPosition(fs_UV + vec2(-8.88 + cos(time * 5.0), 7.22 + time * 1.5), 1.0 + 0.5 * sin(time * 2.0));
+        col = getBGColor(fbm);
     }
     // shade
     else {
