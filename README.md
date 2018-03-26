@@ -1,5 +1,9 @@
 # Project 7: Deferred Renderer
 
+## External References
+
+- [Stack Overflow for handling "any type" issues in TypeScript](https://stackoverflow.com/questions/32968332/how-do-i-prevent-the-error-index-signature-of-object-type-implicitly-has-an-an). This was used to cleanly have a GUI with arbitrary string keys (more importantly, keys with whitespace in them).
+
 **Goal:** Learn an advanced rendering technique using the OpenGL pipeline and apply it to make artistic procedural post-processing effects.
 
 ## Render pipeline overview
