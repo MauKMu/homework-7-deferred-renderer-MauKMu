@@ -171,7 +171,7 @@ void main() {
         vec3 camPos = ndcPos * vec3(hori, vert, 1.0);
         // convert to world-space pos
         vec3 worldPos = vec3(inverse(u_View) * vec4(camPos, 1.0));
-        col = (0.2 + 0.8 * getLambert(worldPos, nor)) * albedo;
+        col = (0.5 + 0.6 * getLambert(worldPos, nor)) * albedo;
     }
     col *= 5.0;
 	out_Col = vec4(col, 1.0);
