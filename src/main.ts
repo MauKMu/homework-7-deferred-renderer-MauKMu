@@ -56,6 +56,7 @@ function loadScene() {
 
   mesh1 = new Mesh(obj0, vec3.fromValues(0, 0, 0));
   mat4.fromTranslation(mesh1.modelMatrix, vec3.fromValues(0, 0, -10));
+  mat4.rotate(mesh1.modelMatrix, mesh1.modelMatrix, 0.75, vec3.fromValues(0, 1, 0));
   mesh1.create();
 
   tex0 = new Texture('../resources/textures/wahoo.bmp')
@@ -102,7 +103,6 @@ function main() {
 
   function tick() {
     camera.update();
-    console.log(camera.controls.eye[2]);
     stats.begin();
     gl.viewport(0, 0, window.innerWidth, window.innerHeight);
     timer.updateTime();
