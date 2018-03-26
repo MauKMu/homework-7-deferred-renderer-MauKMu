@@ -15,10 +15,6 @@ uniform float u_Time;
 
 // from Adam's demo
 vec2 random2(vec2 p) {
-    //vec2 sinVec = sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))));
-    //return sinVec * 0.5 + vec2(0.5);
-    //return fract(sinVec * 123.45);
-    //return fract(sinVec * 43758.5453);
     return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);
 }
 
