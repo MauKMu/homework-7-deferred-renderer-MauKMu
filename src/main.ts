@@ -9,6 +9,7 @@ import {setGL} from './globals';
 import {readTextFile} from './globals';
 import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 import Texture from './rendering/gl/Texture';
+import ShaderFlags from './rendering/gl/ShaderFlags';
 
 // Define an object with application parameters and button callbacks
 interface IControls {
@@ -23,6 +24,16 @@ controls[ENABLE_DOF] = false;
 controls[ENABLE_BLOOM] = false;
 controls[ENABLE_POINTILISM] = false;
 controls[ENABLE_PAINT] = true;
+
+let shaderFlags = ShaderFlags.PAINT;
+
+function updateShaderFlags() {
+    shaderFlags = ShaderFlags.NONE;
+    shaderFlags |= controls[ENABLE_DOF] ? ShaderFlags.DOF : ShaderFlags.NONE;
+    shaderFlags |= controls[ENABLE_BLOOM] ? ShaderFlags.BLOOM : ShaderFlags.NONE;
+    shaderFlags |= controls[ENABLE_POINTILISM] ? ShaderFlags.POINTILISM : ShaderFlags.NONE;
+    shaderFlags |= controls[ENABLE_PAINT] ? ShaderFlags.PAINT : ShaderFlags.NONE;
+}
 
 let square: Square;
 
@@ -83,10 +94,10 @@ function main() {
 
     // Add controls to the gui
     const gui = new DAT.GUI();
-    gui.add(controls, ENABLE_DOF);
-    gui.add(controls, ENABLE_BLOOM);
-    gui.add(controls, ENABLE_POINTILISM);
-    gui.add(controls, ENABLE_PAINT);
+    gui.add(controls, ENABLE_DOF).onChange(updateShaderFlags);
+    gui.add(controls, ENABLE_BLOOM).onChange(updateShaderFlags);
+    gui.add(controls, ENABLE_POINTILISM).onChange(updateShaderFlags);
+    gui.add(controls, ENABLE_PAINT).onChange(updateShaderFlags);
 
     // get canvas and webgl context
     const canvas = <HTMLCanvasElement>document.getElementById('canvas');
@@ -104,6 +115,7 @@ function main() {
     const camera = new Camera(vec3.fromValues(0, 9, 25), vec3.fromValues(0, 9, 0));
 
     const renderer = new OpenGLRenderer(canvas);
+    renderer.updateShaderFlags(shaderFlags);
     renderer.setClearColor(0, 0, 0, 1);
     gl.enable(gl.DEPTH_TEST);
 
@@ -119,6 +131,7 @@ function main() {
         stats.begin();
         gl.viewport(0, 0, window.innerWidth, window.innerHeight);
         timer.updateTime();
+        renderer.updateShaderFlags(shaderFlags);
         renderer.updateTime(timer.deltaTime, timer.currentTime);
 
         standardDeferred.bindTexToUnit("tex_Color", tex0, 0);

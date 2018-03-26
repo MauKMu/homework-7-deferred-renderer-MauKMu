@@ -5,7 +5,7 @@ import {gl} from '../../globals';
 import ShaderProgram, {Shader} from './ShaderProgram';
 import PostProcess from './PostProcess'
 import Square from '../../geometry/Square';
-
+import ShaderFlags from './ShaderFlags';
 
 class OpenGLRenderer {
     gBuffer: WebGLFramebuffer; // framebuffer for deferred rendering
@@ -38,6 +38,14 @@ class OpenGLRenderer {
 
     currentTime: number; // timer number to apply to all drawing shaders
 
+    shaderFlags: ShaderFlags; // flags saying which shaders are enabled
+    static compiledShaders = new Map<number, Array<PostProcess>>([
+        [ShaderFlags.DOF, undefined],
+        [ShaderFlags.BLOOM, undefined],
+        [ShaderFlags.POINTILISM, undefined],
+        [ShaderFlags.PAINT, undefined],
+    ]);
+
     // the shader that renders from the gbuffers into the postbuffers
     deferredShader: PostProcess = new PostProcess(
         new Shader(gl.FRAGMENT_SHADER, require('../../shaders/deferred-render.glsl'))
@@ -62,6 +70,13 @@ class OpenGLRenderer {
         this.pre32Passes.push(pass);
     }
 
+    updateShaderFlags(newFlags: ShaderFlags) {
+        if (newFlags == this.shaderFlags) {
+            return;
+        }
+        this.shaderFlags = newFlags;
+        // update passes accordingly
+    }
 
     constructor(public canvas: HTMLCanvasElement) {
         this.currentTime = 0.0;
@@ -78,6 +93,38 @@ class OpenGLRenderer {
         this.pre32Targets = [undefined, undefined];
         this.pre32Passes = [];
 
+        this.shaderFlags = ShaderFlags.NONE;
+
+        // compile shaders if they haven't been compiled yet
+        if (OpenGLRenderer.compiledShaders.get(ShaderFlags.DOF) == undefined) {
+            let arr = [
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurX-frag.glsl'))),
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurY-frag.glsl'))),
+            ];
+            OpenGLRenderer.compiledShaders.set(ShaderFlags.DOF, arr);
+        }
+        if (OpenGLRenderer.compiledShaders.get(ShaderFlags.BLOOM) == undefined) {
+            let arr = [
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/bloomHigh-frag.glsl'))),
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/blurX-frag.glsl'))),
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/blurY-frag.glsl'))),
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/bloomAdd-frag.glsl'))),
+            ];
+            OpenGLRenderer.compiledShaders.set(ShaderFlags.BLOOM, arr);
+        }
+        if (OpenGLRenderer.compiledShaders.get(ShaderFlags.POINTILISM) == undefined) {
+            let arr = [
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/pointilism-frag.glsl'))),
+            ];
+            OpenGLRenderer.compiledShaders.set(ShaderFlags.POINTILISM, arr);
+        }
+        if (OpenGLRenderer.compiledShaders.get(ShaderFlags.PAINT) == undefined) {
+            let arr = [
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/curl-frag.glsl'))),
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/paint-frag.glsl'))),
+            ];
+            OpenGLRenderer.compiledShaders.set(ShaderFlags.PAINT, arr);
+        }
         // TODO: these are placeholder post shaders, replace them with something good
         //this.add8BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/examplePost-frag.glsl'))));
         //this.add8BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/examplePost2-frag.glsl'))));
@@ -95,8 +142,8 @@ class OpenGLRenderer {
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurY-frag.glsl'))));
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/pointilism-frag.glsl'))));
         */
-        this.add32BitPrePass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/curl-frag.glsl'))));
-        this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/paint-frag.glsl'))));
+        //this.add32BitPrePass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/curl-frag.glsl'))));
+        //this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/paint-frag.glsl'))));
 
         if (!gl.getExtension("OES_texture_float_linear")) {
             console.error("OES_texture_float_linear not available");
@@ -234,6 +281,15 @@ class OpenGLRenderer {
 
         // update u_Dims
         let dims = vec2.fromValues(width, height);
+        for (let entry of OpenGLRenderer.compiledShaders.entries()) {
+            if (!(this.shaderFlags & entry[0])) {
+                continue;
+            }
+            for (let shader of entry[1]) {
+                shader.setDims(dims);
+            }
+        }
+        /*
         for (let pass of this.pre32Passes) {
             pass.setDims(dims);
         }
@@ -243,15 +299,26 @@ class OpenGLRenderer {
         for (let pass of this.post8Passes) {
             pass.setDims(dims);
         }
+        */
 
     }
 
 
     updateTime(deltaTime: number, currentTime: number) {
         this.deferredShader.setTime(currentTime);
+        for (let entry of OpenGLRenderer.compiledShaders.entries()) {
+            if (!(this.shaderFlags & entry[0])) {
+                continue;
+            }
+            for (let shader of entry[1]) {
+                shader.setTime(currentTime);
+            }
+        }
+        /*
         for (let pass of this.post8Passes) pass.setTime(currentTime);
         for (let pass of this.post32Passes) pass.setTime(currentTime);
         for (let pass of this.pre32Passes) pass.setTime(currentTime);
+        */
         this.currentTime = currentTime;
     }
 
@@ -384,6 +451,57 @@ class OpenGLRenderer {
 
             // bind default frame buffer
             gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        }
+
+        // do paint manually to avoid conflicts with bloom
+        if (this.shaderFlags & ShaderFlags.PAINT) {
+            let shaders = OpenGLRenderer.compiledShaders.get(ShaderFlags.PAINT);
+            // pre-pass =======================================================
+            // put original framebuffer in texture 0
+            gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, this.post32Targets[0]);
+            gl.bindFramebuffer(gl.FRAMEBUFFER, this.pre32Buffers[(j + 1) % 2]);
+
+            gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+            gl.disable(gl.DEPTH_TEST);
+            gl.enable(gl.BLEND);
+            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+            //gl.activeTexture(gl.TEXTURE1);
+            //gl.bindTexture(gl.TEXTURE_2D, this.pre32Targets[(j) % 2]);
+
+            shaders[0].draw();
+
+            // bind default frame buffer
+            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+
+            j++;
+
+            // set right texture
+            gl.activeTexture(gl.TEXTURE1);
+            gl.bindTexture(gl.TEXTURE_2D, this.pre32Targets[(j) % 2]);
+            
+            // post-pass ======================================================
+            gl.bindFramebuffer(gl.FRAMEBUFFER, this.post32Buffers[(i + 1) % 2]);
+
+            gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+            gl.disable(gl.DEPTH_TEST);
+            gl.enable(gl.BLEND);
+            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+            // Recall that each frame buffer is associated with a texture that stores
+            // the output of a render pass. post32Targets is the array that stores
+            // these textures, so we alternate reading from the 0th and 1th textures
+            // each frame (the texture we wrote to in our previous render pass).
+            gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, this.post32Targets[(i) % 2]);
+
+            shaders[1].draw();
+
+            // bind default frame buffer
+            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+
+            i++;
         }
 
         // apply tonemapping
