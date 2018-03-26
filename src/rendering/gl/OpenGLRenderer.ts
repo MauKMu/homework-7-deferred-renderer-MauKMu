@@ -94,9 +94,9 @@ class OpenGLRenderer {
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurX-frag.glsl'))));
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/dofBlurY-frag.glsl'))));
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/pointilism-frag.glsl'))));
-        */
         this.add32BitPrePass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/curl-frag.glsl'))));
         this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/paint-frag.glsl'))));
+        */
 
         if (!gl.getExtension("OES_texture_float_linear")) {
             console.error("OES_texture_float_linear not available");
@@ -273,15 +273,15 @@ class OpenGLRenderer {
         gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
         gl.enable(gl.DEPTH_TEST);
 
-        let model = mat4.create();
+        //let model = mat4.create();
         let viewProj = mat4.create();
         let view = camera.viewMatrix;
         let proj = camera.projectionMatrix;
         let color = vec4.fromValues(0.5, 0.5, 0.5, 1);
 
-        mat4.identity(model);
+        //mat4.identity(model);
         mat4.multiply(viewProj, camera.projectionMatrix, camera.viewMatrix);
-        gbProg.setModelMatrix(model);
+        //gbProg.setModelMatrix(model);
         gbProg.setViewProjMatrix(viewProj);
         gbProg.setGeometryColor(color);
         gbProg.setViewMatrix(view);
@@ -290,6 +290,7 @@ class OpenGLRenderer {
         gbProg.setTime(this.currentTime);
 
         for (let drawable of drawables) {
+            gbProg.setModelMatrix(drawable.modelMatrix);
             gbProg.draw(drawable);
         }
 

@@ -1,4 +1,4 @@
-import {vec3} from 'gl-matrix';
+import {vec3, mat4} from 'gl-matrix';
 import * as Stats from 'stats-js';
 import * as DAT from 'dat-gui';
 import Square from './geometry/Square';
@@ -54,7 +54,8 @@ function loadScene() {
   mesh0 = new Mesh(obj0, vec3.fromValues(0, 0, 0));
   mesh0.create();
 
-  mesh1 = new Mesh(obj0, vec3.fromValues(0, 0, -10));
+  mesh1 = new Mesh(obj0, vec3.fromValues(0, 0, 0));
+  mat4.fromTranslation(mesh1.modelMatrix, vec3.fromValues(0, 0, -10));
   mesh1.create();
 
   tex0 = new Texture('../resources/textures/wahoo.bmp')
@@ -101,6 +102,7 @@ function main() {
 
   function tick() {
     camera.update();
+    console.log(camera.controls.eye[2]);
     stats.begin();
     gl.viewport(0, 0, window.innerWidth, window.innerHeight);
     timer.updateTime();

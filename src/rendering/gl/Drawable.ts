@@ -1,4 +1,5 @@
 import {gl} from '../../globals';
+import {mat4} from 'gl-matrix';
 
 abstract class Drawable {
   count: number = 0;
@@ -14,6 +15,8 @@ abstract class Drawable {
   norBound: boolean = false;
   colBound: boolean = false;
   uvBound: boolean = false;
+
+  modelMatrix: mat4 = mat4.create();
 
   abstract create() : void;
 
