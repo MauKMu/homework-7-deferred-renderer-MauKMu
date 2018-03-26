@@ -15,6 +15,6 @@ void main() {
     float depth = texture(u_gb0, fs_UV).w;
     float lum = dot(color, vec3(0.2126, 0.7152, 0.072));
     // add to bloom if background or bright enough
-    color = ((depth < 0.0) || (lum > 0.9)) ? color : vec3(0.0);
+    color = ((depth >= 0.0) || (lum > 0.9)) ? color : vec3(0.0);
 	out_Col = vec4(color, 1.0);
 }
