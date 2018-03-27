@@ -10,6 +10,7 @@ uniform sampler2D u_frame;
 uniform float u_Time;
 //uniform vec2 u_Dims;
 
+uniform float u_Coherence;
 
 // noise helper functions
 
@@ -101,7 +102,7 @@ float smoothStep(float t) {
 }
 
 void main() {
-    const float FREQ = 0.8;
+    float FREQ = 3.2 - u_Coherence * 3.0;
     const float EPSILON = 0.00001;
     float n1, n2, a, b;
     vec2 noisePos = fs_UV + vec2(-7.88 + 0.5 * smoothStep(u_Time * 0.04), 2.32);

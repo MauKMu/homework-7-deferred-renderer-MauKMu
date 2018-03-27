@@ -108,6 +108,12 @@ class OpenGLRenderer {
         }
     }
 
+    updateCoherence(coherence: number) {
+        if (this.shaderFlags & ShaderFlags.PAINT) {
+            OpenGLRenderer.compiledShaders.get(ShaderFlags.PAINT)[0].setCoherence(coherence);
+        }
+    }
+
     constructor(public canvas: HTMLCanvasElement) {
         this.currentTime = 0.0;
         this.gbTargets = [undefined, undefined, undefined];

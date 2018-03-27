@@ -36,6 +36,7 @@ class ShaderProgram {
   unifTime: WebGLUniformLocation;
   unifAspectRatio: WebGLUniformLocation;
   unifDims: WebGLUniformLocation;
+  unifCoherence: WebGLUniformLocation;
 
   unifTexUnits: Map<string, WebGLUniformLocation>;
 
@@ -63,6 +64,7 @@ class ShaderProgram {
     this.unifTime = gl.getUniformLocation(this.prog, "u_Time");
     this.unifAspectRatio = gl.getUniformLocation(this.prog, "u_AspectRatio");
     this.unifDims = gl.getUniformLocation(this.prog, "u_Dims");
+    this.unifCoherence = gl.getUniformLocation(this.prog, "u_Coherence");
 
     this.unifTexUnits = new Map<string, WebGLUniformLocation>();
   }
@@ -158,6 +160,13 @@ class ShaderProgram {
     this.use();
     if (this.unifAspectRatio !== -1) {
       gl.uniform1f(this.unifAspectRatio, aspectRatio);
+    }
+  }
+
+  setCoherence(coherence: number) {
+    this.use();
+    if (this.unifCoherence !== -1) {
+      gl.uniform1f(this.unifCoherence, coherence);
     }
   }
 
