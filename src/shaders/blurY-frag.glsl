@@ -17,7 +17,7 @@ void main() {
 	vec3 color = vec3(0.0);
     float pixelDim = 1.0 / u_Dims.y;
     for (int i = -2; i <= 2; i++) {
-    	color += GAUSS_KERNEL[i] * texture(u_preFrame, fs_UV + vec2(0.0, float(i) * pixelDim)).xyz;
+    	color += GAUSS_KERNEL[i + 2] * texture(u_preFrame, fs_UV + vec2(0.0, float(i) * pixelDim)).xyz;
     }
 	out_Col = vec4(color, 1.0);
 }

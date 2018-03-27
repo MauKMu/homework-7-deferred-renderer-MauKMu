@@ -22,11 +22,10 @@ void main() {
 	vec3 color = vec3(0.0);
     vec4 gb0 = texture(u_gb0, fs_UV);
     float depth = gb0.w;
-    depth = (depth >= 1.0) ? 1000000.0 : depth;
-    float weight = smoothstep(4.0, 40.0, abs(depth - FOCAL_LENGTH));
+    float weight = smoothstep(14.0, 40.0, abs(depth - FOCAL_LENGTH));
     float pixelDim = 1.0 / u_Dims.x;
     for (int i = -3; i <= 3; i++) {
-    	color += mix(IDENTITY_KERNEL[i], GAUSS_KERNEL[i], weight) * texture(u_frame, fs_UV + vec2(float(i) * pixelDim, 0.0)).xyz;
+        color += mix(IDENTITY_KERNEL[i + 3], GAUSS_KERNEL[i + 3], weight) * texture(u_frame, fs_UV + vec2(float(i) * pixelDim, 0.0)).xyz;
     }
 	out_Col = vec4(color, 1.0);
 }
