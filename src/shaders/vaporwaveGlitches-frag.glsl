@@ -34,7 +34,6 @@ vec2 random2(vec2 p) {
 }
 
 const float NOISE_TILE_DIM = 400.0;
-const float GREEN_OFFSET = 5.0;
 //const float NOISE_COS = 0.93969;
 //const float NOISE_SIN = -0.3420201;
 const float NOISE_STRIPE_DIM = 30.0;
@@ -46,6 +45,7 @@ void main() {
     vec3 color = texture(u_frame, fs_UV).xyz;
     vec2 pixelDims = 1.0 / u_Dims;
     // chromatic aberration
+    float GREEN_OFFSET = 5.0 * (1.0 + abs(fs_UV.x - 0.5) * 5.0) * (1.0 + 0.1 * random2(vec2(fs_UV.y * 9.12)).y);
     vec3 neighbor = texture(u_frame, fs_UV + pixelDims * vec2(GREEN_OFFSET, 0.0)).xyz;
     color.y = neighbor.y;
 
@@ -57,8 +57,10 @@ void main() {
     float noise = 0.5 + 0.5 * random2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003)).x;
     color *= 0.9 + 0.1 * noise;
 
+    float STRIPE_START = mod(-u_Time * 0.3, 1.5);
+
     // add intermittent static stripe
-    if (fs_UV.y > 0.6 && fs_UV.y < 0.6 + pixelDims.y * NOISE_STRIPE_DIM) {
+    if (STRIPE_START < fs_UV.y && fs_UV.y < STRIPE_START + pixelDims.y * NOISE_STRIPE_DIM) {
         noise = 0.0;
         // 2 pixels tall
         noiseCell.y = floor(fs_UV.y * u_Dims.y) / (u_Dims.y);
