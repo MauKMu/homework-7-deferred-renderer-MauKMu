@@ -109,6 +109,7 @@ class OpenGLRenderer {
         if (this.shaderFlags & ShaderFlags.VAPORWAVE) {
             let shaders = OpenGLRenderer.compiledShaders.get(ShaderFlags.VAPORWAVE);
             this.add8BitPass(shaders[0]);
+            this.add8BitPass(shaders[1]);
         }
     }
 
@@ -180,6 +181,7 @@ class OpenGLRenderer {
         if (OpenGLRenderer.compiledShaders.get(ShaderFlags.VAPORWAVE) == undefined) {
             let arr = [
                 new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/vaporwave-frag.glsl'))),
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/vaporwaveGlitches-frag.glsl'))),
             ];
             OpenGLRenderer.compiledShaders.set(ShaderFlags.VAPORWAVE, arr);
         }
