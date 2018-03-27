@@ -29,9 +29,14 @@ vec3 hsv2rgb(vec3 c)
     return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 
+vec2 random2(vec2 p) {
+    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);
+}
+
 const vec3 PURPLE_RGB = vec3(0.7098, 0.0392156, 1.0);
 const float X_TILE_DIM = 100.0;
 const float Y_TILE_DIM = 20.0;
+const float NOISE_TILE_DIM = 400.0;
 
 void main() {
     // desaturate
@@ -54,12 +59,15 @@ void main() {
     }
     vec3 hsv = rgb2hsv(color);
     hsv.y *= 0.3;
-    hsv.z *-0.8;
+    hsv.z *= 0.8;
     color = hsv2rgb(hsv);
     // blend with purple
     color = 0.7 * color + 0.3 * PURPLE_RGB;
-    vec2 screenRatio = u_Dims / vec2(1295.0, 759.0);
-    vec2 GRID_DIMS = vec2(150.0) * screenRatio;
+
+    // add static
+    vec2 noiseCell = floor(fs_UV * NOISE_TILE_DIM) / NOISE_TILE_DIM;
+    float noise = 0.5 + 0.5 * random2(noiseCell * 3.01 + vec2(u_Time * 0.00001)).x;
+    color *= 0.9 + 0.1 * noise;
 
 	out_Col = vec4(color, 1.0);
 }
