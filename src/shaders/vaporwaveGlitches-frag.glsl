@@ -37,6 +37,10 @@ const float NOISE_TILE_DIM = 400.0;
 const float GREEN_OFFSET = 5.0;
 //const float NOISE_COS = 0.93969;
 //const float NOISE_SIN = -0.3420201;
+const float NOISE_STRIPE_DIM = 30.0;
+
+const float GAUSS_KERNEL[5] = float[5](
+    0.122581, 0.233062, 0.288713, 0.233062, 0.122581);
 
 void main() {
     vec3 color = texture(u_frame, fs_UV).xyz;
@@ -45,13 +49,27 @@ void main() {
     vec3 neighbor = texture(u_frame, fs_UV + pixelDims * vec2(GREEN_OFFSET, 0.0)).xyz;
     color.y = neighbor.y;
 
-    // add static
+    // add constant static
     vec2 noiseCell = floor(fs_UV * NOISE_TILE_DIM) / NOISE_TILE_DIM;
     // rotate point
     //noiseCell = vec2(dot(noiseCell, vec2(NOISE_COS, -NOISE_SIN)), dot(noiseCell, vec2(NOISE_SIN, NOISE_COS)));
     // noiseCell * 0.01 gives a wave-like pattern
     float noise = 0.5 + 0.5 * random2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003)).x;
     color *= 0.9 + 0.1 * noise;
+
+    // add intermittent static stripe
+    if (fs_UV.y > 0.6 && fs_UV.y < 0.6 + pixelDims.y * NOISE_STRIPE_DIM) {
+        noise = 0.0;
+        // 2 pixels tall
+        noiseCell.y = floor(fs_UV.y * u_Dims.y) / (u_Dims.y);
+        // randomly scale size of noise column for each row
+        float rowScale = random2(noiseCell.yy).y * 0.5 + 1.5;
+        for (int i = -2; i <= 2; i++) {
+            noiseCell.x = floor((fs_UV.x + float(i) * pixelDims.x) * NOISE_TILE_DIM * 0.05 * rowScale) / (NOISE_TILE_DIM * 0.05 * rowScale);
+            noise += GAUSS_KERNEL[i + 2] * 1.3 * smoothstep(-0.9, 0.95, random2(noiseCell + vec2(u_Time * 0.0002, u_Time * 0.000)).y);
+        }
+        color *= 0.8 + 0.2 * noise;
+    }
 
 	out_Col = vec4(color, 1.0);
 }
