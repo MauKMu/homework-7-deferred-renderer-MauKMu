@@ -38,6 +38,7 @@ class ShaderProgram {
   unifDims: WebGLUniformLocation;
   unifCoherence: WebGLUniformLocation;
   unifBrushSize: WebGLUniformLocation;
+  unifBrushNoise: WebGLUniformLocation;
 
   unifTexUnits: Map<string, WebGLUniformLocation>;
 
@@ -67,6 +68,7 @@ class ShaderProgram {
     this.unifDims = gl.getUniformLocation(this.prog, "u_Dims");
     this.unifCoherence = gl.getUniformLocation(this.prog, "u_Coherence");
     this.unifBrushSize = gl.getUniformLocation(this.prog, "u_BrushSize");
+    this.unifBrushNoise = gl.getUniformLocation(this.prog, "u_BrushNoise");
 
     this.unifTexUnits = new Map<string, WebGLUniformLocation>();
   }
@@ -176,6 +178,13 @@ class ShaderProgram {
     this.use();
     if (this.unifBrushSize !== -1) {
       gl.uniform1f(this.unifBrushSize, brushSize);
+    }
+  }
+
+  setBrushNoise(brushNoise: number) {
+    this.use();
+    if (this.unifBrushNoise !== -1) {
+      gl.uniform1f(this.unifBrushNoise, brushNoise);
     }
   }
 

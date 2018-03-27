@@ -18,7 +18,6 @@ interface IControls {
 // TODOX: 
 // sky color
 // brushiness (magnitude of randomness in paint-frag
-// size of brush (size of ellipses)
 let controls: IControls = {};
 const ENABLE_DOF = "Enable fake DOF";
 const ENABLE_BLOOM = "Enable bloom";
@@ -26,12 +25,14 @@ const ENABLE_POINTILISM = "Enable pointilism";
 const ENABLE_PAINT = "Enable paintbrush";
 const PAINT_COHERENCE = "Coherence (of paintbrush directions)";
 const PAINT_BRUSH_SIZE = "Brush size";
+const PAINT_BRUSH_NOISE = "Brush noisiness";
 controls[ENABLE_DOF] = false;
 controls[ENABLE_BLOOM] = false;
 controls[ENABLE_POINTILISM] = false;
 controls[ENABLE_PAINT] = true;
 controls[PAINT_COHERENCE] = 0.8;
 controls[PAINT_BRUSH_SIZE] = 0.5;
+controls[PAINT_BRUSH_NOISE] = 0.5;
 
 let shaderFlags = ShaderFlags.PAINT;
 
@@ -108,6 +109,7 @@ function main() {
     gui.add(controls, ENABLE_PAINT).onChange(updateShaderFlags);
     gui.add(controls, PAINT_COHERENCE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_SIZE, 0.0, 1.0);
+    gui.add(controls, PAINT_BRUSH_NOISE, 0.0, 1.0);
 
     // get canvas and webgl context
     const canvas = <HTMLCanvasElement>document.getElementById('canvas');
@@ -144,6 +146,7 @@ function main() {
         renderer.updateShaderFlags(shaderFlags);
         renderer.updateCoherence(controls[PAINT_COHERENCE]);
         renderer.updateBrushSize(controls[PAINT_BRUSH_SIZE]);
+        renderer.updateBrushNoise(controls[PAINT_BRUSH_NOISE]);
         renderer.updateTime(timer.deltaTime, timer.currentTime);
 
         standardDeferred.bindTexToUnit("tex_Color", tex0, 0);

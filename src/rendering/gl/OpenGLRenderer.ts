@@ -120,6 +120,12 @@ class OpenGLRenderer {
         }
     }
 
+    updateBrushNoise(brushNoise: number) {
+        if (this.shaderFlags & ShaderFlags.PAINT) {
+            OpenGLRenderer.compiledShaders.get(ShaderFlags.PAINT)[1].setBrushNoise(brushNoise);
+        }
+    }
+
     constructor(public canvas: HTMLCanvasElement) {
         this.currentTime = 0.0;
         this.gbTargets = [undefined, undefined, undefined];
