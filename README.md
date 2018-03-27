@@ -4,6 +4,7 @@
 
 - [Stack Overflow post for handling "any type" issues in TypeScript](https://stackoverflow.com/questions/32968332/how-do-i-prevent-the-error-index-signature-of-object-type-implicitly-has-an-an). This was used to cleanly have a GUI with arbitrary string keys (more importantly, keys with whitespace in them).
 - [Stack Overflow post for handling Maps in TypeScript correctly](https://stackoverflow.com/questions/34584578/typescript-es6-map-index-signature-of-object-type-implicitly-has-an-any-ty)
+- [Stack Overflow post about converting to/from HSV and RGB](https://stackoverflow.com/questions/15095909/from-rgb-to-hsv-in-opengl-glsl)
 
 **Goal:** Learn an advanced rendering technique using the OpenGL pipeline and apply it to make artistic procedural post-processing effects.
 
