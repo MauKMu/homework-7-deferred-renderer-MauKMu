@@ -18,7 +18,7 @@ void main() {
     vec2 GRID_DIMS = vec2(70.0) * 0.5 * u_Dims.x / 526.0;
     // making radius noisy gives airbrush effect
     float rand = random2(fs_UV * 314.159).x;
-    float radius = (0.4 + 0.1 * rand) / GRID_DIMS.x;
+    float radius = (0.4 + 0.05 * rand) / GRID_DIMS.x;
 	vec3 color = vec3(5.0);
     vec2 cellCorner = floor(fs_UV * GRID_DIMS) / GRID_DIMS;
     vec3 minColor = vec3(0.0);
@@ -40,7 +40,7 @@ void main() {
             vec2 pRot = vec2(c * p.x - s * p.y, s * p.x + c * p.y);
             // stretch along X
             pRot.x *= 0.15;
-            pRot.y *= 0.6;
+            pRot.y *= 0.31;
             float l = length(pRot);
             if (l < radius) {
                 float darkness = 1.0;// -0.6 * smoothstep(-radius, radius, pRot.x);
