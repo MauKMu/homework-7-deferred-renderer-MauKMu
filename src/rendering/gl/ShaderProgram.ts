@@ -37,6 +37,7 @@ class ShaderProgram {
   unifAspectRatio: WebGLUniformLocation;
   unifDims: WebGLUniformLocation;
   unifCoherence: WebGLUniformLocation;
+  unifBrushSize: WebGLUniformLocation;
 
   unifTexUnits: Map<string, WebGLUniformLocation>;
 
@@ -65,6 +66,7 @@ class ShaderProgram {
     this.unifAspectRatio = gl.getUniformLocation(this.prog, "u_AspectRatio");
     this.unifDims = gl.getUniformLocation(this.prog, "u_Dims");
     this.unifCoherence = gl.getUniformLocation(this.prog, "u_Coherence");
+    this.unifBrushSize = gl.getUniformLocation(this.prog, "u_BrushSize");
 
     this.unifTexUnits = new Map<string, WebGLUniformLocation>();
   }
@@ -167,6 +169,13 @@ class ShaderProgram {
     this.use();
     if (this.unifCoherence !== -1) {
       gl.uniform1f(this.unifCoherence, coherence);
+    }
+  }
+
+  setBrushSize(brushSize: number) {
+    this.use();
+    if (this.unifBrushSize !== -1) {
+      gl.uniform1f(this.unifBrushSize, brushSize);
     }
   }
 

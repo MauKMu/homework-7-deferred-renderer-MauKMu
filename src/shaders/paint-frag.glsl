@@ -10,6 +10,8 @@ uniform sampler2D u_preFrame;
 uniform float u_Time;
 uniform vec2 u_Dims;
 
+uniform float u_BrushSize;
+
 vec2 random2(vec2 p) {
     return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);
 }
@@ -18,7 +20,7 @@ void main() {
     vec2 GRID_DIMS = vec2(70.0) * 0.5 * u_Dims.x / 526.0;
     // making radius noisy gives airbrush effect
     float rand = random2(fs_UV * 314.159).x;
-    float radius = (0.4 + 0.05 * rand) / GRID_DIMS.x;
+    float radius = (0.5 + u_BrushSize) * (0.4 + 0.05 * rand) / GRID_DIMS.x;
 	vec3 color = vec3(5.0);
     vec2 cellCorner = floor(fs_UV * GRID_DIMS) / GRID_DIMS;
     vec3 minColor = vec3(0.0);

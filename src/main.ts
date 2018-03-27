@@ -25,11 +25,13 @@ const ENABLE_BLOOM = "Enable bloom";
 const ENABLE_POINTILISM = "Enable pointilism";
 const ENABLE_PAINT = "Enable paintbrush";
 const PAINT_COHERENCE = "Coherence (of paintbrush directions)";
+const PAINT_BRUSH_SIZE = "Brush size";
 controls[ENABLE_DOF] = false;
 controls[ENABLE_BLOOM] = false;
 controls[ENABLE_POINTILISM] = false;
 controls[ENABLE_PAINT] = true;
 controls[PAINT_COHERENCE] = 0.8;
+controls[PAINT_BRUSH_SIZE] = 0.5;
 
 let shaderFlags = ShaderFlags.PAINT;
 
@@ -105,6 +107,7 @@ function main() {
     gui.add(controls, ENABLE_POINTILISM).onChange(updateShaderFlags);
     gui.add(controls, ENABLE_PAINT).onChange(updateShaderFlags);
     gui.add(controls, PAINT_COHERENCE, 0.0, 1.0);
+    gui.add(controls, PAINT_BRUSH_SIZE, 0.0, 1.0);
 
     // get canvas and webgl context
     const canvas = <HTMLCanvasElement>document.getElementById('canvas');
@@ -140,6 +143,7 @@ function main() {
         timer.updateTime();
         renderer.updateShaderFlags(shaderFlags);
         renderer.updateCoherence(controls[PAINT_COHERENCE]);
+        renderer.updateBrushSize(controls[PAINT_BRUSH_SIZE]);
         renderer.updateTime(timer.deltaTime, timer.currentTime);
 
         standardDeferred.bindTexToUnit("tex_Color", tex0, 0);
