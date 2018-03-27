@@ -4,6 +4,7 @@ enum ShaderFlags {
     BLOOM = 1 << 1,
     POINTILISM = 1 << 2,
     PAINT = 1 << 3,
+    VAPORWAVE = 1 << 4,
 }
 
 export default ShaderFlags;

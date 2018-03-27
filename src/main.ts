@@ -23,18 +23,20 @@ const ENABLE_DOF = "Enable fake DOF";
 const ENABLE_BLOOM = "Enable bloom";
 const ENABLE_POINTILISM = "Enable pointilism";
 const ENABLE_PAINT = "Enable paintbrush";
+const ENABLE_VAPORWAVE = "Enable vaporwave";
 const PAINT_COHERENCE = "Coherence (of paintbrush directions)";
 const PAINT_BRUSH_SIZE = "Brush size";
 const PAINT_BRUSH_NOISE = "Brush noisiness";
 controls[ENABLE_DOF] = false;
 controls[ENABLE_BLOOM] = false;
 controls[ENABLE_POINTILISM] = false;
-controls[ENABLE_PAINT] = true;
+controls[ENABLE_PAINT] = false;
+controls[ENABLE_VAPORWAVE] = true;
 controls[PAINT_COHERENCE] = 0.8;
 controls[PAINT_BRUSH_SIZE] = 0.5;
 controls[PAINT_BRUSH_NOISE] = 0.5;
 
-let shaderFlags = ShaderFlags.PAINT;
+let shaderFlags = ShaderFlags.VAPORWAVE;
 
 function updateShaderFlags() {
     shaderFlags = ShaderFlags.NONE;
@@ -42,6 +44,7 @@ function updateShaderFlags() {
     shaderFlags |= controls[ENABLE_BLOOM] ? ShaderFlags.BLOOM : ShaderFlags.NONE;
     shaderFlags |= controls[ENABLE_POINTILISM] ? ShaderFlags.POINTILISM : ShaderFlags.NONE;
     shaderFlags |= controls[ENABLE_PAINT] ? ShaderFlags.PAINT : ShaderFlags.NONE;
+    shaderFlags |= controls[ENABLE_VAPORWAVE] ? ShaderFlags.VAPORWAVE : ShaderFlags.NONE;
 }
 
 let square: Square;
@@ -107,6 +110,7 @@ function main() {
     gui.add(controls, ENABLE_BLOOM).onChange(updateShaderFlags);
     gui.add(controls, ENABLE_POINTILISM).onChange(updateShaderFlags);
     gui.add(controls, ENABLE_PAINT).onChange(updateShaderFlags);
+    gui.add(controls, ENABLE_VAPORWAVE).onChange(updateShaderFlags);
     gui.add(controls, PAINT_COHERENCE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_SIZE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_NOISE, 0.0, 1.0);

@@ -44,6 +44,7 @@ class OpenGLRenderer {
         [ShaderFlags.BLOOM, undefined],
         [ShaderFlags.POINTILISM, undefined],
         [ShaderFlags.PAINT, undefined],
+        [ShaderFlags.VAPORWAVE, undefined],
     ]);
 
     // the shader that renders from the gbuffers into the postbuffers
@@ -102,8 +103,11 @@ class OpenGLRenderer {
             this.add32BitPass(shaders[3]);
         }
         if (this.shaderFlags & ShaderFlags.POINTILISM) {
-            // TODOX: make 8 bit?
             let shaders = OpenGLRenderer.compiledShaders.get(ShaderFlags.POINTILISM);
+            this.add8BitPass(shaders[0]);
+        }
+        if (this.shaderFlags & ShaderFlags.VAPORWAVE) {
+            let shaders = OpenGLRenderer.compiledShaders.get(ShaderFlags.VAPORWAVE);
             this.add8BitPass(shaders[0]);
         }
     }
@@ -173,6 +177,12 @@ class OpenGLRenderer {
             ];
             OpenGLRenderer.compiledShaders.set(ShaderFlags.PAINT, arr);
         }
+        if (OpenGLRenderer.compiledShaders.get(ShaderFlags.VAPORWAVE) == undefined) {
+            let arr = [
+                new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/vaporwave-frag.glsl'))),
+            ];
+            OpenGLRenderer.compiledShaders.set(ShaderFlags.VAPORWAVE, arr);
+        }
         // TODO: these are placeholder post shaders, replace them with something good
         //this.add8BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/examplePost-frag.glsl'))));
         //this.add8BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/examplePost2-frag.glsl'))));
@@ -192,6 +202,7 @@ class OpenGLRenderer {
         */
         //this.add32BitPrePass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/curl-frag.glsl'))));
         //this.add32BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/paint-frag.glsl'))));
+        //this.add8BitPass(new PostProcess(new Shader(gl.FRAGMENT_SHADER, require('../../shaders/vaporwave-frag.glsl'))));
 
         if (!gl.getExtension("OES_texture_float_linear")) {
             console.error("OES_texture_float_linear not available");
