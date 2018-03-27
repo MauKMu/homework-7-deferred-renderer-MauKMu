@@ -70,12 +70,42 @@ class OpenGLRenderer {
         this.pre32Passes.push(pass);
     }
 
+    clearPasses() {
+        this.post8Passes = [];
+        this.post32Passes = [];
+        this.pre32Passes = [];
+    }
+
     updateShaderFlags(newFlags: ShaderFlags) {
         if (newFlags == this.shaderFlags) {
             return;
         }
         this.shaderFlags = newFlags;
         // update passes accordingly
+        this.clearPasses();
+        if (this.shaderFlags == ShaderFlags.NONE) {
+            return;
+        }
+        if (this.shaderFlags & ShaderFlags.DOF) {
+            // TODOX: make 8 bit?
+            let shaders = OpenGLRenderer.compiledShaders.get(ShaderFlags.DOF);
+            this.add32BitPass(shaders[0]);
+            this.add32BitPass(shaders[1]);
+        }
+        if (this.shaderFlags & ShaderFlags.BLOOM) {
+            let shaders = OpenGLRenderer.compiledShaders.get(ShaderFlags.BLOOM);
+            this.add32BitPrePass(shaders[0]);
+            for (let i = 0; i < 2; i++) {
+                this.add32BitPrePass(shaders[1]);
+                this.add32BitPrePass(shaders[2]);
+            }
+            this.add32BitPass(shaders[3]);
+        }
+        if (this.shaderFlags & ShaderFlags.POINTILISM) {
+            // TODOX: make 8 bit?
+            let shaders = OpenGLRenderer.compiledShaders.get(ShaderFlags.POINTILISM);
+            this.add8BitPass(shaders[0]);
+        }
     }
 
     constructor(public canvas: HTMLCanvasElement) {
@@ -282,9 +312,11 @@ class OpenGLRenderer {
         // update u_Dims
         let dims = vec2.fromValues(width, height);
         for (let entry of OpenGLRenderer.compiledShaders.entries()) {
-            if (!(this.shaderFlags & entry[0])) {
-                continue;
-            }
+            // can't filter by which is active, since filter may be re-enabled without
+            // a resize event
+            //if (!(this.shaderFlags & entry[0])) {
+                //continue;
+            //}
             for (let shader of entry[1]) {
                 shader.setDims(dims);
             }
@@ -455,11 +487,12 @@ class OpenGLRenderer {
 
         // do paint manually to avoid conflicts with bloom
         if (this.shaderFlags & ShaderFlags.PAINT) {
+            // TODOX: why bloom doesn't work with paint???
             let shaders = OpenGLRenderer.compiledShaders.get(ShaderFlags.PAINT);
             // pre-pass =======================================================
             // put original framebuffer in texture 0
             gl.activeTexture(gl.TEXTURE0);
-            gl.bindTexture(gl.TEXTURE_2D, this.post32Targets[0]);
+            gl.bindTexture(gl.TEXTURE_2D, this.post32Targets[i % 2]);
             gl.bindFramebuffer(gl.FRAMEBUFFER, this.pre32Buffers[(j + 1) % 2]);
 
             gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
