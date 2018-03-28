@@ -1,5 +1,16 @@
 # Project 7: Deferred Renderer
 
+## Student Info
+
+- Name: Mauricio Mutai
+- PennKey: `mmutai`
+
+## Live Demo
+
+Click below for the live demo!
+
+[![](images/example.png)](https://maukmu.github.io/homework-7-deferred-renderer-MauKMu)
+
 ## External References
 
 - [Stack Overflow post for handling "any type" issues in TypeScript](https://stackoverflow.com/questions/32968332/how-do-i-prevent-the-error-index-signature-of-object-type-implicitly-has-an-an). This was used to cleanly have a GUI with arbitrary string keys (more importantly, keys with whitespace in them).
