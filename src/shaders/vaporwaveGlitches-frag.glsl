@@ -75,10 +75,16 @@ void main() {
     float noise = 0.5 + 0.5 * random2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003)).x;
     color *= 0.9 + 0.1 * noise;
 
+    float time2 = u_Time * 4.0;
+    vec2 forceRand = random2(vec2(floor(time2), fs_UV.y));
+    bool forceStart = mod(forceRand.x, 0.00001) > 0.0000095;
+    bool flipColor = mod(forceRand.y, 0.0001) > 0.00009;
+    float flipFactor = (forceStart && flipColor) ? 0.5 : 0.2;
+
     float STRIPE_START = mod(-u_Time * 0.4, 1.5);
 
     // add intermittent static stripe
-    if (STRIPE_START < fs_UV.y && fs_UV.y < STRIPE_START + pixelDims.y * NOISE_STRIPE_DIM) {
+    if (forceStart || (STRIPE_START < fs_UV.y && fs_UV.y < STRIPE_START + pixelDims.y * NOISE_STRIPE_DIM)) {
         noise = 0.0;
         // 2 pixels tall
         noiseCell.y = floor(fs_UV.y * u_Dims.y) / (u_Dims.y);
@@ -88,9 +94,10 @@ void main() {
             noiseCell.x = floor((fs_UV.x + float(i) * pixelDims.x) * NOISE_TILE_DIM * 0.05 * rowScale) / (NOISE_TILE_DIM * 0.05 * rowScale);
             noise += GAUSS_KERNEL[i + 2] * 1.3 * smoothstep(-0.9, 0.95, random2(noiseCell + vec2(u_Time * 0.0002, u_Time * 0.000)).y);
         }
-        color *= 0.8 + 0.2 * noise;
+        // if we decide to "flip color", we make the noise contribution higher 
+        // to make it look whiter
+        color *= 0.8 + flipFactor * noise;
     }
-
 
 
 	out_Col = vec4(color, 1.0);
