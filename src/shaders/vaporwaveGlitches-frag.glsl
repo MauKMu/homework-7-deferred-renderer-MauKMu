@@ -33,6 +33,7 @@ vec2 random2(vec2 p) {
     return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);
 }
 
+const float PI = 3.14159265;
 const float NOISE_TILE_DIM = 400.0;
 //const float NOISE_COS = 0.93969;
 //const float NOISE_SIN = -0.3420201;
@@ -46,8 +47,25 @@ void main() {
     vec2 pixelDims = 1.0 / u_Dims;
     // chromatic aberration
     float GREEN_OFFSET = 5.0 * (1.0 + abs(fs_UV.x - 0.5) * 5.0) * (1.0 + 0.1 * random2(vec2(fs_UV.y * 9.12)).y);
+    float sqrWave = (mod(u_Time * 0.73, 2.2) > 2.0) ? 1.0 : 0.0;
+    GREEN_OFFSET += sqrWave * 5.0;
     vec3 neighbor = texture(u_frame, fs_UV + pixelDims * vec2(GREEN_OFFSET, 0.0)).xyz;
     color.y = neighbor.y;
+
+    // distort
+    float time = u_Time * 0.47;
+    vec2 distortRand = random2(vec2(floor(time)));
+    float DISTORT_THRESH = (mod(distortRand.x, 0.0003) > 0.00015) ? 0.8 : 0.5;
+    sqrWave = (mod(time, 1.0) > DISTORT_THRESH) ? 1.0 : 0.0;
+    float DISTORT_START = 0.5 + 0.5 * distortRand.x;
+    float DISTORT_STRIPE_DIM = 50.0 + 20.0 * (distortRand.y);
+    float DISTORT_OFFSET = GREEN_OFFSET * 1.6;
+    if (DISTORT_START < fs_UV.y && fs_UV.y < DISTORT_START + pixelDims.y * DISTORT_STRIPE_DIM) {
+        float distIntoStripe = (fs_UV.y - DISTORT_START) / (pixelDims.y * DISTORT_STRIPE_DIM) * PI;
+        float extraOffset = pow(sin(distIntoStripe), 5.0) * ((mod(DISTORT_START, 0.0012) > 0.0006) ? -1.0 : 1.0);
+        vec3 neighbor = texture(u_frame, fs_UV - pixelDims * vec2(DISTORT_OFFSET + extraOffset * 47.0, 2.0)).xyz;
+        color = mix(color, color * 0.2 + neighbor * 0.8, sqrWave);
+    }
 
     // add constant static
     vec2 noiseCell = floor(fs_UV * NOISE_TILE_DIM) / NOISE_TILE_DIM;
@@ -72,6 +90,8 @@ void main() {
         }
         color *= 0.8 + 0.2 * noise;
     }
+
+
 
 	out_Col = vec4(color, 1.0);
 }
