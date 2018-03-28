@@ -33,6 +33,10 @@ vec2 random2(vec2 p) {
     return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);
 }
 
+vec2 randomer2(vec2 p, float seed) {
+    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1 * seed, 311.7)), dot(p, vec2(269.5, 183.3 + seed))))*123.45) - 1.0);
+}
+
 const float PI = 3.14159265;
 const float NOISE_TILE_DIM = 400.0;
 //const float NOISE_COS = 0.93969;
@@ -72,7 +76,7 @@ void main() {
     // rotate point
     //noiseCell = vec2(dot(noiseCell, vec2(NOISE_COS, -NOISE_SIN)), dot(noiseCell, vec2(NOISE_SIN, NOISE_COS)));
     // noiseCell * 0.01 gives a wave-like pattern
-    float noise = 0.5 + 0.5 * random2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003)).x;
+    float noise = 0.5 + 0.5 * randomer2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003), noiseCell.x * 9.78 + noiseCell.y * 295.1).x;
     color *= 0.9 + 0.1 * noise;
 
     float time2 = u_Time * 4.0;
