@@ -57,9 +57,10 @@ void main() {
     vec3 neighbor = texture(u_frame, fs_UV + pixelDims * vec2(GREEN_OFFSET, 0.0)).xyz;
     color.y = neighbor.y;
 
-    // distort
+    // distort -- move pixels to the side
     float time = u_Time * 0.47;
     vec2 distortRand = random2(vec2(floor(time)));
+    // use mod to compute a random boolean value without random2
     float DISTORT_THRESH = (mod(distortRand.x, 0.0003) > 0.00015) ? 0.8 : 0.5;
     sqrWave = (mod(time, 1.0) > DISTORT_THRESH) ? 1.0 : 0.0;
     float DISTORT_START = 0.5 + 0.5 * distortRand.x;
@@ -67,6 +68,7 @@ void main() {
     float DISTORT_OFFSET = GREEN_OFFSET * 1.6;
     if (DISTORT_START < fs_UV.y && fs_UV.y < DISTORT_START + pixelDims.y * DISTORT_STRIPE_DIM) {
         float distIntoStripe = (fs_UV.y - DISTORT_START) / (pixelDims.y * DISTORT_STRIPE_DIM) * PI;
+        // pow is for making offset "spikier". mod randomly switches between offseting to left or right
         float extraOffset = pow(sin(distIntoStripe), 5.0) * ((mod(DISTORT_START, 0.0012) > 0.0006) ? -1.0 : 1.0);
         vec3 neighbor = texture(u_frame, fs_UV - pixelDims * vec2(DISTORT_OFFSET + extraOffset * 47.0, 2.0)).xyz;
         color = mix(color, color * 0.2 + neighbor * 0.8, sqrWave);
@@ -74,15 +76,15 @@ void main() {
 
     // add constant static
     vec2 noiseCell = floor(fs_UV * NOISE_TILE_DIM) / NOISE_TILE_DIM;
-    // rotate point
-    //noiseCell = vec2(dot(noiseCell, vec2(NOISE_COS, -NOISE_SIN)), dot(noiseCell, vec2(NOISE_SIN, NOISE_COS)));
-    // noiseCell * 0.01 gives a wave-like pattern
     float noise = randomer2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003), noiseCell.x * 9.78 + noiseCell.y * 295.1);
     color *= 0.85 + 0.15 * noise;
 
+    // compute "forceStart" -- add some chance to add line noise
+    // outside of main noise stripe
     float time2 = u_Time * 4.0;
     vec2 forceRand = random2(vec2(floor(time2), fs_UV.y));
     bool forceStart = mod(forceRand.x, 0.00001) > 0.0000095;
+    // also compute a "flipFactor" -- sometimes make noise light instead of dark
     bool flipColor = mod(forceRand.y, 0.0001) > 0.00009;
     float flipFactor = (forceStart && flipColor) ? 0.5 : 0.2;
 
@@ -91,12 +93,16 @@ void main() {
     // add intermittent static stripe
     if (forceStart || (STRIPE_START < fs_UV.y && fs_UV.y < STRIPE_START + pixelDims.y * NOISE_STRIPE_DIM)) {
         noise = 0.0;
-        // 2 pixels tall
+        // 1 pixel tall -- not needed now?
         noiseCell.y = floor(fs_UV.y * u_Dims.y) / (u_Dims.y);
         // randomly scale size of noise column for each row
         float rowScale = random2(noiseCell.yy).y * 0.5 + 1.5;
         for (int i = -2; i <= 2; i++) {
+            // each line of noise is made of multiple segments
+            // NOISE_TILE_DIM * 0.05 * rowScale controls the length of these segments
+            // since rowScale changes for each Y, the lengths differ for each pixel row
             noiseCell.x = floor((fs_UV.x + float(i) * pixelDims.x) * NOISE_TILE_DIM * 0.05 * rowScale) / (NOISE_TILE_DIM * 0.05 * rowScale);
+            // "blur" to make noise less harsh
             noise += GAUSS_KERNEL[i + 2] * 1.3 * smoothstep(-0.9, 0.95, random2(noiseCell + vec2(u_Time * 0.0002, u_Time * 0.000)).y);
         }
         // if we decide to "flip color", we make the noise contribution higher 
