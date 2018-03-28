@@ -3768,20 +3768,20 @@ let scale = 1.0;
 let translate = -10.0;
 function loadModel(model) {
     if (model == Model.WAHOO) {
-        loadOBJText('../resources/obj/wahoo.obj');
-        tex0 = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_Texture__["a" /* default */]('../resources/textures/wahoo.bmp');
+        loadOBJText('resources/obj/wahoo.obj');
+        tex0 = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_Texture__["a" /* default */]('resources/textures/wahoo.bmp');
         scale = 1.0;
         translate = -10.0;
     }
     else if (model == Model.STARYU) {
-        loadOBJText('../resources/obj/staryu.obj');
-        tex0 = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_Texture__["a" /* default */]('../resources/textures/staryu.png');
+        loadOBJText('resources/obj/staryu.obj');
+        tex0 = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_Texture__["a" /* default */]('resources/textures/staryu.png');
         scale = 0.7;
         translate = -8.0;
     }
     else if (model == Model.LAPRAS) {
-        loadOBJText('../resources/obj/lapras.obj');
-        tex0 = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_Texture__["a" /* default */]('../resources/textures/lapras.png');
+        loadOBJText('resources/obj/lapras.obj');
+        tex0 = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_Texture__["a" /* default */]('resources/textures/lapras.png');
         scale = 1.2;
         translate = -30.0;
     }
