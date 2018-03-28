@@ -57,7 +57,7 @@ void main() {
     float noise = 0.5 + 0.5 * random2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003)).x;
     color *= 0.9 + 0.1 * noise;
 
-    float STRIPE_START = mod(-u_Time * 0.3, 1.5);
+    float STRIPE_START = mod(-u_Time * 0.4, 1.5);
 
     // add intermittent static stripe
     if (STRIPE_START < fs_UV.y && fs_UV.y < STRIPE_START + pixelDims.y * NOISE_STRIPE_DIM) {

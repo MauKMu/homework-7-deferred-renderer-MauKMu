@@ -11,6 +11,12 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 import Texture from './rendering/gl/Texture';
 import ShaderFlags from './rendering/gl/ShaderFlags';
 
+enum Model {
+    WAHOO = 1,
+    STARYU,
+    LAPRAS,
+}
+
 // Define an object with application parameters and button callbacks
 interface IControls {
     [key: string]: any;
@@ -27,6 +33,7 @@ const ENABLE_VAPORWAVE = "Enable vaporwave";
 const PAINT_COHERENCE = "Coherence (of paintbrush directions)";
 const PAINT_BRUSH_SIZE = "Brush size";
 const PAINT_BRUSH_NOISE = "Brush noisiness";
+const LOADED_MODEL = "Model";
 controls[ENABLE_DOF] = false;
 controls[ENABLE_BLOOM] = false;
 controls[ENABLE_POINTILISM] = false;
@@ -35,6 +42,7 @@ controls[ENABLE_VAPORWAVE] = true;
 controls[PAINT_COHERENCE] = 0.8;
 controls[PAINT_BRUSH_SIZE] = 0.5;
 controls[PAINT_BRUSH_NOISE] = 0.5;
+controls[LOADED_MODEL] = Model.WAHOO;
 
 let shaderFlags = ShaderFlags.VAPORWAVE;
 
@@ -71,29 +79,57 @@ var timer = {
 }
 
 
-function loadOBJText() {
-    obj0 = readTextFile('../resources/obj/wahoo.obj')
+function loadOBJText(path: string) {
+    obj0 = readTextFile(path)
 }
 
 
 function loadScene() {
     square && square.destroy();
     mesh0 && mesh0.destroy();
+    mesh1 && mesh1.destroy();
 
     square = new Square(vec3.fromValues(0, 0, 0));
     square.create();
 
     mesh0 = new Mesh(obj0, vec3.fromValues(0, 0, 0));
+    mat4.identity(mesh0.modelMatrix);
+    mat4.scale(mesh0.modelMatrix, mesh0.modelMatrix, vec3.fromValues(scale, scale, scale));
     mesh0.create();
 
     mesh1 = new Mesh(obj0, vec3.fromValues(0, 0, 0));
-    mat4.fromTranslation(mesh1.modelMatrix, vec3.fromValues(0, 0, -10));
+    mat4.fromTranslation(mesh1.modelMatrix, vec3.fromValues(0, 0, translate));
     mat4.rotate(mesh1.modelMatrix, mesh1.modelMatrix, 0.75, vec3.fromValues(0, 1, 0));
+    mat4.scale(mesh1.modelMatrix, mesh1.modelMatrix, vec3.fromValues(scale, scale, scale));
     mesh1.create();
 
-    tex0 = new Texture('../resources/textures/wahoo.bmp')
+    //tex0 = new Texture('../resources/textures/lapras.png');
 }
 
+let scale = 1.0;
+let translate = -10.0;
+
+function loadModel(model: Model) {
+    if (model == Model.WAHOO) {
+        loadOBJText('../resources/obj/wahoo.obj');
+        tex0 = new Texture('../resources/textures/wahoo.bmp');
+        scale = 1.0;
+        translate = -10.0;
+    }
+    else if (model == Model.STARYU) {
+        loadOBJText('../resources/obj/staryu.obj');
+        tex0 = new Texture('../resources/textures/staryu.png');
+        scale = 0.7;
+        translate = -8.0;
+    }
+    else if (model == Model.LAPRAS) {
+        loadOBJText('../resources/obj/lapras.obj');
+        tex0 = new Texture('../resources/textures/lapras.png');
+        scale = 1.2;
+        translate = -30.0;
+    }
+    loadScene();
+}
 
 function main() {
     // Initial display for framerate
@@ -114,6 +150,7 @@ function main() {
     gui.add(controls, PAINT_COHERENCE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_SIZE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_NOISE, 0.0, 1.0);
+    gui.add(controls, LOADED_MODEL, { "Wahoo": Model.WAHOO, "Staryu": Model.STARYU, "Lapras": Model.LAPRAS }).onChange(loadModel);
 
     // get canvas and webgl context
     const canvas = <HTMLCanvasElement>document.getElementById('canvas');
@@ -126,7 +163,8 @@ function main() {
     setGL(gl);
 
     // Initial call to load scene
-    loadScene();
+    //loadScene();
+    loadModel(controls[LOADED_MODEL]);
 
     const camera = new Camera(vec3.fromValues(0, 9, 25), vec3.fromValues(0, 9, 0));
 
@@ -189,7 +227,7 @@ function main() {
 
 function setup() {
     timer.startTime = Date.now();
-    loadOBJText();
+    //loadOBJText();
     main();
 }
 
