@@ -1,5 +1,7 @@
 # Project 7: Deferred Renderer
 
+[![](images/staryu.png)](https://maukmu.github.io/homework-7-deferred-renderer-MauKMu)
+
 ## Student Info
 
 - Name: Mauricio Mutai
