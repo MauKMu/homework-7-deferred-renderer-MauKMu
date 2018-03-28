@@ -111,20 +111,20 @@ let translate = -10.0;
 
 function loadModel(model: Model) {
     if (model == Model.WAHOO) {
-        loadOBJText('../resources/obj/wahoo.obj');
-        tex0 = new Texture('../resources/textures/wahoo.bmp');
+        loadOBJText('resources/obj/wahoo.obj');
+        tex0 = new Texture('resources/textures/wahoo.bmp');
         scale = 1.0;
         translate = -10.0;
     }
     else if (model == Model.STARYU) {
-        loadOBJText('../resources/obj/staryu.obj');
-        tex0 = new Texture('../resources/textures/staryu.png');
+        loadOBJText('resources/obj/staryu.obj');
+        tex0 = new Texture('resources/textures/staryu.png');
         scale = 0.7;
         translate = -8.0;
     }
     else if (model == Model.LAPRAS) {
-        loadOBJText('../resources/obj/lapras.obj');
-        tex0 = new Texture('../resources/textures/lapras.png');
+        loadOBJText('resources/obj/lapras.obj');
+        tex0 = new Texture('resources/textures/lapras.png');
         scale = 1.2;
         translate = -30.0;
     }
