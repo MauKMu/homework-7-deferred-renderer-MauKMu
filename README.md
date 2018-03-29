@@ -76,7 +76,7 @@ The following shaders are executed in this order:
   - Similarly, the frequency of the underlying noise used for the Curl noise can be changed to make the brush strokes more or less coherent (i.e. tending to face the same direction or not).
   - The scale of the brush strokes can also be tweaked with the GUI.
 - As a side note, I originally tried to implement this in one pass, but it was pretty slow. Computing the Curl noise only once for each fragment, then just sampling it in a subsequent pass made it run noticeably faster.
-- Do play around with the parameters. They seem to make the effect more paint-like depending on the resolution you're using (I did try to account for this in the shader, but ultimately some human fine-tuning will help the most).
+- Do play around with the parameters, especially brush size. They seem to make the effect more paint-like depending on the resolution you're using (I did try to account for this in the shader, but ultimately some human fine-tuning will help the most).
 - The curl noise changes every once in a while. This is accomplished by parametrizing the curl noise with a "`smoothStep`" function (not `smoothstep`), which is like a step function but with additional logic to make the rising edges smoother.
 
 ### Vaporwave
