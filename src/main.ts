@@ -15,6 +15,7 @@ enum Model {
     WAHOO = 1,
     STARYU,
     LAPRAS,
+    CHIKORITA,
 }
 
 // Define an object with application parameters and button callbacks
@@ -128,6 +129,12 @@ function loadModel(model: Model) {
         scale = 1.2;
         translate = -30.0;
     }
+    else if (model == Model.CHIKORITA) {
+        loadOBJText('resources/obj/chikorita.obj');
+        tex0 = new Texture('resources/textures/chikorita.png');
+        scale = 0.6;
+        translate = -7.0;
+    }
     loadScene();
 }
 
@@ -150,7 +157,7 @@ function main() {
     gui.add(controls, PAINT_COHERENCE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_SIZE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_NOISE, 0.0, 1.0);
-    gui.add(controls, LOADED_MODEL, { "Wahoo": Model.WAHOO, "Staryu": Model.STARYU, "Lapras": Model.LAPRAS }).onChange(loadModel);
+    gui.add(controls, LOADED_MODEL, { "Wahoo": Model.WAHOO, "Staryu": Model.STARYU, "Lapras": Model.LAPRAS, "Chikorita": Model.CHIKORITA }).onChange(loadModel);
 
     // get canvas and webgl context
     const canvas = <HTMLCanvasElement>document.getElementById('canvas');
