@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 23);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -175,12 +175,12 @@ function readTextFile(file) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(8);
 /* unused harmony reexport glMatrix */
@@ -2982,6 +2982,33 @@ var ShaderFlags;
 
 /***/ }),
 /* 12 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2990,7 +3017,7 @@ var ShaderFlags;
 module.exports = createFilteredVector
 
 var cubicHermite = __webpack_require__(56)
-var bsearch = __webpack_require__(13)
+var bsearch = __webpack_require__(14)
 
 function clamp(lo, hi, x) {
   return Math.min(hi, Math.max(lo, x))
@@ -3279,7 +3306,7 @@ function createFilteredVector(initState, initVelocity, initTime) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3346,7 +3373,7 @@ module.exports = {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = cross;
@@ -3370,7 +3397,7 @@ function cross(out, a, b) {
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = dot;
@@ -3387,10 +3414,10 @@ function dot(a, b) {
 }
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(17);
+var identity = __webpack_require__(18);
 
 module.exports = lookAt;
 
@@ -3482,7 +3509,7 @@ function lookAt(out, eye, center, up) {
 };
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = identity;
@@ -3514,7 +3541,7 @@ function identity(out) {
 };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = translate;
@@ -3557,7 +3584,7 @@ function translate(out, a, v) {
 };
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = create;
@@ -3589,7 +3616,7 @@ function create() {
 };
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = scale;
@@ -3625,7 +3652,7 @@ function scale(out, a, v) {
 };
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = determinant;
@@ -3660,24 +3687,27 @@ function determinant(a) {
 };
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_gl_matrix__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stats_js__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stats_js__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stats_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_stats_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_dat_gui__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_dat_gui__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_dat_gui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_dat_gui__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__geometry_Square__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__geometry_Mesh__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rendering_gl_OpenGLRenderer__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Camera__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__geometry_Mesh__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rendering_gl_OpenGLRenderer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Camera__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__globals__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__rendering_gl_ShaderProgram__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__rendering_gl_Texture__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_howler__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_howler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_howler__);
+
 
 
 
@@ -3695,6 +3725,7 @@ var Model;
     Model[Model["WAHOO"] = 1] = "WAHOO";
     Model[Model["STARYU"] = 2] = "STARYU";
     Model[Model["LAPRAS"] = 3] = "LAPRAS";
+    Model[Model["CHIKORITA"] = 4] = "CHIKORITA";
 })(Model || (Model = {}));
 // TODOX: 
 // sky color
@@ -3712,13 +3743,22 @@ const LOADED_MODEL = "Model";
 controls[ENABLE_DOF] = false;
 controls[ENABLE_BLOOM] = false;
 controls[ENABLE_POINTILISM] = false;
-controls[ENABLE_PAINT] = false;
-controls[ENABLE_VAPORWAVE] = true;
+controls[ENABLE_PAINT] = true;
+controls[ENABLE_VAPORWAVE] = false;
 controls[PAINT_COHERENCE] = 0.8;
 controls[PAINT_BRUSH_SIZE] = 0.5;
 controls[PAINT_BRUSH_NOISE] = 0.5;
 controls[LOADED_MODEL] = Model.WAHOO;
-let shaderFlags = __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].VAPORWAVE;
+let shaderFlags = __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].PAINT;
+const sound = new __WEBPACK_IMPORTED_MODULE_11_howler__["Howl"]({
+    src: ["resources/audio/vaporwave.mp3"],
+    volume: 0.5,
+    loop: true,
+    preload: false,
+    onload: function () {
+        console.log("Loaded vaporwave!");
+    }
+});
 function updateShaderFlags() {
     shaderFlags = __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].NONE;
     shaderFlags |= controls[ENABLE_DOF] ? __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].DOF : __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].NONE;
@@ -3726,6 +3766,14 @@ function updateShaderFlags() {
     shaderFlags |= controls[ENABLE_POINTILISM] ? __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].POINTILISM : __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].NONE;
     shaderFlags |= controls[ENABLE_PAINT] ? __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].PAINT : __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].NONE;
     shaderFlags |= controls[ENABLE_VAPORWAVE] ? __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].VAPORWAVE : __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].NONE;
+    if (shaderFlags & __WEBPACK_IMPORTED_MODULE_10__rendering_gl_ShaderFlags__["a" /* default */].VAPORWAVE) {
+        if (!sound.playing()) {
+            sound.play();
+        }
+    }
+    else {
+        sound.stop();
+    }
 }
 let square;
 // TODO: replace with your scene's stuff
@@ -3785,6 +3833,12 @@ function loadModel(model) {
         scale = 1.2;
         translate = -30.0;
     }
+    else if (model == Model.CHIKORITA) {
+        loadOBJText('resources/obj/chikorita.obj');
+        tex0 = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_Texture__["a" /* default */]('resources/textures/chikorita.png');
+        scale = 0.6;
+        translate = -7.0;
+    }
     loadScene();
 }
 function main() {
@@ -3795,6 +3849,10 @@ function main() {
     stats.domElement.style.left = '0px';
     stats.domElement.style.top = '0px';
     document.body.appendChild(stats.domElement);
+    // load audio
+    console.log("Loading vaporwave...");
+    sound.load();
+    updateShaderFlags();
     // Add controls to the gui
     const gui = new __WEBPACK_IMPORTED_MODULE_2_dat_gui__["GUI"]();
     gui.add(controls, ENABLE_DOF).onChange(updateShaderFlags);
@@ -3805,7 +3863,7 @@ function main() {
     gui.add(controls, PAINT_COHERENCE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_SIZE, 0.0, 1.0);
     gui.add(controls, PAINT_BRUSH_NOISE, 0.0, 1.0);
-    gui.add(controls, LOADED_MODEL, { "Wahoo": Model.WAHOO, "Staryu": Model.STARYU, "Lapras": Model.LAPRAS }).onChange(loadModel);
+    gui.add(controls, LOADED_MODEL, { "Wahoo": Model.WAHOO, "Staryu": Model.STARYU, "Lapras": Model.LAPRAS, "Chikorita": Model.CHIKORITA }).onChange(loadModel);
     // get canvas and webgl context
     const canvas = document.getElementById('canvas');
     const gl = canvas.getContext('webgl2');
@@ -3824,8 +3882,8 @@ function main() {
     renderer.setClearColor(0, 0, 0, 1);
     gl.enable(gl.DEPTH_TEST);
     const standardDeferred = new __WEBPACK_IMPORTED_MODULE_8__rendering_gl_ShaderProgram__["b" /* default */]([
-        new __WEBPACK_IMPORTED_MODULE_8__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(86)),
-        new __WEBPACK_IMPORTED_MODULE_8__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(87)),
+        new __WEBPACK_IMPORTED_MODULE_8__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(87)),
+        new __WEBPACK_IMPORTED_MODULE_8__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(88)),
     ]);
     standardDeferred.setupTexUnits(["tex_Color"]);
     function tick() {
@@ -3873,7 +3931,7 @@ setup();
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4342,7 +4400,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4843,7 +4901,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6581,7 +6639,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7271,7 +7329,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7914,7 +7972,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 // stats.js - http://github.com/mrdoob/stats.js
@@ -7926,14 +7984,14 @@ a+"px",m=b,r=0);return b},update:function(){l=this.end()}}};"object"===typeof mo
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(30)
-module.exports.color = __webpack_require__(31)
+module.exports = __webpack_require__(31)
+module.exports.color = __webpack_require__(32)
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 /**
@@ -11598,7 +11656,7 @@ dat.dom.dom,
 dat.utils.common);
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 /**
@@ -12358,14 +12416,14 @@ dat.color.toString,
 dat.utils.common);
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_gl_matrix__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globals__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_webgl_obj_loader__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_webgl_obj_loader__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_webgl_obj_loader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_webgl_obj_loader__);
 
 
@@ -12430,20 +12488,20 @@ class Mesh extends __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__["a" /* d
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define("OBJ",[],t):"object"==typeof exports?exports.OBJ=t():e.OBJ=t()}("undefined"!=typeof self?self:this,function(){return function(e){function t(a){if(r[a])return r[a].exports;var n=r[a]={i:a,l:!1,exports:{}};return e[a].call(n.exports,n,n.exports,t),n.l=!0,n.exports}var r={};return t.m=e,t.c=r,t.d=function(exports,e,r){t.o(exports,e)||Object.defineProperty(exports,e,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/",t(t.s=3)}([function(e,exports,t){"use strict";function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e){switch(e){case"BYTE":case"UNSIGNED_BYTE":return 1;case"SHORT":case"UNSIGNED_SHORT":return 2;case"FLOAT":return 4}}Object.defineProperty(exports,"__esModule",{value:!0});var n=exports.Layout=function e(){r(this,e);for(var t=arguments.length,a=Array(t),n=0;n<t;n++)a[n]=arguments[n];this.attributes=a;var s=0,l=0,o=!0,u=!1,c=void 0;try{for(var f,h=a[Symbol.iterator]();!(o=(f=h.next()).done);o=!0){var p=f.value;if(this[p.key])throw new i(p);s%p.sizeOfType!=0&&(s+=p.sizeOfType-s%p.sizeOfType),this[p.key]={attribute:p,size:p.size,type:p.type,normalized:p.normalized,offset:s},s+=p.sizeInBytes,l=Math.max(l,p.sizeOfType)}}catch(e){u=!0,c=e}finally{try{!o&&h.return&&h.return()}finally{if(u)throw c}}s%l!=0&&(s+=l-s%l),this.stride=s;var v=!0,d=!1,y=void 0;try{for(var m,M=a[Symbol.iterator]();!(v=(m=M.next()).done);v=!0){this[m.value.key].stride=this.stride}}catch(e){d=!0,y=e}finally{try{!v&&M.return&&M.return()}finally{if(d)throw y}}},i=function e(t){r(this,e),this.message="found duplicate attribute: "+t.key},s=function e(t,n,i){arguments.length>3&&void 0!==arguments[3]&&arguments[3];r(this,e),this.key=t,this.size=n,this.type=i,this.normalized=!1,this.sizeOfType=a(i),this.sizeInBytes=this.sizeOfType*n};n.POSITION=new s("position",3,"FLOAT"),n.NORMAL=new s("normal",3,"FLOAT"),n.TANGENT=new s("tangent",3,"FLOAT"),n.BITANGENT=new s("bitangent",3,"FLOAT"),n.UV=new s("uv",2,"FLOAT"),n.MATERIAL_INDEX=new s("materialIndex",1,"SHORT"),n.MATERIAL_ENABLED=new s("materialEnabled",1,"UNSIGNED_SHORT"),n.AMBIENT=new s("ambient",3,"FLOAT"),n.DIFFUSE=new s("diffuse",3,"FLOAT"),n.SPECULAR=new s("specular",3,"FLOAT"),n.SPECULAR_EXPONENT=new s("specularExponent",3,"FLOAT"),n.EMISSIVE=new s("emissive",3,"FLOAT"),n.TRANSMISSION_FILTER=new s("transmissionFilter",3,"FLOAT"),n.DISSOLVE=new s("dissolve",1,"FLOAT"),n.ILLUMINATION=new s("illumination",1,"UNSIGNED_SHORT"),n.REFRACTION_INDEX=new s("refractionIndex",1,"FLOAT"),n.SHARPNESS=new s("sharpness",1,"FLOAT"),n.MAP_DIFFUSE=new s("mapDiffuse",1,"SHORT"),n.MAP_AMBIENT=new s("mapAmbient",1,"SHORT"),n.MAP_SPECULAR=new s("mapSpecular",1,"SHORT"),n.MAP_SPECULAR_EXPONENT=new s("mapSpecularExponent",1,"SHORT"),n.MAP_DISSOLVE=new s("mapDissolve",1,"SHORT"),n.ANTI_ALIASING=new s("antiAliasing",1,"UNSIGNED_SHORT"),n.MAP_BUMP=new s("mapBump",1,"SHORT"),n.MAP_DISPLACEMENT=new s("mapDisplacement",1,"SHORT"),n.MAP_DECAL=new s("mapDecal",1,"SHORT"),n.MAP_EMISSIVE=new s("mapEmissive",1,"SHORT")},function(e,exports,t){"use strict";function r(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0});var n=function(){function e(e,t){for(var r=0;r<t.length;r++){var a=t[r];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,r,a){return r&&e(t.prototype,r),a&&e(t,a),t}}(),i=t(0),s=function(){function e(t,n){a(this,e),n=n||{},n.materials=n.materials||{},n.enableWTextureCoord=!!n.enableWTextureCoord,n.indicesPerMaterial=!!n.indicesPerMaterial;var i=this;i.vertices=[],i.vertexNormals=[],i.textures=[],i.indices=[],i.textureStride=n.enableWTextureCoord?3:2,this.name="";var s=[],l=[],o=[],u={},c=[],f={},h=-1,p=0;u.verts=[],u.norms=[],u.textures=[],u.hashindices={},u.indices=[[]],u.materialIndices=[],u.index=0;for(var v=/^v\s/,d=/^vn\s/,y=/^vt\s/,m=/^f\s/,M=/\s+/,b=/^usemtl/,x=t.split("\n"),I=0;I<x.length;I++){var A=x[I].trim();if(A&&!A.startsWith("#")){var _=A.split(M);if(_.shift(),v.test(A))s.push.apply(s,r(_));else if(d.test(A))l.push.apply(l,r(_));else if(y.test(A)){var k=_;_.length>2&&!n.enableWTextureCoord?k=_.slice(0,2):2===_.length&&n.enableWTextureCoord&&k.push(0),o.push.apply(o,r(k))}else if(b.test(A)){var T=_[0];T in f||(c.push(T),f[T]=c.length-1,n.indicesPerMaterial&&f[T]>0&&u.indices.push([])),h=f[T],n.indicesPerMaterial&&(p=h)}else if(m.test(A))for(var w=!1,F=0,S=_.length;F<S;F++){3!==F||w||(F=2,w=!0);var E=_[0]+","+h,g=_[F]+","+h;if(g in u.hashindices)u.indices[p].push(u.hashindices[g]);else{var O=_[F].split("/"),B=O.length-1;if(u.verts.push(+s[3*(O[0]-1)+0]),u.verts.push(+s[3*(O[0]-1)+1]),u.verts.push(+s[3*(O[0]-1)+2]),o.length){var L=n.enableWTextureCoord?3:2;u.textures.push(+o[(O[1]-1)*L+0]),u.textures.push(+o[(O[1]-1)*L+1]),n.enableWTextureCoord&&u.textures.push(+o[(O[1]-1)*L+2])}u.norms.push(+l[3*(O[B]-1)+0]),u.norms.push(+l[3*(O[B]-1)+1]),u.norms.push(+l[3*(O[B]-1)+2]),u.materialIndices.push(h),u.hashindices[g]=u.index,u.indices[p].push(u.hashindices[g]),u.index+=1}3===F&&w&&u.indices[p].push(u.hashindices[E])}}}i.vertices=u.verts,i.vertexNormals=u.norms,i.textures=u.textures,i.vertexMaterialIndices=u.materialIndices,i.indices=n.indicesPerMaterial?u.indices:u.indices[p],i.materialNames=c,i.materialIndices=f,i.materialsByIndex={},n.calcTangentsAndBitangents&&this.calculateTangentsAndBitangents()}return n(e,[{key:"calculateTangentsAndBitangents",value:function(){var e={};e.tangents=[].concat(r(new Array(this.vertices.length))).map(function(e){return 0}),e.bitangents=[].concat(r(new Array(this.vertices.length))).map(function(e){return 0});var t=void 0;t=Array.isArray(this.indices[0])?[].concat.apply([],this.indices):this.indices;for(var a=this.vertices,n=this.vertexNormals,i=this.textures,s=0;s<t.length;s+=3){var l=t[s+0],o=t[s+1],u=t[s+2],c=a[3*l+0],f=a[3*l+1],h=a[3*l+2],p=i[2*l+0],v=i[2*l+1],d=a[3*o+0],y=a[3*o+1],m=a[3*o+2],M=i[2*o+0],b=i[2*o+1],x=a[3*u+0],I=a[3*u+1],A=a[3*u+2],_=i[2*u+0],k=i[2*u+1],T=d-c,w=y-f,F=m-h,S=x-c,E=I-f,g=A-h,O=M-p,B=b-v,L=_-p,N=k-v,R=O*N-B*L,P=1/(Math.abs(R<1e-4)?1:R),D=(T*N-S*B)*P,C=(w*N-E*B)*P,U=(F*N-g*B)*P,j=(S*O-T*L)*P,z=(E*O-w*L)*P,H=(g*O-F*L)*P,W=n[3*l+0],G=n[3*l+1],V=n[3*l+2],K=n[3*o+0],q=n[3*o+1],X=n[3*o+2],Y=n[3*u+0],J=n[3*u+1],Q=n[3*u+2],Z=D*W+C*G+U*V,ee=D*K+C*q+U*X,te=D*Y+C*J+U*Q,re=D-W*Z,ae=C-G*Z,ne=U-V*Z,ie=D-K*ee,se=C-q*ee,le=U-X*ee,oe=D-Y*te,ue=C-J*te,ce=U-Q*te,fe=Math.sqrt(re*re+ae*ae+ne*ne),he=Math.sqrt(ie*ie+se*se+le*le),pe=Math.sqrt(oe*oe+ue*ue+ce*ce),ve=j*W+z*G+H*V,de=j*K+z*q+H*X,ye=j*Y+z*J+H*Q,me=j-W*ve,Me=z-G*ve,be=H-V*ve,xe=j-K*de,Ie=z-q*de,Ae=H-X*de,_e=j-Y*ye,ke=z-J*ye,Te=H-Q*ye,we=Math.sqrt(me*me+Me*Me+be*be),Fe=Math.sqrt(xe*xe+Ie*Ie+Ae*Ae),Se=Math.sqrt(_e*_e+ke*ke+Te*Te);e.tangents[3*l+0]+=re/fe,e.tangents[3*l+1]+=ae/fe,e.tangents[3*l+2]+=ne/fe,e.tangents[3*o+0]+=ie/he,e.tangents[3*o+1]+=se/he,e.tangents[3*o+2]+=le/he,e.tangents[3*u+0]+=oe/pe,e.tangents[3*u+1]+=ue/pe,e.tangents[3*u+2]+=ce/pe,e.bitangents[3*l+0]+=me/we,e.bitangents[3*l+1]+=Me/we,e.bitangents[3*l+2]+=be/we,e.bitangents[3*o+0]+=xe/Fe,e.bitangents[3*o+1]+=Ie/Fe,e.bitangents[3*o+2]+=Ae/Fe,e.bitangents[3*u+0]+=_e/Se,e.bitangents[3*u+1]+=ke/Se,e.bitangents[3*u+2]+=Te/Se}this.tangents=e.tangents,this.bitangents=e.bitangents}},{key:"makeBufferData",value:function(e){var t=this.vertices.length/3,r=new ArrayBuffer(e.stride*t);r.numItems=t;for(var a=new DataView(r),n=0,s=0;n<t;n++){s=n*e.stride;var l=!0,o=!1,u=void 0;try{for(var c,f=e.attributes[Symbol.iterator]();!(l=(c=f.next()).done);l=!0){var h=c.value,p=s+e[h.key].offset;switch(h.key){case i.Layout.POSITION.key:a.setFloat32(p,this.vertices[3*n],!0),a.setFloat32(p+4,this.vertices[3*n+1],!0),a.setFloat32(p+8,this.vertices[3*n+2],!0);break;case i.Layout.UV.key:a.setFloat32(p,this.textures[2*n],!0),a.setFloat32(p+4,this.vertices[2*n+1],!0);break;case i.Layout.NORMAL.key:a.setFloat32(p,this.vertexNormals[3*n],!0),a.setFloat32(p+4,this.vertexNormals[3*n+1],!0),a.setFloat32(p+8,this.vertexNormals[3*n+2],!0);break;case i.Layout.MATERIAL_INDEX.key:a.setInt16(p,this.vertexMaterialIndices[n],!0);break;case i.Layout.AMBIENT.key:var v=this.vertexMaterialIndices[n],d=this.materialsByIndex[v];if(!d)break;a.setFloat32(p,d.ambient[0],!0),a.setFloat32(p+4,d.ambient[1],!0),a.setFloat32(p+8,d.ambient[2],!0);break;case i.Layout.DIFFUSE.key:var y=this.vertexMaterialIndices[n],m=this.materialsByIndex[y];if(!m)break;a.setFloat32(p,m.diffuse[0],!0),a.setFloat32(p+4,m.diffuse[1],!0),a.setFloat32(p+8,m.diffuse[2],!0);break;case i.Layout.SPECULAR.key:var M=this.vertexMaterialIndices[n],b=this.materialsByIndex[M];if(!b)break;a.setFloat32(p,b.specular[0],!0),a.setFloat32(p+4,b.specular[1],!0),a.setFloat32(p+8,b.specular[2],!0);break;case i.Layout.SPECULAR_EXPONENT.key:var x=this.vertexMaterialIndices[n],I=this.materialsByIndex[x];if(!I)break;a.setFloat32(p,I.specularExponent,!0);break;case i.Layout.EMISSIVE.key:var A=this.vertexMaterialIndices[n],_=this.materialsByIndex[A];if(!_)break;a.setFloat32(p,_.emissive[0],!0),a.setFloat32(p+4,_.emissive[1],!0),a.setFloat32(p+8,_.emissive[2],!0);break;case i.Layout.TRANSMISSION_FILTER.key:var k=this.vertexMaterialIndices[n],T=this.materialsByIndex[k];if(!T)break;a.setFloat32(p,T.transmissionFilter[0],!0),a.setFloat32(p+4,T.transmissionFilter[1],!0),a.setFloat32(p+8,T.transmissionFilter[2],!0);break;case i.Layout.DISSOLVE.key:var w=this.vertexMaterialIndices[n],F=this.materialsByIndex[w];if(!F)break;a.setFloat32(p,F.dissolve,!0);break;case i.Layout.ILLUMINATION.key:var S=this.vertexMaterialIndices[n],E=this.materialsByIndex[S];if(!E)break;a.setInt16(p,E.illumination,!0);break;case i.Layout.REFRACTION_INDEX.key:var g=this.vertexMaterialIndices[n],O=this.materialsByIndex[g];if(!O)break;a.setFloat32(p,O.refractionIndex,!0);break;case i.Layout.SHARPNESS.key:var B=this.vertexMaterialIndices[n],L=this.materialsByIndex[B];if(!L)break;a.setFloat32(p,L.sharpness,!0);break;case i.Layout.ANTI_ALIASING.key:var N=this.vertexMaterialIndices[n],R=this.materialsByIndex[N];if(!R)break;a.setInt16(p,R.antiAliasing,!0)}}}catch(e){o=!0,u=e}finally{try{!l&&f.return&&f.return()}finally{if(o)throw u}}}return r}},{key:"makeIndexBufferData",value:function(){var e=new Uint16Array(this.indices);return e.numItems=this.indices.length,e}},{key:"addMaterialLibrary",value:function(e){for(var t in e.materials)if(t in this.materialIndices){var r=e.materials[t],a=this.materialIndices[r.name];this.materialsByIndex[a]=r}}}]),e}();exports.default=s},function(e,exports,t){"use strict";function r(e){return Array.isArray(e)?e:Array.from(e)}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0});var n=function(){function e(e,t){for(var r=0;r<t.length;r++){var a=t[r];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,r,a){return r&&e(t.prototype,r),a&&e(t,a),t}}(),i=exports.Material=function e(t){a(this,e),this.name=t,this.ambient=[0,0,0],this.diffuse=[0,0,0],this.specular=[0,0,0],this.emissive=[0,0,0],this.transmissionFilter=[0,0,0],this.dissolve=0,this.specularExponent=0,this.transparency=0,this.illumination=0,this.refractionIndex=1,this.sharpness=0,this.mapDiffuse=null,this.mapAmbient=null,this.mapSpecular=null,this.mapSpecularExponent=null,this.mapDissolve=null,this.antiAliasing=!1,this.mapBump=null,this.mapDisplacement=null,this.mapDecal=null,this.mapEmissive=null,this.mapReflections=[]};exports.MaterialLibrary=function(){function e(t){a(this,e),this.data=t,this.currentMaterial=null,this.materials={},this.parse()}return n(e,[{key:"parse_newmtl",value:function(e){var t=e[0];this.currentMaterial=new i(t),this.materials[t]=this.currentMaterial}},{key:"parseColor",value:function(e){if("spectral"!=e[0]&&"xyz"!=e[0]){if(3==e.length)return e.map(parseFloat);var t=parseFloat(e[0]);return[t,t,t]}}},{key:"parse_Ka",value:function(e){this.currentMaterial.ambient=this.parseColor(e)}},{key:"parse_Kd",value:function(e){this.currentMaterial.diffuse=this.parseColor(e)}},{key:"parse_Ks",value:function(e){this.currentMaterial.specular=this.parseColor(e)}},{key:"parse_Ke",value:function(e){this.currentMaterial.emissive=this.parseColor(e)}},{key:"parse_Tf",value:function(e){this.currentMaterial.transmissionFilter=this.parseColor(e)}},{key:"parse_d",value:function(e){this.currentMaterial.dissolve=parseFloat(e.pop())}},{key:"parse_illum",value:function(e){this.currentMaterial.illumination=parseInt(e[0])}},{key:"parse_Ni",value:function(e){this.currentMaterial.refractionIndex=parseFloat(e[0])}},{key:"parse_Ns",value:function(e){this.currentMaterial.specularExponent=parseInt(e[0])}},{key:"parse_sharpness",value:function(e){this.currentMaterial.sharpness=parseInt(e[0])}},{key:"parse_cc",value:function(e,t){t.colorCorrection="on"==e[0]}},{key:"parse_blendu",value:function(e,t){t.horizontalBlending="on"==e[0]}},{key:"parse_blendv",value:function(e,t){t.verticalBlending="on"==e[0]}},{key:"parse_boost",value:function(e,t){t.boostMipMapSharpness=parseFloat(e[0])}},{key:"parse_mm",value:function(e,t){t.modifyTextureMap.brightness=parseFloat(e[0]),t.modifyTextureMap.contrast=parseFloat(e[1])}},{key:"parse_ost",value:function(e,t,r){for(;e.length<3;)e.push(r);t.u=parseFloat(e[0]),t.v=parseFloat(e[1]),t.w=parseFloat(e[2])}},{key:"parse_o",value:function(e,t){this.parse_ost(e,t.offset,0)}},{key:"parse_s",value:function(e,t){this.parse_ost(e,t.scale,1)}},{key:"parse_t",value:function(e,t){this.parse_ost(e,t.turbulence,0)}},{key:"parse_texres",value:function(e,t){t.textureResolution=parseFloat(e[0])}},{key:"parse_clamp",value:function(e,t){t.clamp="on"==e[0]}},{key:"parse_bm",value:function(e,t){t.bumpMultiplier=parseFloat(e[0])}},{key:"parse_imfchan",value:function(e,t){t.imfChan=e[0]}},{key:"parse_type",value:function(e,t){t.reflectionType=e[0]}},{key:"parseOptions",value:function(e){var t={colorCorrection:!1,horizontalBlending:!0,verticalBlending:!0,boostMipMapSharpness:0,modifyTextureMap:{brightness:0,contrast:1},offset:{u:0,v:0,w:0},scale:{u:1,v:1,w:1},turbulence:{u:0,v:0,w:0},clamp:!1,textureResolution:null,bumpMultiplier:1,imfChan:null},r=void 0,a=void 0,n={};for(e.reverse();e.length;){var i=e.pop();i.startsWith("-")?(r=i.substr(1),n[r]=[]):n[r].push(i)}for(r in n)if(n.hasOwnProperty(r)){a=n[r];var s=this["parse_"+r];s&&s.bind(this)(a,t)}return t}},{key:"parseMap",value:function(e){var t=void 0,a=void 0;if(e[0].startsWith("-"))t=e.pop(),a=e;else{var n=r(e);t=n[0],a=n.slice(1)}return a=this.parseOptions(a),a.filename=t,a}},{key:"parse_map_Ka",value:function(e){this.currentMaterial.mapAmbient=this.parseMap(e)}},{key:"parse_map_Kd",value:function(e){this.currentMaterial.mapDiffuse=this.parseMap(e)}},{key:"parse_map_Ks",value:function(e){this.currentMaterial.mapSpecular=this.parseMap(e)}},{key:"parse_map_Ke",value:function(e){this.currentMaterial.mapEmissive=this.parseMap(e)}},{key:"parse_map_Ns",value:function(e){this.currentMaterial.mapSpecularExponent=this.parseMap(e)}},{key:"parse_map_d",value:function(e){this.currentMaterial.mapDissolve=this.parseMap(e)}},{key:"parse_map_aat",value:function(e){this.currentMaterial.antiAliasing="on"==e[0]}},{key:"parse_map_bump",value:function(e){this.currentMaterial.mapBump=this.parseMap(e)}},{key:"parse_bump",value:function(e){this.parse_map_bump(e)}},{key:"parse_disp",value:function(e){this.currentMaterial.mapDisplacement=this.parseMap(e)}},{key:"parse_decal",value:function(e){this.currentMaterial.mapDecal=this.parseMap(e)}},{key:"parse_refl",value:function(e){this.currentMaterial.mapReflections.push(this.parseMap(e))}},{key:"parse",value:function(){var e=this.data.split(/\r?\n/),t=!0,a=!1,n=void 0;try{for(var i,s=e[Symbol.iterator]();!(t=(i=s.next()).done);t=!0){var l=i.value;if((l=l.trim())&&!l.startsWith("#")){var o=l.split(/\s/),u=void 0,c=o,f=r(c);u=f[0],o=f.slice(1);var h=this["parse_"+u];h&&h.bind(this)(o)}}}catch(e){a=!0,n=e}finally{try{!t&&s.return&&s.return()}finally{if(a)throw n}}delete this.data,this.currentMaterial=null}}]),e}()},function(e,exports,t){e.exports=t(4)},function(e,exports,t){"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.version=exports.deleteMeshBuffers=exports.initMeshBuffers=exports.downloadMeshes=exports.downloadModels=exports.Layout=exports.MaterialLibrary=exports.Material=exports.Mesh=void 0;var r=t(1),a=function(e){return e&&e.__esModule?e:{default:e}}(r),n=t(2),i=t(0),s=t(5);exports.Mesh=a.default,exports.Material=n.Material,exports.MaterialLibrary=n.MaterialLibrary,exports.Layout=i.Layout,exports.downloadModels=s.downloadModels,exports.downloadMeshes=s.downloadMeshes,exports.initMeshBuffers=s.initMeshBuffers,exports.deleteMeshBuffers=s.deleteMeshBuffers,exports.version="1.1.3"},function(e,exports,t){"use strict";function r(e,t){var r=["mapDiffuse","mapAmbient","mapSpecular","mapDissolve","mapBump","mapDisplacement","mapDecal","mapEmissive"];t.endsWith("/")||(t+="/");var a=[];for(var n in e.materials)if(e.materials.hasOwnProperty(n)){n=e.materials[n];var i=!0,s=!1,l=void 0;try{for(var o,u=r[Symbol.iterator]();!(i=(o=u.next()).done);i=!0){var c=o.value;(function(e){var r=n[e];if(!r)return"continue";var i=t+r.filename;a.push(fetch(i).then(function(e){if(!e.ok)throw new Error;return e.blob()}).then(function(e){var t=new Image;return t.src=URL.createObjectURL(e),r.texture=t,new Promise(function(e){return t.onload=e})}).catch(function(){}))})(c)}}catch(e){s=!0,l=e}finally{try{!i&&u.return&&u.return()}finally{if(s)throw l}}}return Promise.all(a)}function a(e){var t=[],a=!0,n=!1,i=void 0;try{for(var s,o=e[Symbol.iterator]();!(a=(s=o.next()).done);a=!0){var f=s.value;!function(e){var a=[];if(!e.obj)throw new Error('"obj" attribute of model object not set. The .obj file is required to be set in order to use downloadModels()');var n={};n.indicesPerMaterial=!!e.indicesPerMaterial,n.calcTangentsAndBitangents=!!e.calcTangentsAndBitangents;var i=e.name;if(!i){var s=e.obj.split("/");i=s[s.length-1].replace(".obj","")}if(a.push(Promise.resolve(i)),a.push(fetch(e.obj).then(function(e){return e.text()}).then(function(e){return new u.default(e,n)})),e.mtl){var l=e.mtl;"boolean"==typeof l&&(l=e.obj.replace(/\.obj$/,".mtl")),a.push(fetch(l).then(function(e){return e.text()}).then(function(t){var a=new c.MaterialLibrary(t);if(!1!==e.downloadMtlTextures){var n=e.mtlTextureRoot;return n||(n=l.substr(0,l.lastIndexOf("/"))),Promise.all([Promise.resolve(a),r(a,n)])}return Promise.all(Promise.resolve(a))}).then(function(e){return e[0]}))}t.push(Promise.all(a))}(f)}}catch(e){n=!0,i=e}finally{try{!a&&o.return&&o.return()}finally{if(n)throw i}}return Promise.all(t).then(function(e){var t={},r=!0,a=!1,n=void 0;try{for(var i,s=e[Symbol.iterator]();!(r=(i=s.next()).done);r=!0){var o=i.value,u=l(o,3),c=u[0],f=u[1],h=u[2];f.name=c,h&&f.addMaterialLibrary(h),t[c]=f}}catch(e){a=!0,n=e}finally{try{!r&&s.return&&s.return()}finally{if(a)throw n}}return t})}function n(e,t,r){void 0===r&&(r={});var a=[];for(var n in e){(function(t){if(!e.hasOwnProperty(t))return"continue";var r=e[t];a.push(fetch(r).then(function(e){return e.text()}).then(function(e){return[t,new u.default(e)]}))})(n)}Promise.all(a).then(function(e){var a=!0,n=!1,i=void 0;try{for(var s,o=e[Symbol.iterator]();!(a=(s=o.next()).done);a=!0){var u=s.value,c=l(u,2),f=c[0],h=c[1];r[f]=h}}catch(e){n=!0,i=e}finally{try{!a&&o.return&&o.return()}finally{if(n)throw i}}return t(r)})}function i(e,t){t.normalBuffer=f(e,e.ARRAY_BUFFER,t.vertexNormals,3),t.textureBuffer=f(e,e.ARRAY_BUFFER,t.textures,t.textureStride),t.vertexBuffer=f(e,e.ARRAY_BUFFER,t.vertices,3),t.indexBuffer=f(e,e.ELEMENT_ARRAY_BUFFER,t.indices,1)}function s(e,t){e.deleteBuffer(t.normalBuffer),e.deleteBuffer(t.textureBuffer),e.deleteBuffer(t.vertexBuffer),e.deleteBuffer(t.indexBuffer)}Object.defineProperty(exports,"__esModule",{value:!0});var l=function(){function e(e,t){var r=[],a=!0,n=!1,i=void 0;try{for(var s,l=e[Symbol.iterator]();!(a=(s=l.next()).done)&&(r.push(s.value),!t||r.length!==t);a=!0);}catch(e){n=!0,i=e}finally{try{!a&&l.return&&l.return()}finally{if(n)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}();exports.downloadModels=a,exports.downloadMeshes=n,exports.initMeshBuffers=i,exports.deleteMeshBuffers=s;var o=t(1),u=function(e){return e&&e.__esModule?e:{default:e}}(o),c=t(2),f=(t(0),function(e,t,r,a){var n=e.createBuffer(),i=t===e.ARRAY_BUFFER?Float32Array:Uint16Array;return e.bindBuffer(t,n),e.bufferData(t,new i(r),e.STATIC_DRAW),n.itemSize=a,n.numItems=r.length/a,n})}])});
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_gl_matrix__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__globals__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PostProcess__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PostProcess__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ShaderFlags__ = __webpack_require__(11);
 
 
@@ -12454,9 +12512,9 @@ class OpenGLRenderer {
     constructor(canvas) {
         this.canvas = canvas;
         // the shader that renders from the gbuffers into the postbuffers
-        this.deferredShader = new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(37)));
+        this.deferredShader = new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(38)));
         // shader that maps 32-bit color to 8-bit color
-        this.tonemapPass = new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(38)));
+        this.tonemapPass = new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(39)));
         this.currentTime = 0.0;
         this.gbTargets = [undefined, undefined, undefined];
         this.post8Buffers = [undefined, undefined];
@@ -12472,37 +12530,37 @@ class OpenGLRenderer {
         // compile shaders if they haven't been compiled yet
         if (OpenGLRenderer.compiledShaders.get(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].DOF) == undefined) {
             let arr = [
-                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(39))),
                 new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(40))),
+                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(41))),
             ];
             OpenGLRenderer.compiledShaders.set(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].DOF, arr);
         }
         if (OpenGLRenderer.compiledShaders.get(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].BLOOM) == undefined) {
             let arr = [
-                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(41))),
                 new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(42))),
                 new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(43))),
                 new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(44))),
+                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(45))),
             ];
             OpenGLRenderer.compiledShaders.set(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].BLOOM, arr);
         }
         if (OpenGLRenderer.compiledShaders.get(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].POINTILISM) == undefined) {
             let arr = [
-                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(45))),
+                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(46))),
             ];
             OpenGLRenderer.compiledShaders.set(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].POINTILISM, arr);
         }
         if (OpenGLRenderer.compiledShaders.get(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].PAINT) == undefined) {
             let arr = [
-                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(46))),
                 new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(47))),
+                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(48))),
             ];
             OpenGLRenderer.compiledShaders.set(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].PAINT, arr);
         }
         if (OpenGLRenderer.compiledShaders.get(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].VAPORWAVE) == undefined) {
             let arr = [
-                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(48))),
                 new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(49))),
+                new __WEBPACK_IMPORTED_MODULE_3__PostProcess__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_2__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].FRAGMENT_SHADER, __webpack_require__(50))),
             ];
             OpenGLRenderer.compiledShaders.set(__WEBPACK_IMPORTED_MODULE_4__ShaderFlags__["a" /* default */].VAPORWAVE, arr);
         }
@@ -12935,7 +12993,7 @@ OpenGLRenderer.compiledShaders = new Map([
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12949,7 +13007,7 @@ OpenGLRenderer.compiledShaders = new Map([
 
 class PostProcess extends __WEBPACK_IMPORTED_MODULE_1__ShaderProgram__["b" /* default */] {
     constructor(fragProg, tag = "default") {
-        super([new __WEBPACK_IMPORTED_MODULE_1__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].VERTEX_SHADER, __webpack_require__(36)),
+        super([new __WEBPACK_IMPORTED_MODULE_1__ShaderProgram__["a" /* Shader */](__WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].VERTEX_SHADER, __webpack_require__(37)),
             fragProg]);
         this.unifFrame = __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].getUniformLocation(this.prog, "u_frame");
         this.unifPreFrame = __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].getUniformLocation(this.prog, "u_preFrame");
@@ -12981,95 +13039,95 @@ PostProcess.screenQuad = undefined; // Quadrangle onto which we draw the frame t
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = "#version 300 es\r\n\r\n// A vertex shader used by all post-process shaders to simply pass UV data\r\n// to the fragment shader, and to position the vertices of the screen-space quad \r\n\r\nprecision highp float;\r\n\r\nin vec4 vs_Pos;\r\nin vec4 vs_Nor;\r\nin vec4 vs_Col;\r\nin vec2 vs_UV;\r\n\r\nout vec2 fs_UV;\r\n\r\nvoid main() {\r\n\tfs_UV = vs_UV;\r\n\tgl_Position = vs_Pos;\r\n}\r\n"
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports) {
-
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\n#define EPS 0.0001\r\n#define PI 3.1415962\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_gb0;\r\nuniform sampler2D u_gb1;\r\nuniform sampler2D u_gb2;\r\n\r\nuniform float u_Time;\r\nuniform float u_AspectRatio;\r\n\r\nuniform mat4 u_View;\r\nuniform vec4 u_CamPos;   \r\n\r\nconst float CAMERA_TAN = tan(0.5 * 45.0 * 3.1415962 / 180.0);\r\nconst float DEPTH_OFFSET = 0.0;\r\n\r\nconst vec3 LIGHT_POS = vec3(0, 20, 10);\r\n\r\nfloat getLambert(vec3 worldPos, vec3 normal) {\r\n    vec3 toLight = normalize(LIGHT_POS - worldPos);\r\n    return clamp(0.0, 1.0, dot(toLight, normal));\r\n}\r\n\r\n// noise helper functions\r\n\r\n// from Adam's demo\r\nvec2 random2(vec2 p) {\r\n    //vec2 sinVec = sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))));\r\n    //return sinVec * 0.5 + vec2(0.5);\r\n    //return fract(sinVec * 123.45);\r\n    //return fract(sinVec * 43758.5453);\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nfloat surflet(vec2 P, vec2 gridPoint)\r\n{\r\n    //return (P.x * P.x) * 0.07;\r\n    // Compute falloff function by converting linear distance to a polynomial\r\n    float distX = abs(P.x - gridPoint.x);\r\n    float distY = abs(P.y - gridPoint.y);\r\n    float tX = 1.0 - 6.0 * pow(distX, 5.0) + 15.0 * pow(distX, 4.0) - 10.0 * pow(distX, 3.0);\r\n    float tY = 1.0 - 6.0 * pow(distY, 5.0) + 15.0 * pow(distY, 4.0) - 10.0 * pow(distY, 3.0);\r\n\r\n    // Get the random vector for the grid point\r\n    vec2 gradient = random2(gridPoint);\r\n    // Get the vector from the grid point to P\r\n    vec2 diff = P - gridPoint;\r\n    // Get the value of our height field by dotting grid->P with our gradient\r\n    float height = dot(diff, gradient);\r\n    // Scale our height field (i.e. reduce it) by our polynomial falloff function\r\n    return height * tX * tY;\r\n}\r\n\r\nfloat PerlinNoise(vec2 uv)\r\n{\r\n    // Tile the space\r\n    vec2 uvXLYL = floor(uv);\r\n    vec2 uvXHYL = uvXLYL + vec2(1, 0);\r\n    vec2 uvXHYH = uvXLYL + vec2(1, 1);\r\n    vec2 uvXLYH = uvXLYL + vec2(0, 1);\r\n\r\n    return surflet(uv, uvXLYL) + surflet(uv, uvXHYL) + surflet(uv, uvXHYH) + surflet(uv, uvXLYH);\r\n}\r\n\r\n\r\nfloat normalizedPerlinNoise(vec2 v) {\r\n    return clamp(0.0, 1.0, PerlinNoise(v) + 0.5);\r\n}\r\n\r\n/* FBM (uses Perlin) */\r\nfloat getFBM(vec2 pt, float startFreq) {\r\n    float noiseSum = 0.0;\r\n    float amplitudeSum = 0.0;\r\n    float amplitude = 1.0;\r\n    float frequency = startFreq;\r\n    for (int i = 0; i < 6; i++) {\r\n        float perlin = normalizedPerlinNoise(pt * frequency);\r\n        noiseSum += perlin * amplitude;\r\n        amplitudeSum += amplitude;\r\n        amplitude *= 0.5;\r\n        frequency *= 2.0;\r\n    }\r\n    return noiseSum / amplitudeSum;\r\n}\r\n\r\n// \"normalizes\" coordinate before calling FBM\r\nfloat getFBMFromRawPosition(vec2 pos, float startFreq) {\r\n    vec2 coord = pos;\r\n    coord += vec2(3.14, 5.01);// +vec2(u_PerlinSeed);\r\n                              //return pow(sin(coord.x + coord.y), 2.0);\r\n    float fbm = getFBM(coord, startFreq);\r\n    // [0.1, 0.8]\r\n    //return pow((fbm - 0.05) / 0.7, 3.2);\r\n    fbm = pow((fbm - 0.05) / 0.7, 3.2);\r\n    fbm = smoothstep(0.0, 1.3, fbm);\r\n    return fbm;\r\n    //return pow(1.0 - fbm, 2.2);\r\n    //return pow(clamp(0.0, 1.0, (fbm - 0.25) / 0.6), 3.2) * 0.5;\r\n}\r\n\r\nvec3 getBGColor(float fbm) {\r\n    float f = smoothstep(-0.8, 3.0, fbm);\r\n    float H = mod(u_Time * 15.0, 360.0);\r\n    const float V = 0.8;\r\n    float S = 0.7 * (1.0 - f);\r\n    /*\r\n    float f = smoothstep(0.0, 1.0, fbm);\r\n    const float H = 288.0;\r\n    float V = 1.0;\r\n    float S = 0.5 * (1.0 - f);\r\n    */\r\n\r\n    float C = V * S;\r\n    // h = H / 60\r\n    float h = H / 60.0;\r\n    float X = C * (1.0 - abs(mod(h, 2.0) - 1.0));\r\n    //float X = C * 0.8;\r\n    vec3 col;\r\n    if (h <= 1.0) {\r\n        col = vec3(C, X, 0.0);\r\n    }\r\n    else if (h <= 2.0) {\r\n        col = vec3(X, C, 0.0);\r\n    }\r\n    else if (h <= 3.0) {\r\n        col = vec3(0.0, C, X);\r\n    }\r\n    else if (h <= 4.0) {\r\n        col = vec3(0.0, X, C);\r\n    }\r\n    else if (h <= 5.0) {\r\n        col = vec3(X, 0.0, C);\r\n    }\r\n    else {\r\n        col = vec3(C, 0.0, X);\r\n    }\r\n    float m = V - C;\r\n    return pow(col + vec3(m), vec3(4.2));\r\n}\r\n\r\nvoid main() { \r\n\t// read from GBuffers\r\n\tvec4 gb0 = texture(u_gb0, fs_UV);\r\n\tvec4 gb1 = texture(u_gb1, fs_UV);\r\n\tvec4 gb2 = texture(u_gb2, fs_UV);\r\n\r\n    // put GBuffer data in more readable variables\r\n    vec3 nor = gb0.xyz;\r\n    float depth = gb0.w;\r\n    vec3 albedo = gb2.xyz;\r\n\r\n    // final color of this fragment\r\n    vec3 col;\r\n\r\n    float time = u_Time * 0.03;\r\n    // background\r\n    if (depth >= -DEPTH_OFFSET) {\r\n        float fbm = getFBMFromRawPosition(fs_UV + vec2(-8.88 + cos(time * 5.0), 7.22 + time * 1.5), 1.0 + 0.5 * sin(time * 2.0));\r\n        col = getBGColor(fbm);\r\n    }\r\n    // shade\r\n    else {\r\n        depth += DEPTH_OFFSET;\r\n        // get cam-space position\r\n        vec3 ndcPos = vec3(fs_UV.xy * 2.0 - 1.0, depth);\r\n        float vert = CAMERA_TAN * abs(depth);\r\n        float hori = vert * u_AspectRatio;\r\n        vec3 camPos = ndcPos * vec3(hori, vert, 1.0);\r\n        // convert to world-space pos\r\n        vec3 worldPos = vec3(inverse(u_View) * vec4(camPos, 1.0));\r\n        col = (0.5 + 0.6 * getLambert(worldPos, nor)) * albedo;\r\n    }\r\n    col *= 5.0;\r\n\tout_Col = vec4(col, 1.0);\r\n}"
-
-/***/ }),
 /* 38 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform float u_Time;\r\n\r\n// based on: http://filmicworlds.com/blog/filmic-tonemapping-operators/\r\n\r\nvec3 defaultHDR(vec3 color) {\r\n\tcolor = min(vec3(1.0), color);\r\n\tcolor = pow(color, vec3(1.0 / 2.2));\r\n    return color;\r\n}\r\n\r\nvec3 HejlBurgessDawson(vec3 color) {\r\n    color = max(vec3(0.0), color - vec3(0.004));\r\n    color = (color * (6.2 * color + vec3(0.5))) / (color * (6.2 * color + vec3(1.7)) + vec3(0.06));\r\n    return color;\r\n}\r\n\r\nvoid main() {\r\n\t// TODO: proper tonemapping\r\n\t// This shader just clamps the input color to the range [0, 1]\r\n\t// and performs basic gamma correction.\r\n\t// It does not properly handle HDR values; you must implement that.\r\n\r\n\tvec3 color = texture(u_frame, fs_UV).xyz;\r\n\t//color = min(vec3(1.0), color);\r\n    // Reinhard\r\n    //color *= 2.0;\r\n    //color = color / (color + vec3(1.0));\r\n\r\n    // Hejl and Burgess-Dawson\r\n    //color = max(vec3(0.0), color - vec3(0.004));\r\n    //color = (color * (6.2 * color + vec3(0.5))) / (color * (6.2 * color + vec3(1.7)) + vec3(0.06));\r\n\r\n\t// gamma correction\r\n\t//color = pow(color, vec3(1.0 / 2.2));\r\n    //color = defaultHDR(color);\r\n    color = HejlBurgessDawson(color);\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\n#define EPS 0.0001\r\n#define PI 3.1415962\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_gb0;\r\nuniform sampler2D u_gb1;\r\nuniform sampler2D u_gb2;\r\n\r\nuniform float u_Time;\r\nuniform float u_AspectRatio;\r\n\r\nuniform mat4 u_View;\r\nuniform vec4 u_CamPos;   \r\n\r\nconst float CAMERA_TAN = tan(0.5 * 45.0 * 3.1415962 / 180.0);\r\nconst float DEPTH_OFFSET = 0.0;\r\n\r\nconst vec3 LIGHT_POS = vec3(0, 200, 100);\r\n\r\nfloat getLambert(vec3 worldPos, vec3 normal) {\r\n    vec3 toLight = normalize(LIGHT_POS - worldPos);\r\n    return clamp(0.0, 1.0, dot(toLight, normal));\r\n}\r\n\r\n// noise helper functions\r\n\r\n// from Adam's demo\r\nvec2 random2(vec2 p) {\r\n    //vec2 sinVec = sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))));\r\n    //return sinVec * 0.5 + vec2(0.5);\r\n    //return fract(sinVec * 123.45);\r\n    //return fract(sinVec * 43758.5453);\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nfloat surflet(vec2 P, vec2 gridPoint)\r\n{\r\n    //return (P.x * P.x) * 0.07;\r\n    // Compute falloff function by converting linear distance to a polynomial\r\n    float distX = abs(P.x - gridPoint.x);\r\n    float distY = abs(P.y - gridPoint.y);\r\n    float tX = 1.0 - 6.0 * pow(distX, 5.0) + 15.0 * pow(distX, 4.0) - 10.0 * pow(distX, 3.0);\r\n    float tY = 1.0 - 6.0 * pow(distY, 5.0) + 15.0 * pow(distY, 4.0) - 10.0 * pow(distY, 3.0);\r\n\r\n    // Get the random vector for the grid point\r\n    vec2 gradient = random2(gridPoint);\r\n    // Get the vector from the grid point to P\r\n    vec2 diff = P - gridPoint;\r\n    // Get the value of our height field by dotting grid->P with our gradient\r\n    float height = dot(diff, gradient);\r\n    // Scale our height field (i.e. reduce it) by our polynomial falloff function\r\n    return height * tX * tY;\r\n}\r\n\r\nfloat PerlinNoise(vec2 uv)\r\n{\r\n    // Tile the space\r\n    vec2 uvXLYL = floor(uv);\r\n    vec2 uvXHYL = uvXLYL + vec2(1, 0);\r\n    vec2 uvXHYH = uvXLYL + vec2(1, 1);\r\n    vec2 uvXLYH = uvXLYL + vec2(0, 1);\r\n\r\n    return surflet(uv, uvXLYL) + surflet(uv, uvXHYL) + surflet(uv, uvXHYH) + surflet(uv, uvXLYH);\r\n}\r\n\r\n\r\nfloat normalizedPerlinNoise(vec2 v) {\r\n    return clamp(0.0, 1.0, PerlinNoise(v) + 0.5);\r\n}\r\n\r\n/* FBM (uses Perlin) */\r\nfloat getFBM(vec2 pt, float startFreq) {\r\n    float noiseSum = 0.0;\r\n    float amplitudeSum = 0.0;\r\n    float amplitude = 1.0;\r\n    float frequency = startFreq;\r\n    for (int i = 0; i < 6; i++) {\r\n        float perlin = normalizedPerlinNoise(pt * frequency);\r\n        noiseSum += perlin * amplitude;\r\n        amplitudeSum += amplitude;\r\n        amplitude *= 0.5;\r\n        frequency *= 2.0;\r\n    }\r\n    return noiseSum / amplitudeSum;\r\n}\r\n\r\n// \"normalizes\" coordinate before calling FBM\r\nfloat getFBMFromRawPosition(vec2 pos, float startFreq) {\r\n    vec2 coord = pos;\r\n    coord += vec2(3.14, 5.01);// +vec2(u_PerlinSeed);\r\n                              //return pow(sin(coord.x + coord.y), 2.0);\r\n    float fbm = getFBM(coord, startFreq);\r\n    // [0.1, 0.8]\r\n    //return pow((fbm - 0.05) / 0.7, 3.2);\r\n    fbm = pow((fbm - 0.05) / 0.7, 3.2);\r\n    fbm = smoothstep(0.0, 1.3, fbm);\r\n    return fbm;\r\n    //return pow(1.0 - fbm, 2.2);\r\n    //return pow(clamp(0.0, 1.0, (fbm - 0.25) / 0.6), 3.2) * 0.5;\r\n}\r\n\r\nvec3 getBGColor(float fbm) {\r\n    float f = smoothstep(-0.8, 3.0, fbm);\r\n    float H = mod(u_Time * 15.0, 360.0);\r\n    const float V = 0.8;\r\n    float S = 0.7 * (1.0 - f);\r\n    /*\r\n    float f = smoothstep(0.0, 1.0, fbm);\r\n    const float H = 288.0;\r\n    float V = 1.0;\r\n    float S = 0.5 * (1.0 - f);\r\n    */\r\n\r\n    float C = V * S;\r\n    // h = H / 60\r\n    float h = H / 60.0;\r\n    float X = C * (1.0 - abs(mod(h, 2.0) - 1.0));\r\n    //float X = C * 0.8;\r\n    vec3 col;\r\n    if (h <= 1.0) {\r\n        col = vec3(C, X, 0.0);\r\n    }\r\n    else if (h <= 2.0) {\r\n        col = vec3(X, C, 0.0);\r\n    }\r\n    else if (h <= 3.0) {\r\n        col = vec3(0.0, C, X);\r\n    }\r\n    else if (h <= 4.0) {\r\n        col = vec3(0.0, X, C);\r\n    }\r\n    else if (h <= 5.0) {\r\n        col = vec3(X, 0.0, C);\r\n    }\r\n    else {\r\n        col = vec3(C, 0.0, X);\r\n    }\r\n    float m = V - C;\r\n    return pow(col + vec3(m), vec3(4.2));\r\n}\r\n\r\nvoid main() { \r\n\t// read from GBuffers\r\n\tvec4 gb0 = texture(u_gb0, fs_UV);\r\n\tvec4 gb1 = texture(u_gb1, fs_UV);\r\n\tvec4 gb2 = texture(u_gb2, fs_UV);\r\n\r\n    // put GBuffer data in more readable variables\r\n    vec3 nor = gb0.xyz;\r\n    float depth = gb0.w;\r\n    vec3 albedo = gb2.xyz;\r\n\r\n    // final color of this fragment\r\n    vec3 col;\r\n\r\n    float time = u_Time * 0.03;\r\n    // background\r\n    if (depth >= -DEPTH_OFFSET) {\r\n        float fbm = getFBMFromRawPosition(fs_UV + vec2(-8.88 + cos(time * 5.0), 7.22 + time * 1.5), 1.0 + 0.5 * sin(time * 2.0));\r\n        col = getBGColor(fbm);\r\n    }\r\n    // shade\r\n    else {\r\n        depth += DEPTH_OFFSET;\r\n        // get cam-space position\r\n        vec3 ndcPos = vec3(fs_UV.xy * 2.0 - 1.0, depth);\r\n        float vert = CAMERA_TAN * abs(depth);\r\n        float hori = vert * u_AspectRatio;\r\n        vec3 camPos = ndcPos * vec3(hori, vert, 1.0);\r\n        // convert to world-space pos\r\n        vec3 worldPos = vec3(inverse(u_View) * vec4(camPos, 1.0));\r\n        col = max(0.05, (0.2 + 0.8 * getLambert(worldPos, nor))) * albedo;\r\n    }\r\n    col *= 5.0;\r\n\tout_Col = vec4(col, 1.0);\r\n}"
 
 /***/ }),
 /* 39 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nconst float GAUSS_KERNEL[7] = float[7](\r\n    0.092904, 0.137865, 0.174704, 0.189054, 0.174704, 0.137865, 0.092904);\r\n\r\nconst float IDENTITY_KERNEL[7] = float[7](\r\n    0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0);\r\n\r\nconst float FOCAL_LENGTH = -60.0; \r\n\r\nvoid main() {\r\n\tvec3 color = vec3(0.0);\r\n    vec4 gb0 = texture(u_gb0, fs_UV);\r\n    float depth = gb0.w;\r\n    float weight = smoothstep(14.0, 40.0, abs(depth - FOCAL_LENGTH));\r\n    float pixelDim = 1.0 / u_Dims.x;\r\n    for (int i = -3; i <= 3; i++) {\r\n        color += mix(IDENTITY_KERNEL[i + 3], GAUSS_KERNEL[i + 3], weight) * texture(u_frame, fs_UV + vec2(float(i) * pixelDim, 0.0)).xyz;\r\n    }\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform float u_Time;\r\n\r\n// based on: http://filmicworlds.com/blog/filmic-tonemapping-operators/\r\n\r\nvec3 defaultHDR(vec3 color) {\r\n\tcolor = min(vec3(1.0), color);\r\n\tcolor = pow(color, vec3(1.0 / 2.2));\r\n    return color;\r\n}\r\n\r\nvec3 HejlBurgessDawson(vec3 color) {\r\n    color = max(vec3(0.0), color - vec3(0.004));\r\n    color = (color * (6.2 * color + vec3(0.5))) / (color * (6.2 * color + vec3(1.7)) + vec3(0.06));\r\n    return color;\r\n}\r\n\r\nvoid main() {\r\n\t// TODO: proper tonemapping\r\n\t// This shader just clamps the input color to the range [0, 1]\r\n\t// and performs basic gamma correction.\r\n\t// It does not properly handle HDR values; you must implement that.\r\n\r\n\tvec3 color = texture(u_frame, fs_UV).xyz;\r\n\t//color = min(vec3(1.0), color);\r\n    // Reinhard\r\n    //color *= 2.0;\r\n    //color = color / (color + vec3(1.0));\r\n\r\n    // Hejl and Burgess-Dawson\r\n    //color = max(vec3(0.0), color - vec3(0.004));\r\n    //color = (color * (6.2 * color + vec3(0.5))) / (color * (6.2 * color + vec3(1.7)) + vec3(0.06));\r\n\r\n\t// gamma correction\r\n\t//color = pow(color, vec3(1.0 / 2.2));\r\n    //color = defaultHDR(color);\r\n    color = HejlBurgessDawson(color);\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 40 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nconst float GAUSS_KERNEL[7] = float[7](\r\n    0.092904, 0.137865, 0.174704, 0.189054, 0.174704, 0.137865, 0.092904);\r\n\r\nconst float IDENTITY_KERNEL[7] = float[7](\r\n    0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0);\r\n\r\nconst float FOCAL_LENGTH = -60.0; \r\n\r\nvoid main() {\r\n\tvec3 color = vec3(0.0);\r\n    vec4 gb0 = texture(u_gb0, fs_UV);\r\n    float depth = gb0.w;\r\n    float weight = smoothstep(14.0, 40.0, abs(depth - FOCAL_LENGTH));\r\n    float pixelDim = 1.0 / u_Dims.y;\r\n    for (int i = -3; i <= 3; i++) {\r\n        color += mix(IDENTITY_KERNEL[i + 3], GAUSS_KERNEL[i + 3], weight) * texture(u_frame, fs_UV + vec2(0.0, float(i) * pixelDim)).xyz;\r\n    }\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nconst float GAUSS_KERNEL[7] = float[7](\r\n    0.092904, 0.137865, 0.174704, 0.189054, 0.174704, 0.137865, 0.092904);\r\n\r\nconst float IDENTITY_KERNEL[7] = float[7](\r\n    0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0);\r\n\r\nconst float FOCAL_LENGTH = -60.0; \r\n\r\nvoid main() {\r\n\tvec3 color = vec3(0.0);\r\n    vec4 gb0 = texture(u_gb0, fs_UV);\r\n    float depth = gb0.w;\r\n    float weight = smoothstep(14.0, 40.0, abs(depth - FOCAL_LENGTH));\r\n    float pixelDim = 1.0 / u_Dims.x;\r\n    for (int i = -3; i <= 3; i++) {\r\n        color += mix(IDENTITY_KERNEL[i + 3], GAUSS_KERNEL[i + 3], weight) * texture(u_frame, fs_UV + vec2(float(i) * pixelDim, 0.0)).xyz;\r\n    }\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 41 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\n//uniform float u_Time;\r\n\r\n// Interpolation between color and greyscale over time on left half of screen\r\nvoid main() {\r\n\tvec3 color = texture(u_frame, fs_UV).xyz;\r\n    float depth = texture(u_gb0, fs_UV).w;\r\n    float lum = dot(color, vec3(0.2126, 0.7152, 0.072));\r\n    // add to bloom if background or bright enough\r\n    color = ((depth >= 0.0) || (lum > 0.9)) ? color : vec3(0.0);\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nconst float GAUSS_KERNEL[7] = float[7](\r\n    0.092904, 0.137865, 0.174704, 0.189054, 0.174704, 0.137865, 0.092904);\r\n\r\nconst float IDENTITY_KERNEL[7] = float[7](\r\n    0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0);\r\n\r\nconst float FOCAL_LENGTH = -60.0; \r\n\r\nvoid main() {\r\n\tvec3 color = vec3(0.0);\r\n    vec4 gb0 = texture(u_gb0, fs_UV);\r\n    float depth = gb0.w;\r\n    float weight = smoothstep(14.0, 40.0, abs(depth - FOCAL_LENGTH));\r\n    float pixelDim = 1.0 / u_Dims.y;\r\n    for (int i = -3; i <= 3; i++) {\r\n        color += mix(IDENTITY_KERNEL[i + 3], GAUSS_KERNEL[i + 3], weight) * texture(u_frame, fs_UV + vec2(0.0, float(i) * pixelDim)).xyz;\r\n    }\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 42 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform sampler2D u_preFrame;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nconst float GAUSS_KERNEL[5] = float[5](\r\n\r\n    0.153388, 0.221461, 0.250301, 0.221461, 0.153388);\r\n    //0.06136, 0.24477, 0.38774, 0.24477, 0.06136);\r\n//const float GAUSS_KERNEL[9] = float[9](\r\n    //0.028532, 0.067234, 0.124009, 0.179044, 0.20236, 0.179044, 0.124009, 0.067234, 0.028532);\r\n\r\nvoid main() {\r\n\tvec3 color = vec3(0.0);\r\n    float pixelDim = 1.0 / u_Dims.x;\r\n    for (int i = -2; i <= 2; i++) {\r\n    \tcolor += GAUSS_KERNEL[i + 2] * texture(u_preFrame, fs_UV + vec2(float(i) * pixelDim, 0.0)).xyz;\r\n    }\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\n//uniform float u_Time;\r\n\r\n// Interpolation between color and greyscale over time on left half of screen\r\nvoid main() {\r\n\tvec3 color = texture(u_frame, fs_UV).xyz;\r\n    float depth = texture(u_gb0, fs_UV).w;\r\n    float lum = dot(color, vec3(0.2126, 0.7152, 0.072));\r\n    // add to bloom if background or bright enough\r\n    color = ((depth >= 0.0) || (lum > 0.9)) ? color : vec3(0.0);\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform sampler2D u_preFrame;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nconst float GAUSS_KERNEL[5] = float[5](\r\n    0.153388, 0.221461, 0.250301, 0.221461, 0.153388);\r\n    //0.06136, 0.24477, 0.38774, 0.24477, 0.06136);\r\n\r\nvoid main() {\r\n\tvec3 color = vec3(0.0);\r\n    float pixelDim = 1.0 / u_Dims.y;\r\n    for (int i = -2; i <= 2; i++) {\r\n    \tcolor += GAUSS_KERNEL[i + 2] * texture(u_preFrame, fs_UV + vec2(0.0, float(i) * pixelDim)).xyz;\r\n    }\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform sampler2D u_preFrame;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nconst float GAUSS_KERNEL[5] = float[5](\r\n\r\n    0.153388, 0.221461, 0.250301, 0.221461, 0.153388);\r\n    //0.06136, 0.24477, 0.38774, 0.24477, 0.06136);\r\n//const float GAUSS_KERNEL[9] = float[9](\r\n    //0.028532, 0.067234, 0.124009, 0.179044, 0.20236, 0.179044, 0.124009, 0.067234, 0.028532);\r\n\r\nvoid main() {\r\n\tvec3 color = vec3(0.0);\r\n    float pixelDim = 1.0 / u_Dims.x;\r\n    for (int i = -2; i <= 2; i++) {\r\n    \tcolor += GAUSS_KERNEL[i + 2] * texture(u_preFrame, fs_UV + vec2(float(i) * pixelDim, 0.0)).xyz;\r\n    }\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 44 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform sampler2D u_preFrame;\r\n//uniform float u_Time;\r\n\r\nvoid main() {\r\n\tvec3 color = texture(u_frame, fs_UV).xyz;\r\n\tcolor += texture(u_preFrame, fs_UV).xyz;\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform sampler2D u_preFrame;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nconst float GAUSS_KERNEL[5] = float[5](\r\n    0.153388, 0.221461, 0.250301, 0.221461, 0.153388);\r\n    //0.06136, 0.24477, 0.38774, 0.24477, 0.06136);\r\n\r\nvoid main() {\r\n\tvec3 color = vec3(0.0);\r\n    float pixelDim = 1.0 / u_Dims.y;\r\n    for (int i = -2; i <= 2; i++) {\r\n    \tcolor += GAUSS_KERNEL[i + 2] * texture(u_preFrame, fs_UV + vec2(0.0, float(i) * pixelDim)).xyz;\r\n    }\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 45 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\n//uniform sampler2D u_gb0;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\n\r\nvoid main() {\r\n    vec2 screenRatio = u_Dims / vec2(1295.0, 759.0);\r\n    vec2 GRID_DIMS = vec2(150.0) * screenRatio;\r\n    vec2 cellCorner = floor(fs_UV * GRID_DIMS) / GRID_DIMS;\r\n    float minF = 5.0;\r\n    for (int i = -1; i <= 1; i++) {\r\n        for (int j = -1; j <= 1; j++) {\r\n            vec2 sampleCorner = cellCorner + vec2(i, j) / GRID_DIMS;\r\n            vec4 sampleColor = texture(u_frame, sampleCorner);\r\n            vec2 p = sampleCorner - fs_UV;\r\n            p.x *= u_Dims.x / u_Dims.y; // adjust for aspect ratio\r\n            float lum = dot(sampleColor.xyz, vec3(0.2126, 0.7152, 0.072));\r\n            float dist = (0.00001 + 0.0016 * (1.0 - clamp(0.0, 1.5, lum) / 1.5)) / sqrt(screenRatio.x);\r\n            float f = smoothstep(dist, 3.0 * dist, distance(sampleCorner, fs_UV));\r\n            minF = min(minF, 5.0 * f);\r\n        }\r\n    }\r\n\tvec3 color = vec3(minF);\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform sampler2D u_preFrame;\r\n//uniform float u_Time;\r\n\r\nvoid main() {\r\n\tvec3 color = texture(u_frame, fs_UV).xyz;\r\n\tcolor += texture(u_preFrame, fs_UV).xyz;\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 46 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\n//uniform sampler2D u_gb0;\r\nuniform float u_Time;\r\n//uniform vec2 u_Dims;\r\n\r\nuniform float u_Coherence;\r\n\r\n// noise helper functions\r\n\r\n// from Adam's demo\r\nvec2 random2(vec2 p) {\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nfloat surflet(vec2 P, vec2 gridPoint)\r\n{\r\n    //return (P.x * P.x) * 0.07;\r\n    // Compute falloff function by converting linear distance to a polynomial\r\n    float distX = abs(P.x - gridPoint.x);\r\n    float distY = abs(P.y - gridPoint.y);\r\n    float tX = 1.0 - 6.0 * pow(distX, 5.0) + 15.0 * pow(distX, 4.0) - 10.0 * pow(distX, 3.0);\r\n    float tY = 1.0 - 6.0 * pow(distY, 5.0) + 15.0 * pow(distY, 4.0) - 10.0 * pow(distY, 3.0);\r\n\r\n    // Get the random vector for the grid point\r\n    vec2 gradient = random2(gridPoint);\r\n    // Get the vector from the grid point to P\r\n    vec2 diff = P - gridPoint;\r\n    // Get the value of our height field by dotting grid->P with our gradient\r\n    float height = dot(diff, gradient);\r\n    // Scale our height field (i.e. reduce it) by our polynomial falloff function\r\n    return height * tX * tY;\r\n}\r\n\r\nfloat PerlinNoise(vec2 uv)\r\n{\r\n    // Tile the space\r\n    vec2 uvXLYL = floor(uv);\r\n    vec2 uvXHYL = uvXLYL + vec2(1, 0);\r\n    vec2 uvXHYH = uvXLYL + vec2(1, 1);\r\n    vec2 uvXLYH = uvXLYL + vec2(0, 1);\r\n\r\n    return surflet(uv, uvXLYL) + surflet(uv, uvXHYL) + surflet(uv, uvXHYH) + surflet(uv, uvXLYH);\r\n}\r\n\r\n\r\nfloat normalizedPerlinNoise(vec2 v) {\r\n    return clamp(0.0, 1.0, PerlinNoise(v) + 0.5);\r\n}\r\n\r\n/* FBM (uses Perlin) */\r\nfloat getFBM(vec2 pt, float startFreq) {\r\n    float noiseSum = 0.0;\r\n    float amplitudeSum = 0.0;\r\n    float amplitude = 1.0;\r\n    float frequency = startFreq;\r\n    for (int i = 0; i < 2; i++) {\r\n        float perlin = normalizedPerlinNoise(pt * frequency);\r\n        noiseSum += perlin * amplitude;\r\n        amplitudeSum += amplitude;\r\n        amplitude *= 0.5;\r\n        frequency *= 2.0;\r\n    }\r\n    return noiseSum / amplitudeSum;\r\n}\r\n\r\n// \"normalizes\" coordinate before calling FBM\r\nfloat getFBMFromRawPosition(vec2 pos, float startFreq) {\r\n    vec2 coord = pos;\r\n    coord += vec2(3.14, 5.01);// +vec2(u_PerlinSeed);\r\n                              //return pow(sin(coord.x + coord.y), 2.0);\r\n    float fbm = getFBM(coord, startFreq);\r\n    // [0.1, 0.8]\r\n    //return pow((fbm - 0.05) / 0.7, 3.2);\r\n    fbm = pow((fbm - 0.05) / 0.7, 3.2);\r\n    fbm = smoothstep(0.0, 1.3, fbm);\r\n    return fbm;\r\n    //return pow(1.0 - fbm, 2.2);\r\n    //return pow(clamp(0.0, 1.0, (fbm - 0.25) / 0.6), 3.2) * 0.5;\r\n}\r\n\r\nconst float SMOOTH_DELTA = 0.05;\r\n// not smoothstep... well, only partially\r\nfloat smoothStep(float t) {\r\n    float base = floor(t); // creates a step function\r\n    float f = fract(t); // gets fractional component\r\n    // sstep === smoothstep\r\n    // sstep(0.9, 1.1, f) creates a smooth increase from 0.9 to 1.0\r\n    // this handles smoothing the left half of the rising edge if we add it to base\r\n    // sstep(-0.1, 0.1, f) kind of looks like a smooth increase from 1.0 to 1.1, but it's \"upside down\"\r\n    // 1.0 - sstep(-0.1, 0.1, f) creates a smooth _decrease_ from 1.0 to 1.1\r\n    // so we multiply it by -1 to get a smooth _increase_ instead\r\n    // we can generalize 0.9 = 1.0 - SMOOTH_DELTA, 1.1 = 1.0 + SMOOTH_DELTA, for SMOOTH_DELTA = 0.1\r\n    float smoother = smoothstep(1.0 - SMOOTH_DELTA, 1.0 + SMOOTH_DELTA, f) - 1.0 + smoothstep(-SMOOTH_DELTA, SMOOTH_DELTA, f);\r\n    return base + smoother;\r\n}\r\n\r\nvoid main() {\r\n    float FREQ = 3.2 - u_Coherence * 3.0;\r\n    const float EPSILON = 0.00001;\r\n    float n1, n2, a, b;\r\n    vec2 noisePos = fs_UV + vec2(-7.88 + 0.5 * smoothStep(u_Time * 0.04), 2.32);\r\n    n1 = getFBMFromRawPosition(noisePos + vec2(0.0, +EPSILON), FREQ);\r\n    n2 = getFBMFromRawPosition(noisePos + vec2(0.0, -EPSILON), FREQ);\r\n    a = (n1 - n2) / (2.0 * EPSILON);\r\n    n1 = getFBMFromRawPosition(noisePos + vec2(+EPSILON, 0.0), FREQ);\r\n    n2 = getFBMFromRawPosition(noisePos + vec2(-EPSILON, 0.0), FREQ);\r\n    b = (n1 - n2) / (2.0 * EPSILON);\r\n    vec3 color = texture(u_frame, fs_UV).xyz;\r\n    out_Col = vec4(color, atan(-b, a));\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\n//uniform sampler2D u_gb0;\r\n//uniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\n\r\nvoid main() {\r\n    vec2 screenRatio = u_Dims / vec2(1295.0, 759.0);\r\n    vec2 GRID_DIMS = vec2(150.0) * screenRatio;\r\n    vec2 cellCorner = floor(fs_UV * GRID_DIMS) / GRID_DIMS;\r\n    float minF = 5.0;\r\n    for (int i = -1; i <= 1; i++) {\r\n        for (int j = -1; j <= 1; j++) {\r\n            vec2 sampleCorner = cellCorner + vec2(i, j) / GRID_DIMS;\r\n            vec4 sampleColor = texture(u_frame, sampleCorner);\r\n            vec2 p = sampleCorner - fs_UV;\r\n            p.x *= u_Dims.x / u_Dims.y; // adjust for aspect ratio\r\n            float lum = dot(sampleColor.xyz, vec3(0.2126, 0.7152, 0.072));\r\n            float dist = (0.00001 + 0.0016 * (1.0 - clamp(0.0, 1.5, lum) / 1.5)) / sqrt(screenRatio.x);\r\n            float f = smoothstep(dist, 3.0 * dist, distance(sampleCorner, fs_UV));\r\n            minF = min(minF, 5.0 * f);\r\n        }\r\n    }\r\n\tvec3 color = vec3(minF);\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform sampler2D u_preFrame;\r\n//uniform sampler2D u_gb0;\r\nuniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nuniform float u_BrushSize;\r\nuniform float u_BrushNoise;\r\n\r\nvec2 random2(vec2 p) {\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nvoid main() {\r\n    vec2 GRID_DIMS = vec2(70.0) * 0.5 * u_Dims.x / 526.0;\r\n    // making radius noisy gives airbrush effect\r\n    float rand = random2(fs_UV * 314.159).x;\r\n    // radius = (scale from u_BrushSize) * (base_size + random_element) / (estimate of screen size)\r\n    float radius = (0.5 + u_BrushSize) * (0.4 + 0.05 * rand * (2.0 * u_BrushNoise) ) / GRID_DIMS.x;\r\n\tvec3 color = vec3(5.0);\r\n    vec2 cellCorner = floor(fs_UV * GRID_DIMS) / GRID_DIMS;\r\n    vec3 minColor = vec3(0.0);\r\n    float minLen = 100.0;\r\n    float accWeight = 0.0;\r\n    vec3 defaultColor;\r\n    for (int i = -3; i <= 3; i++) {\r\n        for (int j = -3; j <= 3; j++) {\r\n            // read curl noise's angle and color from prepass frame\r\n            vec2 sampleCorner = cellCorner + vec2(i, j) / GRID_DIMS;\r\n            vec4 prepass = texture(u_preFrame, sampleCorner);\r\n            vec2 p = fs_UV - sampleCorner; // in corner-space\r\n            p.x *= u_Dims.x / u_Dims.y;\r\n            // find rotation\r\n            float angle = prepass.w;\r\n            float c = cos(angle);\r\n            float s = sin(angle);\r\n            // rotate\r\n            vec2 pRot = vec2(c * p.x - s * p.y, s * p.x + c * p.y);\r\n            // stretch along X\r\n            pRot.x *= 0.15;\r\n            pRot.y *= 0.31;\r\n            float l = length(pRot);\r\n            if (l < radius) {\r\n                float darkness = 1.0;// -0.6 * smoothstep(-radius, radius, pRot.x);\r\n                float weight = 1.0 - 0.4 * pow(smoothstep(0.0, radius, l), 1.0);\r\n                minLen = l;\r\n                accWeight += weight;\r\n                minColor += weight * prepass.xyz * darkness;\r\n            }\r\n            else if (i == 0 && j == 0) {\r\n                defaultColor = prepass.xyz; // use this fragment's default color\r\n            }\r\n        }\r\n    }\r\n    // if we hit nothing, use default color\r\n    if (minLen == 100.0) {\r\n        minColor = defaultColor;\r\n    }\r\n    // else, divide by sum of weights\r\n    else {\r\n        minColor /= accWeight;\r\n    }\r\n\tout_Col = vec4(minColor, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\n//uniform sampler2D u_gb0;\r\nuniform float u_Time;\r\n//uniform vec2 u_Dims;\r\n\r\nuniform float u_Coherence;\r\n\r\n// noise helper functions\r\n\r\n// from Adam's demo\r\nvec2 random2(vec2 p) {\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nfloat surflet(vec2 P, vec2 gridPoint)\r\n{\r\n    //return (P.x * P.x) * 0.07;\r\n    // Compute falloff function by converting linear distance to a polynomial\r\n    float distX = abs(P.x - gridPoint.x);\r\n    float distY = abs(P.y - gridPoint.y);\r\n    float tX = 1.0 - 6.0 * pow(distX, 5.0) + 15.0 * pow(distX, 4.0) - 10.0 * pow(distX, 3.0);\r\n    float tY = 1.0 - 6.0 * pow(distY, 5.0) + 15.0 * pow(distY, 4.0) - 10.0 * pow(distY, 3.0);\r\n\r\n    // Get the random vector for the grid point\r\n    vec2 gradient = random2(gridPoint);\r\n    // Get the vector from the grid point to P\r\n    vec2 diff = P - gridPoint;\r\n    // Get the value of our height field by dotting grid->P with our gradient\r\n    float height = dot(diff, gradient);\r\n    // Scale our height field (i.e. reduce it) by our polynomial falloff function\r\n    return height * tX * tY;\r\n}\r\n\r\nfloat PerlinNoise(vec2 uv)\r\n{\r\n    // Tile the space\r\n    vec2 uvXLYL = floor(uv);\r\n    vec2 uvXHYL = uvXLYL + vec2(1, 0);\r\n    vec2 uvXHYH = uvXLYL + vec2(1, 1);\r\n    vec2 uvXLYH = uvXLYL + vec2(0, 1);\r\n\r\n    return surflet(uv, uvXLYL) + surflet(uv, uvXHYL) + surflet(uv, uvXHYH) + surflet(uv, uvXLYH);\r\n}\r\n\r\n\r\nfloat normalizedPerlinNoise(vec2 v) {\r\n    return clamp(0.0, 1.0, PerlinNoise(v) + 0.5);\r\n}\r\n\r\n/* FBM (uses Perlin) */\r\nfloat getFBM(vec2 pt, float startFreq) {\r\n    float noiseSum = 0.0;\r\n    float amplitudeSum = 0.0;\r\n    float amplitude = 1.0;\r\n    float frequency = startFreq;\r\n    for (int i = 0; i < 2; i++) {\r\n        float perlin = normalizedPerlinNoise(pt * frequency);\r\n        noiseSum += perlin * amplitude;\r\n        amplitudeSum += amplitude;\r\n        amplitude *= 0.5;\r\n        frequency *= 2.0;\r\n    }\r\n    return noiseSum / amplitudeSum;\r\n}\r\n\r\n// \"normalizes\" coordinate before calling FBM\r\nfloat getFBMFromRawPosition(vec2 pos, float startFreq) {\r\n    vec2 coord = pos;\r\n    coord += vec2(3.14, 5.01);// +vec2(u_PerlinSeed);\r\n                              //return pow(sin(coord.x + coord.y), 2.0);\r\n    float fbm = getFBM(coord, startFreq);\r\n    // [0.1, 0.8]\r\n    //return pow((fbm - 0.05) / 0.7, 3.2);\r\n    fbm = pow((fbm - 0.05) / 0.7, 3.2);\r\n    fbm = smoothstep(0.0, 1.3, fbm);\r\n    return fbm;\r\n    //return pow(1.0 - fbm, 2.2);\r\n    //return pow(clamp(0.0, 1.0, (fbm - 0.25) / 0.6), 3.2) * 0.5;\r\n}\r\n\r\nconst float SMOOTH_DELTA = 0.05;\r\n// not smoothstep... well, only partially\r\nfloat smoothStep(float t) {\r\n    float base = floor(t); // creates a step function\r\n    float f = fract(t); // gets fractional component\r\n    // sstep === smoothstep\r\n    // sstep(0.9, 1.1, f) creates a smooth increase from 0.9 to 1.0\r\n    // this handles smoothing the left half of the rising edge if we add it to base\r\n    // sstep(-0.1, 0.1, f) kind of looks like a smooth increase from 1.0 to 1.1, but it's \"upside down\"\r\n    // 1.0 - sstep(-0.1, 0.1, f) creates a smooth _decrease_ from 1.0 to 1.1\r\n    // so we multiply it by -1 to get a smooth _increase_ instead\r\n    // we can generalize 0.9 = 1.0 - SMOOTH_DELTA, 1.1 = 1.0 + SMOOTH_DELTA, for SMOOTH_DELTA = 0.1\r\n    float smoother = smoothstep(1.0 - SMOOTH_DELTA, 1.0 + SMOOTH_DELTA, f) - 1.0 + smoothstep(-SMOOTH_DELTA, SMOOTH_DELTA, f);\r\n    return base + smoother;\r\n}\r\n\r\nvoid main() {\r\n    float FREQ = 3.2 - u_Coherence * 3.0;\r\n    const float EPSILON = 0.00001;\r\n    float n1, n2, a, b;\r\n    vec2 noisePos = fs_UV + vec2(-7.88 + 0.5 * smoothStep(u_Time * 0.04), 2.32);\r\n    n1 = getFBMFromRawPosition(noisePos + vec2(0.0, +EPSILON), FREQ);\r\n    n2 = getFBMFromRawPosition(noisePos + vec2(0.0, -EPSILON), FREQ);\r\n    a = (n1 - n2) / (2.0 * EPSILON);\r\n    n1 = getFBMFromRawPosition(noisePos + vec2(+EPSILON, 0.0), FREQ);\r\n    n2 = getFBMFromRawPosition(noisePos + vec2(-EPSILON, 0.0), FREQ);\r\n    b = (n1 - n2) / (2.0 * EPSILON);\r\n    vec3 color = texture(u_frame, fs_UV).xyz;\r\n    out_Col = vec4(color, atan(-b, a));\r\n}\r\n"
 
 /***/ }),
 /* 48 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\nuniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\n// from https://stackoverflow.com/questions/15095909/from-rgb-to-hsv-in-opengl-glsl\r\nvec3 rgb2hsv(vec3 c)\r\n{\r\n    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\r\n    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\r\n    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\r\n\r\n    float d = q.x - min(q.w, q.y);\r\n    float e = 1.0e-10;\r\n    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\r\n}\r\n\r\nvec3 hsv2rgb(vec3 c)\r\n{\r\n    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);\r\n    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);\r\n    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);\r\n}\r\n\r\nvec2 random2(vec2 p) {\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nconst vec3 PURPLE_RGB = vec3(0.7098, 0.0392156, 1.0);\r\nconst float X_TILE_DIM = 100.0;\r\nconst float Y_TILE_DIM = 20.0;\r\nconst float NOISE_TILE_DIM = 400.0;\r\nconst float GREEN_OFFSET = 5.0;\r\n\r\nvoid main() {\r\n    // desaturate\r\n    vec3 color = texture(u_frame, fs_UV).xyz;\r\n    // detour and make BG if applicable\r\n    if (fs_UV.y < 0.5) {\r\n        float depth = texture(u_gb0, fs_UV).w;\r\n        if (depth >= 0.0) {\r\n            vec2 pixelDims = 1.0 / u_Dims;\r\n            float xTile = mod((-0.5 + fs_UV.x) * (0.2 + fs_UV.y), 2.0 * X_TILE_DIM * pixelDims.x);\r\n            float yTile = mod(fs_UV.y, 2.0 * Y_TILE_DIM * pixelDims.y);\r\n            bool isBlack = (xTile > X_TILE_DIM * pixelDims.x) ^^ (yTile > Y_TILE_DIM * pixelDims.y);\r\n            if (isBlack) {\r\n                color = vec3(0.0);\r\n            }\r\n            else {\r\n                color = vec3(1.0, 0.0, 0.0);\r\n            }\r\n        }\r\n    }\r\n    vec3 hsv = rgb2hsv(color);\r\n    hsv.y *= 0.3;\r\n    hsv.z *= 0.8;\r\n    color = hsv2rgb(hsv);\r\n    // blend with purple\r\n    color = 0.7 * color + 0.3 * PURPLE_RGB;\r\n\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\nuniform sampler2D u_preFrame;\r\n//uniform sampler2D u_gb0;\r\nuniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\nuniform float u_BrushSize;\r\nuniform float u_BrushNoise;\r\n\r\nvec2 random2(vec2 p) {\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nvoid main() {\r\n    vec2 GRID_DIMS = vec2(70.0) * 0.5 * u_Dims.x / 526.0;\r\n    // making radius noisy gives airbrush effect\r\n    float rand = random2(fs_UV * 314.159).x;\r\n    // radius = (scale from u_BrushSize) * (base_size + random_element) / (estimate of screen size)\r\n    float radius = (0.5 + u_BrushSize) * (0.4 + 0.05 * rand * (2.0 * u_BrushNoise) ) / GRID_DIMS.x;\r\n\tvec3 color = vec3(5.0);\r\n    vec2 cellCorner = floor(fs_UV * GRID_DIMS) / GRID_DIMS;\r\n    vec3 minColor = vec3(0.0);\r\n    float minLen = 100.0;\r\n    float accWeight = 0.0;\r\n    vec3 defaultColor;\r\n    for (int i = -3; i <= 3; i++) {\r\n        for (int j = -3; j <= 3; j++) {\r\n            // read curl noise's angle and color from prepass frame\r\n            vec2 sampleCorner = cellCorner + vec2(i, j) / GRID_DIMS;\r\n            vec4 prepass = texture(u_preFrame, sampleCorner);\r\n            vec2 p = fs_UV - sampleCorner; // in corner-space\r\n            p.x *= u_Dims.x / u_Dims.y;\r\n            // find rotation\r\n            float angle = prepass.w;\r\n            float c = cos(angle);\r\n            float s = sin(angle);\r\n            // rotate\r\n            vec2 pRot = vec2(c * p.x - s * p.y, s * p.x + c * p.y);\r\n            // stretch along X\r\n            pRot.x *= 0.15;\r\n            pRot.y *= 0.31;\r\n            float l = length(pRot);\r\n            if (l < radius) {\r\n                float darkness = 1.0;// -0.6 * smoothstep(-radius, radius, pRot.x);\r\n                float weight = 1.0 - 0.4 * pow(smoothstep(0.0, radius, l), 1.0);\r\n                minLen = l;\r\n                accWeight += weight;\r\n                minColor += weight * prepass.xyz * darkness;\r\n            }\r\n            else if (i == 0 && j == 0) {\r\n                defaultColor = prepass.xyz; // use this fragment's default color\r\n            }\r\n        }\r\n    }\r\n    // if we hit nothing, use default color\r\n    if (minLen == 100.0) {\r\n        minColor = defaultColor;\r\n    }\r\n    // else, divide by sum of weights\r\n    else {\r\n        minColor /= accWeight;\r\n    }\r\n\tout_Col = vec4(minColor, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\nuniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\n// from https://stackoverflow.com/questions/15095909/from-rgb-to-hsv-in-opengl-glsl\r\nvec3 rgb2hsv(vec3 c)\r\n{\r\n    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\r\n    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\r\n    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\r\n\r\n    float d = q.x - min(q.w, q.y);\r\n    float e = 1.0e-10;\r\n    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\r\n}\r\n\r\nvec3 hsv2rgb(vec3 c)\r\n{\r\n    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);\r\n    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);\r\n    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);\r\n}\r\n\r\nvec2 random2(vec2 p) {\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nconst float PI = 3.14159265;\r\nconst float NOISE_TILE_DIM = 400.0;\r\n//const float NOISE_COS = 0.93969;\r\n//const float NOISE_SIN = -0.3420201;\r\nconst float NOISE_STRIPE_DIM = 30.0;\r\n\r\nconst float GAUSS_KERNEL[5] = float[5](\r\n    0.122581, 0.233062, 0.288713, 0.233062, 0.122581);\r\n\r\nvoid main() {\r\n    vec3 color = texture(u_frame, fs_UV).xyz;\r\n    vec2 pixelDims = 1.0 / u_Dims;\r\n    // chromatic aberration\r\n    float GREEN_OFFSET = 5.0 * (1.0 + abs(fs_UV.x - 0.5) * 5.0) * (1.0 + 0.1 * random2(vec2(fs_UV.y * 9.12)).y);\r\n    float sqrWave = (mod(u_Time * 0.73, 2.2) > 2.0) ? 1.0 : 0.0;\r\n    GREEN_OFFSET += sqrWave * 5.0;\r\n    vec3 neighbor = texture(u_frame, fs_UV + pixelDims * vec2(GREEN_OFFSET, 0.0)).xyz;\r\n    color.y = neighbor.y;\r\n\r\n    // distort\r\n    float time = u_Time * 0.47;\r\n    vec2 distortRand = random2(vec2(floor(time)));\r\n    float DISTORT_THRESH = (mod(distortRand.x, 0.0003) > 0.00015) ? 0.8 : 0.5;\r\n    sqrWave = (mod(time, 1.0) > DISTORT_THRESH) ? 1.0 : 0.0;\r\n    float DISTORT_START = 0.5 + 0.5 * distortRand.x;\r\n    float DISTORT_STRIPE_DIM = 50.0 + 20.0 * (distortRand.y);\r\n    float DISTORT_OFFSET = GREEN_OFFSET * 1.6;\r\n    if (DISTORT_START < fs_UV.y && fs_UV.y < DISTORT_START + pixelDims.y * DISTORT_STRIPE_DIM) {\r\n        float distIntoStripe = (fs_UV.y - DISTORT_START) / (pixelDims.y * DISTORT_STRIPE_DIM) * PI;\r\n        float extraOffset = pow(sin(distIntoStripe), 5.0) * ((mod(DISTORT_START, 0.0012) > 0.0006) ? -1.0 : 1.0);\r\n        vec3 neighbor = texture(u_frame, fs_UV - pixelDims * vec2(DISTORT_OFFSET + extraOffset * 47.0, 2.0)).xyz;\r\n        color = mix(color, color * 0.2 + neighbor * 0.8, sqrWave);\r\n    }\r\n\r\n    // add constant static\r\n    vec2 noiseCell = floor(fs_UV * NOISE_TILE_DIM) / NOISE_TILE_DIM;\r\n    // rotate point\r\n    //noiseCell = vec2(dot(noiseCell, vec2(NOISE_COS, -NOISE_SIN)), dot(noiseCell, vec2(NOISE_SIN, NOISE_COS)));\r\n    // noiseCell * 0.01 gives a wave-like pattern\r\n    float noise = 0.5 + 0.5 * random2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003)).x;\r\n    color *= 0.9 + 0.1 * noise;\r\n\r\n    float STRIPE_START = mod(-u_Time * 0.4, 1.5);\r\n\r\n    // add intermittent static stripe\r\n    if (STRIPE_START < fs_UV.y && fs_UV.y < STRIPE_START + pixelDims.y * NOISE_STRIPE_DIM) {\r\n        noise = 0.0;\r\n        // 2 pixels tall\r\n        noiseCell.y = floor(fs_UV.y * u_Dims.y) / (u_Dims.y);\r\n        // randomly scale size of noise column for each row\r\n        float rowScale = random2(noiseCell.yy).y * 0.5 + 1.5;\r\n        for (int i = -2; i <= 2; i++) {\r\n            noiseCell.x = floor((fs_UV.x + float(i) * pixelDims.x) * NOISE_TILE_DIM * 0.05 * rowScale) / (NOISE_TILE_DIM * 0.05 * rowScale);\r\n            noise += GAUSS_KERNEL[i + 2] * 1.3 * smoothstep(-0.9, 0.95, random2(noiseCell + vec2(u_Time * 0.0002, u_Time * 0.000)).y);\r\n        }\r\n        color *= 0.8 + 0.2 * noise;\r\n    }\r\n\r\n\r\n\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\nuniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\n// from https://stackoverflow.com/questions/15095909/from-rgb-to-hsv-in-opengl-glsl\r\nvec3 rgb2hsv(vec3 c)\r\n{\r\n    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\r\n    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\r\n    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\r\n\r\n    float d = q.x - min(q.w, q.y);\r\n    float e = 1.0e-10;\r\n    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\r\n}\r\n\r\nvec3 hsv2rgb(vec3 c)\r\n{\r\n    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);\r\n    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);\r\n    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);\r\n}\r\n\r\nvec2 random2(vec2 p) {\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nconst vec3 PURPLE_RGB = vec3(0.7098, 0.0392156, 1.0);\r\nconst float X_TILE_DIM = 100.0;\r\nconst float Y_TILE_DIM = 20.0;\r\nconst float NOISE_TILE_DIM = 400.0;\r\nconst float GREEN_OFFSET = 5.0;\r\n\r\nvoid main() {\r\n    // desaturate\r\n    vec3 color = texture(u_frame, fs_UV).xyz;\r\n    // detour and make BG if applicable\r\n    if (fs_UV.y < 0.5) {\r\n        float depth = texture(u_gb0, fs_UV).w;\r\n        if (depth >= 0.0) {\r\n            vec2 pixelDims = 1.0 / u_Dims;\r\n            float xTile = mod((-0.5 + fs_UV.x) * (0.2 + fs_UV.y), 2.0 * X_TILE_DIM * pixelDims.x);\r\n            float yTile = mod(fs_UV.y, 2.0 * Y_TILE_DIM * pixelDims.y);\r\n            bool isBlack = (xTile > X_TILE_DIM * pixelDims.x) ^^ (yTile > Y_TILE_DIM * pixelDims.y);\r\n            if (isBlack) {\r\n                color = vec3(0.0);\r\n            }\r\n            else {\r\n                color = vec3(1.0, 0.0, 0.0);\r\n            }\r\n        }\r\n    }\r\n    vec3 hsv = rgb2hsv(color);\r\n    hsv.y *= 0.3;\r\n    hsv.z *= 0.8;\r\n    color = hsv2rgb(hsv);\r\n    // blend with purple\r\n    color = 0.7 * color + 0.3 * PURPLE_RGB;\r\n\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
 
 /***/ }),
 /* 50 */
+/***/ (function(module, exports) {
+
+module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec2 fs_UV;\r\nout vec4 out_Col;\r\n\r\nuniform sampler2D u_frame;\r\n//uniform sampler2D u_preFrame;\r\nuniform sampler2D u_gb0;\r\nuniform float u_Time;\r\nuniform vec2 u_Dims;\r\n\r\n// from https://stackoverflow.com/questions/15095909/from-rgb-to-hsv-in-opengl-glsl\r\nvec3 rgb2hsv(vec3 c)\r\n{\r\n    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\r\n    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\r\n    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\r\n\r\n    float d = q.x - min(q.w, q.y);\r\n    float e = 1.0e-10;\r\n    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\r\n}\r\n\r\nvec3 hsv2rgb(vec3 c)\r\n{\r\n    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);\r\n    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);\r\n    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);\r\n}\r\n\r\nvec2 random2(vec2 p) {\r\n    return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))))*123.45) - 1.0);\r\n}\r\n\r\nfloat randomer2(vec2 p, float seed) {\r\n    return fract(sin(dot(p, vec2(127.1 * seed, 311.7))) * 123.45);\r\n    //return normalize(2.0 * fract(sin(vec2(dot(p, vec2(127.1 * seed, 311.7)), dot(p, vec2(269.5, 183.3 + seed))))*123.45) - 1.0);\r\n}\r\n\r\nconst float PI = 3.14159265;\r\nconst float NOISE_TILE_DIM = 400.0;\r\n//const float NOISE_COS = 0.93969;\r\n//const float NOISE_SIN = -0.3420201;\r\nconst float NOISE_STRIPE_DIM = 30.0;\r\n\r\nconst float GAUSS_KERNEL[5] = float[5](\r\n    0.122581, 0.233062, 0.288713, 0.233062, 0.122581);\r\n\r\nvoid main() {\r\n    vec3 color = texture(u_frame, fs_UV).xyz;\r\n    vec2 pixelDims = 1.0 / u_Dims;\r\n    // chromatic aberration\r\n    float GREEN_OFFSET = 5.0 * (1.0 + abs(fs_UV.x - 0.5) * 5.0) * (1.0 + 0.1 * random2(vec2(fs_UV.y * 9.12)).y);\r\n    float sqrWave = (mod(u_Time * 0.73, 2.2) > 2.0) ? 1.0 : 0.0;\r\n    GREEN_OFFSET += sqrWave * 5.0;\r\n    vec3 neighbor = texture(u_frame, fs_UV + pixelDims * vec2(GREEN_OFFSET, 0.0)).xyz;\r\n    color.y = neighbor.y;\r\n\r\n    // distort -- move pixels to the side\r\n    float time = u_Time * 0.47;\r\n    vec2 distortRand = random2(vec2(floor(time)));\r\n    // use mod to compute a random boolean value without random2\r\n    float DISTORT_THRESH = (mod(distortRand.x, 0.0003) > 0.00015) ? 0.8 : 0.5;\r\n    sqrWave = (mod(time, 1.0) > DISTORT_THRESH) ? 1.0 : 0.0;\r\n    float DISTORT_START = 0.5 + 0.5 * distortRand.x;\r\n    float DISTORT_STRIPE_DIM = 50.0 + 20.0 * (distortRand.y);\r\n    float DISTORT_OFFSET = GREEN_OFFSET * 1.6;\r\n    if (DISTORT_START < fs_UV.y && fs_UV.y < DISTORT_START + pixelDims.y * DISTORT_STRIPE_DIM) {\r\n        float distIntoStripe = (fs_UV.y - DISTORT_START) / (pixelDims.y * DISTORT_STRIPE_DIM) * PI;\r\n        // pow is for making offset \"spikier\". mod randomly switches between offseting to left or right\r\n        float extraOffset = pow(sin(distIntoStripe), 5.0) * ((mod(DISTORT_START, 0.0012) > 0.0006) ? -1.0 : 1.0);\r\n        vec3 neighbor = texture(u_frame, fs_UV - pixelDims * vec2(DISTORT_OFFSET + extraOffset * 47.0, 2.0)).xyz;\r\n        color = mix(color, color * 0.2 + neighbor * 0.8, sqrWave);\r\n    }\r\n\r\n    // add constant static\r\n    vec2 noiseCell = floor(fs_UV * NOISE_TILE_DIM) / NOISE_TILE_DIM;\r\n    float noise = randomer2(noiseCell * 0.1 + vec2(u_Time * 0.0002, -u_Time * 0.00003), noiseCell.x * 9.78 + noiseCell.y * 295.1);\r\n    color *= 0.85 + 0.15 * noise;\r\n\r\n    // compute \"forceStart\" -- add some chance to add line noise\r\n    // outside of main noise stripe\r\n    float time2 = u_Time * 4.0;\r\n    vec2 forceRand = random2(vec2(floor(time2), fs_UV.y));\r\n    bool forceStart = mod(forceRand.x, 0.00001) > 0.0000097;\r\n    // also compute a \"flipFactor\" -- sometimes make noise light instead of dark\r\n    bool flipColor = mod(forceRand.y, 0.0001) > 0.00009;\r\n    float flipFactor = (forceStart && flipColor) ? 0.5 : 0.2;\r\n\r\n    float STRIPE_START = mod(-u_Time * 0.4, 1.5);\r\n\r\n    // add intermittent static stripe\r\n    if (forceStart || (STRIPE_START < fs_UV.y && fs_UV.y < STRIPE_START + pixelDims.y * NOISE_STRIPE_DIM)) {\r\n        noise = 0.0;\r\n        // 1 pixel tall -- not needed now?\r\n        noiseCell.y = floor(fs_UV.y * u_Dims.y) / (u_Dims.y);\r\n        // randomly scale size of noise column for each row\r\n        float rowScale = random2(noiseCell.yy).y * 0.5 + 1.5;\r\n        for (int i = -2; i <= 2; i++) {\r\n            // each line of noise is made of multiple segments\r\n            // NOISE_TILE_DIM * 0.05 * rowScale controls the length of these segments\r\n            // since rowScale changes for each Y, the lengths differ for each pixel row\r\n            noiseCell.x = floor((fs_UV.x + float(i) * pixelDims.x) * NOISE_TILE_DIM * 0.05 * rowScale) / (NOISE_TILE_DIM * 0.05 * rowScale);\r\n            // \"blur\" to make noise less harsh\r\n            noise += GAUSS_KERNEL[i + 2] * 1.3 * smoothstep(-0.9, 0.95, random2(noiseCell + vec2(u_Time * 0.0002, u_Time * 0.000)).y);\r\n        }\r\n        // if we decide to \"flip color\", we make the noise contribution higher \r\n        // to make it look whiter\r\n        color *= 0.8 + flipFactor * noise;\r\n    }\r\n\r\n\r\n\tout_Col = vec4(color, 1.0);\r\n}\r\n"
+
+/***/ }),
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_3d_view_controls__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_3d_view_controls__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_3d_view_controls___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_3d_view_controls__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_gl_matrix__ = __webpack_require__(2);
 
@@ -13111,7 +13169,7 @@ class Camera {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13119,7 +13177,7 @@ class Camera {
 
 module.exports = createCamera
 
-var now         = __webpack_require__(52)
+var now         = __webpack_require__(53)
 var createView  = __webpack_require__(54)
 var mouseChange = __webpack_require__(77)
 var mouseWheel  = __webpack_require__(79)
@@ -13354,7 +13412,7 @@ function createCamera(element, options) {
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {module.exports =
@@ -13365,34 +13423,7 @@ function createCamera(element, options) {
     return +new Date
   }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53)))
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
 /* 54 */
@@ -13531,12 +13562,12 @@ function createViewController(options) {
 
 module.exports = createTurntableController
 
-var filterVector = __webpack_require__(12)
+var filterVector = __webpack_require__(13)
 var invert44     = __webpack_require__(3)
 var rotateM      = __webpack_require__(57)
-var cross        = __webpack_require__(14)
+var cross        = __webpack_require__(15)
 var normalize3   = __webpack_require__(5)
-var dot3         = __webpack_require__(15)
+var dot3         = __webpack_require__(16)
 
 function len3(x, y, z) {
   return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2))
@@ -14223,8 +14254,8 @@ function rotate(out, a, rad, axis) {
 
 module.exports = createOrbitController
 
-var filterVector  = __webpack_require__(12)
-var lookAt        = __webpack_require__(16)
+var filterVector  = __webpack_require__(13)
+var lookAt        = __webpack_require__(17)
 var mat4FromQuat  = __webpack_require__(59)
 var invert44      = __webpack_require__(3)
 var quatFromFrame = __webpack_require__(60)
@@ -14719,15 +14750,15 @@ function quatFromFrame(
 "use strict";
 
 
-var bsearch   = __webpack_require__(13)
+var bsearch   = __webpack_require__(14)
 var m4interp  = __webpack_require__(62)
 var invert44  = __webpack_require__(3)
 var rotateX   = __webpack_require__(74)
 var rotateY   = __webpack_require__(75)
 var rotateZ   = __webpack_require__(76)
-var lookAt    = __webpack_require__(16)
-var translate = __webpack_require__(18)
-var scale     = __webpack_require__(20)
+var lookAt    = __webpack_require__(17)
+var translate = __webpack_require__(19)
+var scale     = __webpack_require__(21)
 var normalize = __webpack_require__(5)
 
 var DEFAULT_CENTER = [0,0,0]
@@ -14925,7 +14956,7 @@ var lerp = __webpack_require__(63)
 
 var recompose = __webpack_require__(64)
 var decompose = __webpack_require__(67)
-var determinant = __webpack_require__(21)
+var determinant = __webpack_require__(22)
 var slerp = __webpack_require__(72)
 
 var state0 = state()
@@ -15015,11 +15046,11 @@ From: http://www.w3.org/TR/css3-transforms/#recomposing-to-a-3d-matrix
 */
 
 var mat4 = {
-    identity: __webpack_require__(17),
-    translate: __webpack_require__(18),
+    identity: __webpack_require__(18),
+    translate: __webpack_require__(19),
     multiply: __webpack_require__(65),
-    create: __webpack_require__(19),
-    scale: __webpack_require__(20),
+    create: __webpack_require__(20),
+    scale: __webpack_require__(21),
     fromRotationTranslation: __webpack_require__(66)
 }
 
@@ -15192,16 +15223,16 @@ http://www.w3.org/TR/css3-transforms/#decomposing-a-3d-matrix
 
 var normalize = __webpack_require__(68)
 
-var create = __webpack_require__(19)
+var create = __webpack_require__(20)
 var clone = __webpack_require__(69)
-var determinant = __webpack_require__(21)
+var determinant = __webpack_require__(22)
 var invert = __webpack_require__(3)
 var transpose = __webpack_require__(70)
 var vec3 = {
     length: __webpack_require__(71),
     normalize: __webpack_require__(5),
-    dot: __webpack_require__(15),
-    cross: __webpack_require__(14)
+    dot: __webpack_require__(16),
+    cross: __webpack_require__(15)
 }
 
 var tmp = create()
@@ -16209,12 +16240,2923 @@ class Texture {
 
 /***/ }),
 /* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ *  howler.js v2.0.9
+ *  howlerjs.com
+ *
+ *  (c) 2013-2018, James Simpson of GoldFire Studios
+ *  goldfirestudios.com
+ *
+ *  MIT License
+ */
+
+(function() {
+
+  'use strict';
+
+  /** Global Methods **/
+  /***************************************************************************/
+
+  /**
+   * Create the global controller. All contained methods and properties apply
+   * to all sounds that are currently playing or will be in the future.
+   */
+  var HowlerGlobal = function() {
+    this.init();
+  };
+  HowlerGlobal.prototype = {
+    /**
+     * Initialize the global Howler object.
+     * @return {Howler}
+     */
+    init: function() {
+      var self = this || Howler;
+
+      // Create a global ID counter.
+      self._counter = 1000;
+
+      // Internal properties.
+      self._codecs = {};
+      self._howls = [];
+      self._muted = false;
+      self._volume = 1;
+      self._canPlayEvent = 'canplaythrough';
+      self._navigator = (typeof window !== 'undefined' && window.navigator) ? window.navigator : null;
+
+      // Public properties.
+      self.masterGain = null;
+      self.noAudio = false;
+      self.usingWebAudio = true;
+      self.autoSuspend = true;
+      self.ctx = null;
+
+      // Set to false to disable the auto iOS enabler.
+      self.mobileAutoEnable = true;
+
+      // Setup the various state values for global tracking.
+      self._setup();
+
+      return self;
+    },
+
+    /**
+     * Get/set the global volume for all sounds.
+     * @param  {Float} vol Volume from 0.0 to 1.0.
+     * @return {Howler/Float}     Returns self or current volume.
+     */
+    volume: function(vol) {
+      var self = this || Howler;
+      vol = parseFloat(vol);
+
+      // If we don't have an AudioContext created yet, run the setup.
+      if (!self.ctx) {
+        setupAudioContext();
+      }
+
+      if (typeof vol !== 'undefined' && vol >= 0 && vol <= 1) {
+        self._volume = vol;
+
+        // Don't update any of the nodes if we are muted.
+        if (self._muted) {
+          return self;
+        }
+
+        // When using Web Audio, we just need to adjust the master gain.
+        if (self.usingWebAudio) {
+          self.masterGain.gain.setValueAtTime(vol, Howler.ctx.currentTime);
+        }
+
+        // Loop through and change volume for all HTML5 audio nodes.
+        for (var i=0; i<self._howls.length; i++) {
+          if (!self._howls[i]._webAudio) {
+            // Get all of the sounds in this Howl group.
+            var ids = self._howls[i]._getSoundIds();
+
+            // Loop through all sounds and change the volumes.
+            for (var j=0; j<ids.length; j++) {
+              var sound = self._howls[i]._soundById(ids[j]);
+
+              if (sound && sound._node) {
+                sound._node.volume = sound._volume * vol;
+              }
+            }
+          }
+        }
+
+        return self;
+      }
+
+      return self._volume;
+    },
+
+    /**
+     * Handle muting and unmuting globally.
+     * @param  {Boolean} muted Is muted or not.
+     */
+    mute: function(muted) {
+      var self = this || Howler;
+
+      // If we don't have an AudioContext created yet, run the setup.
+      if (!self.ctx) {
+        setupAudioContext();
+      }
+
+      self._muted = muted;
+
+      // With Web Audio, we just need to mute the master gain.
+      if (self.usingWebAudio) {
+        self.masterGain.gain.setValueAtTime(muted ? 0 : self._volume, Howler.ctx.currentTime);
+      }
+
+      // Loop through and mute all HTML5 Audio nodes.
+      for (var i=0; i<self._howls.length; i++) {
+        if (!self._howls[i]._webAudio) {
+          // Get all of the sounds in this Howl group.
+          var ids = self._howls[i]._getSoundIds();
+
+          // Loop through all sounds and mark the audio node as muted.
+          for (var j=0; j<ids.length; j++) {
+            var sound = self._howls[i]._soundById(ids[j]);
+
+            if (sound && sound._node) {
+              sound._node.muted = (muted) ? true : sound._muted;
+            }
+          }
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Unload and destroy all currently loaded Howl objects.
+     * @return {Howler}
+     */
+    unload: function() {
+      var self = this || Howler;
+
+      for (var i=self._howls.length-1; i>=0; i--) {
+        self._howls[i].unload();
+      }
+
+      // Create a new AudioContext to make sure it is fully reset.
+      if (self.usingWebAudio && self.ctx && typeof self.ctx.close !== 'undefined') {
+        self.ctx.close();
+        self.ctx = null;
+        setupAudioContext();
+      }
+
+      return self;
+    },
+
+    /**
+     * Check for codec support of specific extension.
+     * @param  {String} ext Audio file extention.
+     * @return {Boolean}
+     */
+    codecs: function(ext) {
+      return (this || Howler)._codecs[ext.replace(/^x-/, '')];
+    },
+
+    /**
+     * Setup various state values for global tracking.
+     * @return {Howler}
+     */
+    _setup: function() {
+      var self = this || Howler;
+
+      // Keeps track of the suspend/resume state of the AudioContext.
+      self.state = self.ctx ? self.ctx.state || 'running' : 'running';
+
+      // Automatically begin the 30-second suspend process
+      self._autoSuspend();
+
+      // Check if audio is available.
+      if (!self.usingWebAudio) {
+        // No audio is available on this system if noAudio is set to true.
+        if (typeof Audio !== 'undefined') {
+          try {
+            var test = new Audio();
+
+            // Check if the canplaythrough event is available.
+            if (typeof test.oncanplaythrough === 'undefined') {
+              self._canPlayEvent = 'canplay';
+            }
+          } catch(e) {
+            self.noAudio = true;
+          }
+        } else {
+          self.noAudio = true;
+        }
+      }
+
+      // Test to make sure audio isn't disabled in Internet Explorer.
+      try {
+        var test = new Audio();
+        if (test.muted) {
+          self.noAudio = true;
+        }
+      } catch (e) {}
+
+      // Check for supported codecs.
+      if (!self.noAudio) {
+        self._setupCodecs();
+      }
+
+      return self;
+    },
+
+    /**
+     * Check for browser support for various codecs and cache the results.
+     * @return {Howler}
+     */
+    _setupCodecs: function() {
+      var self = this || Howler;
+      var audioTest = null;
+
+      // Must wrap in a try/catch because IE11 in server mode throws an error.
+      try {
+        audioTest = (typeof Audio !== 'undefined') ? new Audio() : null;
+      } catch (err) {
+        return self;
+      }
+
+      if (!audioTest || typeof audioTest.canPlayType !== 'function') {
+        return self;
+      }
+
+      var mpegTest = audioTest.canPlayType('audio/mpeg;').replace(/^no$/, '');
+
+      // Opera version <33 has mixed MP3 support, so we need to check for and block it.
+      var checkOpera = self._navigator && self._navigator.userAgent.match(/OPR\/([0-6].)/g);
+      var isOldOpera = (checkOpera && parseInt(checkOpera[0].split('/')[1], 10) < 33);
+
+      self._codecs = {
+        mp3: !!(!isOldOpera && (mpegTest || audioTest.canPlayType('audio/mp3;').replace(/^no$/, ''))),
+        mpeg: !!mpegTest,
+        opus: !!audioTest.canPlayType('audio/ogg; codecs="opus"').replace(/^no$/, ''),
+        ogg: !!audioTest.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ''),
+        oga: !!audioTest.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ''),
+        wav: !!audioTest.canPlayType('audio/wav; codecs="1"').replace(/^no$/, ''),
+        aac: !!audioTest.canPlayType('audio/aac;').replace(/^no$/, ''),
+        caf: !!audioTest.canPlayType('audio/x-caf;').replace(/^no$/, ''),
+        m4a: !!(audioTest.canPlayType('audio/x-m4a;') || audioTest.canPlayType('audio/m4a;') || audioTest.canPlayType('audio/aac;')).replace(/^no$/, ''),
+        mp4: !!(audioTest.canPlayType('audio/x-mp4;') || audioTest.canPlayType('audio/mp4;') || audioTest.canPlayType('audio/aac;')).replace(/^no$/, ''),
+        weba: !!audioTest.canPlayType('audio/webm; codecs="vorbis"').replace(/^no$/, ''),
+        webm: !!audioTest.canPlayType('audio/webm; codecs="vorbis"').replace(/^no$/, ''),
+        dolby: !!audioTest.canPlayType('audio/mp4; codecs="ec-3"').replace(/^no$/, ''),
+        flac: !!(audioTest.canPlayType('audio/x-flac;') || audioTest.canPlayType('audio/flac;')).replace(/^no$/, '')
+      };
+
+      return self;
+    },
+
+    /**
+     * Mobile browsers will only allow audio to be played after a user interaction.
+     * Attempt to automatically unlock audio on the first user interaction.
+     * Concept from: http://paulbakaus.com/tutorials/html5/web-audio-on-ios/
+     * @return {Howler}
+     */
+    _enableMobileAudio: function() {
+      var self = this || Howler;
+
+      // Only run this on mobile devices if audio isn't already eanbled.
+      var isMobile = /iPhone|iPad|iPod|Android|BlackBerry|BB10|Silk|Mobi/i.test(self._navigator && self._navigator.userAgent);
+      var isTouch = !!(('ontouchend' in window) || (self._navigator && self._navigator.maxTouchPoints > 0) || (self._navigator && self._navigator.msMaxTouchPoints > 0));
+      if (self._mobileEnabled || !self.ctx || (!isMobile && !isTouch)) {
+        return;
+      }
+
+      self._mobileEnabled = false;
+
+      // Some mobile devices/platforms have distortion issues when opening/closing tabs and/or web views.
+      // Bugs in the browser (especially Mobile Safari) can cause the sampleRate to change from 44100 to 48000.
+      // By calling Howler.unload(), we create a new AudioContext with the correct sampleRate.
+      if (!self._mobileUnloaded && self.ctx.sampleRate !== 44100) {
+        self._mobileUnloaded = true;
+        self.unload();
+      }
+
+      // Scratch buffer for enabling iOS to dispose of web audio buffers correctly, as per:
+      // http://stackoverflow.com/questions/24119684
+      self._scratchBuffer = self.ctx.createBuffer(1, 1, 22050);
+
+      // Call this method on touch start to create and play a buffer,
+      // then check if the audio actually played to determine if
+      // audio has now been unlocked on iOS, Android, etc.
+      var unlock = function() {
+        // Fix Android can not play in suspend state.
+        Howler._autoResume();
+
+        // Create an empty buffer.
+        var source = self.ctx.createBufferSource();
+        source.buffer = self._scratchBuffer;
+        source.connect(self.ctx.destination);
+
+        // Play the empty buffer.
+        if (typeof source.start === 'undefined') {
+          source.noteOn(0);
+        } else {
+          source.start(0);
+        }
+
+        // Calling resume() on a stack initiated by user gesture is what actually unlocks the audio on Android Chrome >= 55.
+        if (typeof self.ctx.resume === 'function') {
+          self.ctx.resume();
+        }
+
+        // Setup a timeout to check that we are unlocked on the next event loop.
+        source.onended = function() {
+          source.disconnect(0);
+
+          // Update the unlocked state and prevent this check from happening again.
+          self._mobileEnabled = true;
+          self.mobileAutoEnable = false;
+
+          // Remove the touch start listener.
+          document.removeEventListener('touchstart', unlock, true);
+          document.removeEventListener('touchend', unlock, true);
+        };
+      };
+
+      // Setup a touch start listener to attempt an unlock in.
+      document.addEventListener('touchstart', unlock, true);
+      document.addEventListener('touchend', unlock, true);
+
+      return self;
+    },
+
+    /**
+     * Automatically suspend the Web Audio AudioContext after no sound has played for 30 seconds.
+     * This saves processing/energy and fixes various browser-specific bugs with audio getting stuck.
+     * @return {Howler}
+     */
+    _autoSuspend: function() {
+      var self = this;
+
+      if (!self.autoSuspend || !self.ctx || typeof self.ctx.suspend === 'undefined' || !Howler.usingWebAudio) {
+        return;
+      }
+
+      // Check if any sounds are playing.
+      for (var i=0; i<self._howls.length; i++) {
+        if (self._howls[i]._webAudio) {
+          for (var j=0; j<self._howls[i]._sounds.length; j++) {
+            if (!self._howls[i]._sounds[j]._paused) {
+              return self;
+            }
+          }
+        }
+      }
+
+      if (self._suspendTimer) {
+        clearTimeout(self._suspendTimer);
+      }
+
+      // If no sound has played after 30 seconds, suspend the context.
+      self._suspendTimer = setTimeout(function() {
+        if (!self.autoSuspend) {
+          return;
+        }
+
+        self._suspendTimer = null;
+        self.state = 'suspending';
+        self.ctx.suspend().then(function() {
+          self.state = 'suspended';
+
+          if (self._resumeAfterSuspend) {
+            delete self._resumeAfterSuspend;
+            self._autoResume();
+          }
+        });
+      }, 30000);
+
+      return self;
+    },
+
+    /**
+     * Automatically resume the Web Audio AudioContext when a new sound is played.
+     * @return {Howler}
+     */
+    _autoResume: function() {
+      var self = this;
+
+      if (!self.ctx || typeof self.ctx.resume === 'undefined' || !Howler.usingWebAudio) {
+        return;
+      }
+
+      if (self.state === 'running' && self._suspendTimer) {
+        clearTimeout(self._suspendTimer);
+        self._suspendTimer = null;
+      } else if (self.state === 'suspended') {
+        self.ctx.resume().then(function() {
+          self.state = 'running';
+
+          // Emit to all Howls that the audio has resumed.
+          for (var i=0; i<self._howls.length; i++) {
+            self._howls[i]._emit('resume');
+          }
+        });
+
+        if (self._suspendTimer) {
+          clearTimeout(self._suspendTimer);
+          self._suspendTimer = null;
+        }
+      } else if (self.state === 'suspending') {
+        self._resumeAfterSuspend = true;
+      }
+
+      return self;
+    }
+  };
+
+  // Setup the global audio controller.
+  var Howler = new HowlerGlobal();
+
+  /** Group Methods **/
+  /***************************************************************************/
+
+  /**
+   * Create an audio group controller.
+   * @param {Object} o Passed in properties for this group.
+   */
+  var Howl = function(o) {
+    var self = this;
+
+    // Throw an error if no source is provided.
+    if (!o.src || o.src.length === 0) {
+      console.error('An array of source files must be passed with any new Howl.');
+      return;
+    }
+
+    self.init(o);
+  };
+  Howl.prototype = {
+    /**
+     * Initialize a new Howl group object.
+     * @param  {Object} o Passed in properties for this group.
+     * @return {Howl}
+     */
+    init: function(o) {
+      var self = this;
+
+      // If we don't have an AudioContext created yet, run the setup.
+      if (!Howler.ctx) {
+        setupAudioContext();
+      }
+
+      // Setup user-defined default properties.
+      self._autoplay = o.autoplay || false;
+      self._format = (typeof o.format !== 'string') ? o.format : [o.format];
+      self._html5 = o.html5 || false;
+      self._muted = o.mute || false;
+      self._loop = o.loop || false;
+      self._pool = o.pool || 5;
+      self._preload = (typeof o.preload === 'boolean') ? o.preload : true;
+      self._rate = o.rate || 1;
+      self._sprite = o.sprite || {};
+      self._src = (typeof o.src !== 'string') ? o.src : [o.src];
+      self._volume = o.volume !== undefined ? o.volume : 1;
+      self._xhrWithCredentials = o.xhrWithCredentials || false;
+
+      // Setup all other default properties.
+      self._duration = 0;
+      self._state = 'unloaded';
+      self._sounds = [];
+      self._endTimers = {};
+      self._queue = [];
+      self._playLock = false;
+
+      // Setup event listeners.
+      self._onend = o.onend ? [{fn: o.onend}] : [];
+      self._onfade = o.onfade ? [{fn: o.onfade}] : [];
+      self._onload = o.onload ? [{fn: o.onload}] : [];
+      self._onloaderror = o.onloaderror ? [{fn: o.onloaderror}] : [];
+      self._onplayerror = o.onplayerror ? [{fn: o.onplayerror}] : [];
+      self._onpause = o.onpause ? [{fn: o.onpause}] : [];
+      self._onplay = o.onplay ? [{fn: o.onplay}] : [];
+      self._onstop = o.onstop ? [{fn: o.onstop}] : [];
+      self._onmute = o.onmute ? [{fn: o.onmute}] : [];
+      self._onvolume = o.onvolume ? [{fn: o.onvolume}] : [];
+      self._onrate = o.onrate ? [{fn: o.onrate}] : [];
+      self._onseek = o.onseek ? [{fn: o.onseek}] : [];
+      self._onresume = [];
+
+      // Web Audio or HTML5 Audio?
+      self._webAudio = Howler.usingWebAudio && !self._html5;
+
+      // Automatically try to enable audio on iOS.
+      if (typeof Howler.ctx !== 'undefined' && Howler.ctx && Howler.mobileAutoEnable) {
+        Howler._enableMobileAudio();
+      }
+
+      // Keep track of this Howl group in the global controller.
+      Howler._howls.push(self);
+
+      // If they selected autoplay, add a play event to the load queue.
+      if (self._autoplay) {
+        self._queue.push({
+          event: 'play',
+          action: function() {
+            self.play();
+          }
+        });
+      }
+
+      // Load the source file unless otherwise specified.
+      if (self._preload) {
+        self.load();
+      }
+
+      return self;
+    },
+
+    /**
+     * Load the audio file.
+     * @return {Howler}
+     */
+    load: function() {
+      var self = this;
+      var url = null;
+
+      // If no audio is available, quit immediately.
+      if (Howler.noAudio) {
+        self._emit('loaderror', null, 'No audio support.');
+        return;
+      }
+
+      // Make sure our source is in an array.
+      if (typeof self._src === 'string') {
+        self._src = [self._src];
+      }
+
+      // Loop through the sources and pick the first one that is compatible.
+      for (var i=0; i<self._src.length; i++) {
+        var ext, str;
+
+        if (self._format && self._format[i]) {
+          // If an extension was specified, use that instead.
+          ext = self._format[i];
+        } else {
+          // Make sure the source is a string.
+          str = self._src[i];
+          if (typeof str !== 'string') {
+            self._emit('loaderror', null, 'Non-string found in selected audio sources - ignoring.');
+            continue;
+          }
+
+          // Extract the file extension from the URL or base64 data URI.
+          ext = /^data:audio\/([^;,]+);/i.exec(str);
+          if (!ext) {
+            ext = /\.([^.]+)$/.exec(str.split('?', 1)[0]);
+          }
+
+          if (ext) {
+            ext = ext[1].toLowerCase();
+          }
+        }
+
+        // Log a warning if no extension was found.
+        if (!ext) {
+          console.warn('No file extension was found. Consider using the "format" property or specify an extension.');
+        }
+
+        // Check if this extension is available.
+        if (ext && Howler.codecs(ext)) {
+          url = self._src[i];
+          break;
+        }
+      }
+
+      if (!url) {
+        self._emit('loaderror', null, 'No codec support for selected audio sources.');
+        return;
+      }
+
+      self._src = url;
+      self._state = 'loading';
+
+      // If the hosting page is HTTPS and the source isn't,
+      // drop down to HTML5 Audio to avoid Mixed Content errors.
+      if (window.location.protocol === 'https:' && url.slice(0, 5) === 'http:') {
+        self._html5 = true;
+        self._webAudio = false;
+      }
+
+      // Create a new sound object and add it to the pool.
+      new Sound(self);
+
+      // Load and decode the audio data for playback.
+      if (self._webAudio) {
+        loadBuffer(self);
+      }
+
+      return self;
+    },
+
+    /**
+     * Play a sound or resume previous playback.
+     * @param  {String/Number} sprite   Sprite name for sprite playback or sound id to continue previous.
+     * @param  {Boolean} internal Internal Use: true prevents event firing.
+     * @return {Number}          Sound ID.
+     */
+    play: function(sprite, internal) {
+      var self = this;
+      var id = null;
+
+      // Determine if a sprite, sound id or nothing was passed
+      if (typeof sprite === 'number') {
+        id = sprite;
+        sprite = null;
+      } else if (typeof sprite === 'string' && self._state === 'loaded' && !self._sprite[sprite]) {
+        // If the passed sprite doesn't exist, do nothing.
+        return null;
+      } else if (typeof sprite === 'undefined') {
+        // Use the default sound sprite (plays the full audio length).
+        sprite = '__default';
+
+        // Check if there is a single paused sound that isn't ended.
+        // If there is, play that sound. If not, continue as usual.
+        var num = 0;
+        for (var i=0; i<self._sounds.length; i++) {
+          if (self._sounds[i]._paused && !self._sounds[i]._ended) {
+            num++;
+            id = self._sounds[i]._id;
+          }
+        }
+
+        if (num === 1) {
+          sprite = null;
+        } else {
+          id = null;
+        }
+      }
+
+      // Get the selected node, or get one from the pool.
+      var sound = id ? self._soundById(id) : self._inactiveSound();
+
+      // If the sound doesn't exist, do nothing.
+      if (!sound) {
+        return null;
+      }
+
+      // Select the sprite definition.
+      if (id && !sprite) {
+        sprite = sound._sprite || '__default';
+      }
+
+      // If the sound hasn't loaded, we must wait to get the audio's duration.
+      // We also need to wait to make sure we don't run into race conditions with
+      // the order of function calls.
+      if (self._state !== 'loaded') {
+        // Set the sprite value on this sound.
+        sound._sprite = sprite;
+
+        // Makr this sounded as not ended in case another sound is played before this one loads.
+        sound._ended = false;
+
+        // Add the sound to the queue to be played on load.
+        var soundId = sound._id;
+        self._queue.push({
+          event: 'play',
+          action: function() {
+            self.play(soundId);
+          }
+        });
+
+        return soundId;
+      }
+
+      // Don't play the sound if an id was passed and it is already playing.
+      if (id && !sound._paused) {
+        // Trigger the play event, in order to keep iterating through queue.
+        if (!internal) {
+          self._loadQueue('play');
+        }
+
+        return sound._id;
+      }
+
+      // Make sure the AudioContext isn't suspended, and resume it if it is.
+      if (self._webAudio) {
+        Howler._autoResume();
+      }
+
+      // Determine how long to play for and where to start playing.
+      var seek = Math.max(0, sound._seek > 0 ? sound._seek : self._sprite[sprite][0] / 1000);
+      var duration = Math.max(0, ((self._sprite[sprite][0] + self._sprite[sprite][1]) / 1000) - seek);
+      var timeout = (duration * 1000) / Math.abs(sound._rate);
+
+      // Update the parameters of the sound
+      sound._paused = false;
+      sound._ended = false;
+      sound._sprite = sprite;
+      sound._seek = seek;
+      sound._start = self._sprite[sprite][0] / 1000;
+      sound._stop = (self._sprite[sprite][0] + self._sprite[sprite][1]) / 1000;
+      sound._loop = !!(sound._loop || self._sprite[sprite][2]);
+
+      // Begin the actual playback.
+      var node = sound._node;
+      if (self._webAudio) {
+        // Fire this when the sound is ready to play to begin Web Audio playback.
+        var playWebAudio = function() {
+          self._refreshBuffer(sound);
+
+          // Setup the playback params.
+          var vol = (sound._muted || self._muted) ? 0 : sound._volume;
+          node.gain.setValueAtTime(vol, Howler.ctx.currentTime);
+          sound._playStart = Howler.ctx.currentTime;
+
+          // Play the sound using the supported method.
+          if (typeof node.bufferSource.start === 'undefined') {
+            sound._loop ? node.bufferSource.noteGrainOn(0, seek, 86400) : node.bufferSource.noteGrainOn(0, seek, duration);
+          } else {
+            sound._loop ? node.bufferSource.start(0, seek, 86400) : node.bufferSource.start(0, seek, duration);
+          }
+
+          // Start a new timer if none is present.
+          if (timeout !== Infinity) {
+            self._endTimers[sound._id] = setTimeout(self._ended.bind(self, sound), timeout);
+          }
+
+          if (!internal) {
+            setTimeout(function() {
+              self._emit('play', sound._id);
+            }, 0);
+          }
+        };
+
+        if (Howler.state === 'running') {
+          playWebAudio();
+        } else {
+          self.once('resume', playWebAudio);
+
+          // Cancel the end timer.
+          self._clearTimer(sound._id);
+        }
+      } else {
+        // Fire this when the sound is ready to play to begin HTML5 Audio playback.
+        var playHtml5 = function() {
+          node.currentTime = seek;
+          node.muted = sound._muted || self._muted || Howler._muted || node.muted;
+          node.volume = sound._volume * Howler.volume();
+          node.playbackRate = sound._rate;
+
+          // Mobile browsers will throw an error if this is called without user interaction.
+          try {
+            var play = node.play();
+
+            // Support older browsers that don't support promises, and thus don't have this issue.
+            if (typeof Promise !== 'undefined' && play instanceof Promise) {
+              // Implements a lock to prevent DOMException: The play() request was interrupted by a call to pause().
+              self._playLock = true;
+
+              // Releases the lock and executes queued actions.
+              var runLoadQueue = function() {
+                self._playLock = false;
+                if (!internal) {
+                  self._emit('play', sound._id);
+                }
+              };
+              play.then(runLoadQueue, runLoadQueue);
+            } else if (!internal) {
+              self._emit('play', sound._id);
+            }
+
+            // If the node is still paused, then we can assume there was a playback issue.
+            if (node.paused) {
+              self._emit('playerror', sound._id, 'Playback was unable to start. This is most commonly an issue ' +
+                'on mobile devices where playback was not within a user interaction.');
+              return;
+            }
+
+            // Setup the end timer on sprites or listen for the ended event.
+            if (sprite !== '__default') {
+              self._endTimers[sound._id] = setTimeout(self._ended.bind(self, sound), timeout);
+            } else {
+              self._endTimers[sound._id] = function() {
+                // Fire ended on this audio node.
+                self._ended(sound);
+
+                // Clear this listener.
+                node.removeEventListener('ended', self._endTimers[sound._id], false);
+              };
+              node.addEventListener('ended', self._endTimers[sound._id], false);
+            }
+          } catch (err) {
+            self._emit('playerror', sound._id, err);
+          }
+        };
+
+        // Play immediately if ready, or wait for the 'canplaythrough'e vent.
+        var loadedNoReadyState = (window && window.ejecta) || (!node.readyState && Howler._navigator.isCocoonJS);
+        if (node.readyState >= 3 || loadedNoReadyState) {
+          playHtml5();
+        } else {
+          var listener = function() {
+            // Begin playback.
+            playHtml5();
+
+            // Clear this listener.
+            node.removeEventListener(Howler._canPlayEvent, listener, false);
+          };
+          node.addEventListener(Howler._canPlayEvent, listener, false);
+
+          // Cancel the end timer.
+          self._clearTimer(sound._id);
+        }
+      }
+
+      return sound._id;
+    },
+
+    /**
+     * Pause playback and save current position.
+     * @param  {Number} id The sound ID (empty to pause all in group).
+     * @return {Howl}
+     */
+    pause: function(id) {
+      var self = this;
+
+      // If the sound hasn't loaded or a play() promise is pending, add it to the load queue to pause when capable.
+      if (self._state !== 'loaded' || self._playLock) {
+        self._queue.push({
+          event: 'pause',
+          action: function() {
+            self.pause(id);
+          }
+        });
+
+        return self;
+      }
+
+      // If no id is passed, get all ID's to be paused.
+      var ids = self._getSoundIds(id);
+
+      for (var i=0; i<ids.length; i++) {
+        // Clear the end timer.
+        self._clearTimer(ids[i]);
+
+        // Get the sound.
+        var sound = self._soundById(ids[i]);
+
+        if (sound && !sound._paused) {
+          // Reset the seek position.
+          sound._seek = self.seek(ids[i]);
+          sound._rateSeek = 0;
+          sound._paused = true;
+
+          // Stop currently running fades.
+          self._stopFade(ids[i]);
+
+          if (sound._node) {
+            if (self._webAudio) {
+              // Make sure the sound has been created.
+              if (!sound._node.bufferSource) {
+                continue;
+              }
+
+              if (typeof sound._node.bufferSource.stop === 'undefined') {
+                sound._node.bufferSource.noteOff(0);
+              } else {
+                sound._node.bufferSource.stop(0);
+              }
+
+              // Clean up the buffer source.
+              self._cleanBuffer(sound._node);
+            } else if (!isNaN(sound._node.duration) || sound._node.duration === Infinity) {
+              sound._node.pause();
+            }
+          }
+        }
+
+        // Fire the pause event, unless `true` is passed as the 2nd argument.
+        if (!arguments[1]) {
+          self._emit('pause', sound ? sound._id : null);
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Stop playback and reset to start.
+     * @param  {Number} id The sound ID (empty to stop all in group).
+     * @param  {Boolean} internal Internal Use: true prevents event firing.
+     * @return {Howl}
+     */
+    stop: function(id, internal) {
+      var self = this;
+
+      // If the sound hasn't loaded, add it to the load queue to stop when capable.
+      if (self._state !== 'loaded') {
+        self._queue.push({
+          event: 'stop',
+          action: function() {
+            self.stop(id);
+          }
+        });
+
+        return self;
+      }
+
+      // If no id is passed, get all ID's to be stopped.
+      var ids = self._getSoundIds(id);
+
+      for (var i=0; i<ids.length; i++) {
+        // Clear the end timer.
+        self._clearTimer(ids[i]);
+
+        // Get the sound.
+        var sound = self._soundById(ids[i]);
+
+        if (sound) {
+          // Reset the seek position.
+          sound._seek = sound._start || 0;
+          sound._rateSeek = 0;
+          sound._paused = true;
+          sound._ended = true;
+
+          // Stop currently running fades.
+          self._stopFade(ids[i]);
+
+          if (sound._node) {
+            if (self._webAudio) {
+              // Make sure the sound's AudioBufferSourceNode has been created.
+              if (sound._node.bufferSource) {
+                if (typeof sound._node.bufferSource.stop === 'undefined') {
+                  sound._node.bufferSource.noteOff(0);
+                } else {
+                  sound._node.bufferSource.stop(0);
+                }
+
+                // Clean up the buffer source.
+                self._cleanBuffer(sound._node);
+              }
+            } else if (!isNaN(sound._node.duration) || sound._node.duration === Infinity) {
+              sound._node.currentTime = sound._start || 0;
+              sound._node.pause();
+            }
+          }
+
+          if (!internal) {
+            self._emit('stop', sound._id);
+          }
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Mute/unmute a single sound or all sounds in this Howl group.
+     * @param  {Boolean} muted Set to true to mute and false to unmute.
+     * @param  {Number} id    The sound ID to update (omit to mute/unmute all).
+     * @return {Howl}
+     */
+    mute: function(muted, id) {
+      var self = this;
+
+      // If the sound hasn't loaded, add it to the load queue to mute when capable.
+      if (self._state !== 'loaded') {
+        self._queue.push({
+          event: 'mute',
+          action: function() {
+            self.mute(muted, id);
+          }
+        });
+
+        return self;
+      }
+
+      // If applying mute/unmute to all sounds, update the group's value.
+      if (typeof id === 'undefined') {
+        if (typeof muted === 'boolean') {
+          self._muted = muted;
+        } else {
+          return self._muted;
+        }
+      }
+
+      // If no id is passed, get all ID's to be muted.
+      var ids = self._getSoundIds(id);
+
+      for (var i=0; i<ids.length; i++) {
+        // Get the sound.
+        var sound = self._soundById(ids[i]);
+
+        if (sound) {
+          sound._muted = muted;
+
+          // Cancel active fade and set the volume to the end value.
+          if (sound._interval) {
+            self._stopFade(sound._id);
+          }
+
+          if (self._webAudio && sound._node) {
+            sound._node.gain.setValueAtTime(muted ? 0 : sound._volume, Howler.ctx.currentTime);
+          } else if (sound._node) {
+            sound._node.muted = Howler._muted ? true : muted;
+          }
+
+          self._emit('mute', sound._id);
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Get/set the volume of this sound or of the Howl group. This method can optionally take 0, 1 or 2 arguments.
+     *   volume() -> Returns the group's volume value.
+     *   volume(id) -> Returns the sound id's current volume.
+     *   volume(vol) -> Sets the volume of all sounds in this Howl group.
+     *   volume(vol, id) -> Sets the volume of passed sound id.
+     * @return {Howl/Number} Returns self or current volume.
+     */
+    volume: function() {
+      var self = this;
+      var args = arguments;
+      var vol, id;
+
+      // Determine the values based on arguments.
+      if (args.length === 0) {
+        // Return the value of the groups' volume.
+        return self._volume;
+      } else if (args.length === 1 || args.length === 2 && typeof args[1] === 'undefined') {
+        // First check if this is an ID, and if not, assume it is a new volume.
+        var ids = self._getSoundIds();
+        var index = ids.indexOf(args[0]);
+        if (index >= 0) {
+          id = parseInt(args[0], 10);
+        } else {
+          vol = parseFloat(args[0]);
+        }
+      } else if (args.length >= 2) {
+        vol = parseFloat(args[0]);
+        id = parseInt(args[1], 10);
+      }
+
+      // Update the volume or return the current volume.
+      var sound;
+      if (typeof vol !== 'undefined' && vol >= 0 && vol <= 1) {
+        // If the sound hasn't loaded, add it to the load queue to change volume when capable.
+        if (self._state !== 'loaded') {
+          self._queue.push({
+            event: 'volume',
+            action: function() {
+              self.volume.apply(self, args);
+            }
+          });
+
+          return self;
+        }
+
+        // Set the group volume.
+        if (typeof id === 'undefined') {
+          self._volume = vol;
+        }
+
+        // Update one or all volumes.
+        id = self._getSoundIds(id);
+        for (var i=0; i<id.length; i++) {
+          // Get the sound.
+          sound = self._soundById(id[i]);
+
+          if (sound) {
+            sound._volume = vol;
+
+            // Stop currently running fades.
+            if (!args[2]) {
+              self._stopFade(id[i]);
+            }
+
+            if (self._webAudio && sound._node && !sound._muted) {
+              sound._node.gain.setValueAtTime(vol, Howler.ctx.currentTime);
+            } else if (sound._node && !sound._muted) {
+              sound._node.volume = vol * Howler.volume();
+            }
+
+            self._emit('volume', sound._id);
+          }
+        }
+      } else {
+        sound = id ? self._soundById(id) : self._sounds[0];
+        return sound ? sound._volume : 0;
+      }
+
+      return self;
+    },
+
+    /**
+     * Fade a currently playing sound between two volumes (if no id is passsed, all sounds will fade).
+     * @param  {Number} from The value to fade from (0.0 to 1.0).
+     * @param  {Number} to   The volume to fade to (0.0 to 1.0).
+     * @param  {Number} len  Time in milliseconds to fade.
+     * @param  {Number} id   The sound id (omit to fade all sounds).
+     * @return {Howl}
+     */
+    fade: function(from, to, len, id) {
+      var self = this;
+
+      // If the sound hasn't loaded, add it to the load queue to fade when capable.
+      if (self._state !== 'loaded') {
+        self._queue.push({
+          event: 'fade',
+          action: function() {
+            self.fade(from, to, len, id);
+          }
+        });
+
+        return self;
+      }
+
+      // Set the volume to the start position.
+      self.volume(from, id);
+
+      // Fade the volume of one or all sounds.
+      var ids = self._getSoundIds(id);
+      for (var i=0; i<ids.length; i++) {
+        // Get the sound.
+        var sound = self._soundById(ids[i]);
+
+        // Create a linear fade or fall back to timeouts with HTML5 Audio.
+        if (sound) {
+          // Stop the previous fade if no sprite is being used (otherwise, volume handles this).
+          if (!id) {
+            self._stopFade(ids[i]);
+          }
+
+          // If we are using Web Audio, let the native methods do the actual fade.
+          if (self._webAudio && !sound._muted) {
+            var currentTime = Howler.ctx.currentTime;
+            var end = currentTime + (len / 1000);
+            sound._volume = from;
+            sound._node.gain.setValueAtTime(from, currentTime);
+            sound._node.gain.linearRampToValueAtTime(to, end);
+          }
+
+          self._startFadeInterval(sound, from, to, len, ids[i], typeof id === 'undefined');
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Starts the internal interval to fade a sound.
+     * @param  {Object} sound Reference to sound to fade.
+     * @param  {Number} from The value to fade from (0.0 to 1.0).
+     * @param  {Number} to   The volume to fade to (0.0 to 1.0).
+     * @param  {Number} len  Time in milliseconds to fade.
+     * @param  {Number} id   The sound id to fade.
+     * @param  {Boolean} isGroup   If true, set the volume on the group.
+     */
+    _startFadeInterval: function(sound, from, to, len, id, isGroup) {
+      var self = this;
+      var vol = from;
+      var diff = to - from;
+      var steps = Math.abs(diff / 0.01);
+      var stepLen = Math.max(4, (steps > 0) ? len / steps : len);
+      var lastTick = Date.now();
+
+      // Store the value being faded to.
+      sound._fadeTo = to;
+
+      // Update the volume value on each interval tick.
+      sound._interval = setInterval(function() {
+        // Update the volume based on the time since the last tick.
+        var tick = (Date.now() - lastTick) / len;
+        lastTick = Date.now();
+        vol += diff * tick;
+
+        // Make sure the volume is in the right bounds.
+        vol = Math.max(0, vol);
+        vol = Math.min(1, vol);
+
+        // Round to within 2 decimal points.
+        vol = Math.round(vol * 100) / 100;
+
+        // Change the volume.
+        if (self._webAudio) {
+          sound._volume = vol;
+        } else {
+          self.volume(vol, sound._id, true);
+        }
+
+        // Set the group's volume.
+        if (isGroup) {
+          self._volume = vol;
+        }
+
+        // When the fade is complete, stop it and fire event.
+        if ((to < from && vol <= to) || (to > from && vol >= to)) {
+          clearInterval(sound._interval);
+          sound._interval = null;
+          sound._fadeTo = null;
+          self.volume(to, sound._id);
+          self._emit('fade', sound._id);
+        }
+      }, stepLen);
+    },
+
+    /**
+     * Internal method that stops the currently playing fade when
+     * a new fade starts, volume is changed or the sound is stopped.
+     * @param  {Number} id The sound id.
+     * @return {Howl}
+     */
+    _stopFade: function(id) {
+      var self = this;
+      var sound = self._soundById(id);
+
+      if (sound && sound._interval) {
+        if (self._webAudio) {
+          sound._node.gain.cancelScheduledValues(Howler.ctx.currentTime);
+        }
+
+        clearInterval(sound._interval);
+        sound._interval = null;
+        self.volume(sound._fadeTo, id);
+        sound._fadeTo = null;
+        self._emit('fade', id);
+      }
+
+      return self;
+    },
+
+    /**
+     * Get/set the loop parameter on a sound. This method can optionally take 0, 1 or 2 arguments.
+     *   loop() -> Returns the group's loop value.
+     *   loop(id) -> Returns the sound id's loop value.
+     *   loop(loop) -> Sets the loop value for all sounds in this Howl group.
+     *   loop(loop, id) -> Sets the loop value of passed sound id.
+     * @return {Howl/Boolean} Returns self or current loop value.
+     */
+    loop: function() {
+      var self = this;
+      var args = arguments;
+      var loop, id, sound;
+
+      // Determine the values for loop and id.
+      if (args.length === 0) {
+        // Return the grou's loop value.
+        return self._loop;
+      } else if (args.length === 1) {
+        if (typeof args[0] === 'boolean') {
+          loop = args[0];
+          self._loop = loop;
+        } else {
+          // Return this sound's loop value.
+          sound = self._soundById(parseInt(args[0], 10));
+          return sound ? sound._loop : false;
+        }
+      } else if (args.length === 2) {
+        loop = args[0];
+        id = parseInt(args[1], 10);
+      }
+
+      // If no id is passed, get all ID's to be looped.
+      var ids = self._getSoundIds(id);
+      for (var i=0; i<ids.length; i++) {
+        sound = self._soundById(ids[i]);
+
+        if (sound) {
+          sound._loop = loop;
+          if (self._webAudio && sound._node && sound._node.bufferSource) {
+            sound._node.bufferSource.loop = loop;
+            if (loop) {
+              sound._node.bufferSource.loopStart = sound._start || 0;
+              sound._node.bufferSource.loopEnd = sound._stop;
+            }
+          }
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Get/set the playback rate of a sound. This method can optionally take 0, 1 or 2 arguments.
+     *   rate() -> Returns the first sound node's current playback rate.
+     *   rate(id) -> Returns the sound id's current playback rate.
+     *   rate(rate) -> Sets the playback rate of all sounds in this Howl group.
+     *   rate(rate, id) -> Sets the playback rate of passed sound id.
+     * @return {Howl/Number} Returns self or the current playback rate.
+     */
+    rate: function() {
+      var self = this;
+      var args = arguments;
+      var rate, id;
+
+      // Determine the values based on arguments.
+      if (args.length === 0) {
+        // We will simply return the current rate of the first node.
+        id = self._sounds[0]._id;
+      } else if (args.length === 1) {
+        // First check if this is an ID, and if not, assume it is a new rate value.
+        var ids = self._getSoundIds();
+        var index = ids.indexOf(args[0]);
+        if (index >= 0) {
+          id = parseInt(args[0], 10);
+        } else {
+          rate = parseFloat(args[0]);
+        }
+      } else if (args.length === 2) {
+        rate = parseFloat(args[0]);
+        id = parseInt(args[1], 10);
+      }
+
+      // Update the playback rate or return the current value.
+      var sound;
+      if (typeof rate === 'number') {
+        // If the sound hasn't loaded, add it to the load queue to change playback rate when capable.
+        if (self._state !== 'loaded') {
+          self._queue.push({
+            event: 'rate',
+            action: function() {
+              self.rate.apply(self, args);
+            }
+          });
+
+          return self;
+        }
+
+        // Set the group rate.
+        if (typeof id === 'undefined') {
+          self._rate = rate;
+        }
+
+        // Update one or all volumes.
+        id = self._getSoundIds(id);
+        for (var i=0; i<id.length; i++) {
+          // Get the sound.
+          sound = self._soundById(id[i]);
+
+          if (sound) {
+            // Keep track of our position when the rate changed and update the playback
+            // start position so we can properly adjust the seek position for time elapsed.
+            sound._rateSeek = self.seek(id[i]);
+            sound._playStart = self._webAudio ? Howler.ctx.currentTime : sound._playStart;
+            sound._rate = rate;
+
+            // Change the playback rate.
+            if (self._webAudio && sound._node && sound._node.bufferSource) {
+              sound._node.bufferSource.playbackRate.setValueAtTime(rate, Howler.ctx.currentTime);
+            } else if (sound._node) {
+              sound._node.playbackRate = rate;
+            }
+
+            // Reset the timers.
+            var seek = self.seek(id[i]);
+            var duration = ((self._sprite[sound._sprite][0] + self._sprite[sound._sprite][1]) / 1000) - seek;
+            var timeout = (duration * 1000) / Math.abs(sound._rate);
+
+            // Start a new end timer if sound is already playing.
+            if (self._endTimers[id[i]] || !sound._paused) {
+              self._clearTimer(id[i]);
+              self._endTimers[id[i]] = setTimeout(self._ended.bind(self, sound), timeout);
+            }
+
+            self._emit('rate', sound._id);
+          }
+        }
+      } else {
+        sound = self._soundById(id);
+        return sound ? sound._rate : self._rate;
+      }
+
+      return self;
+    },
+
+    /**
+     * Get/set the seek position of a sound. This method can optionally take 0, 1 or 2 arguments.
+     *   seek() -> Returns the first sound node's current seek position.
+     *   seek(id) -> Returns the sound id's current seek position.
+     *   seek(seek) -> Sets the seek position of the first sound node.
+     *   seek(seek, id) -> Sets the seek position of passed sound id.
+     * @return {Howl/Number} Returns self or the current seek position.
+     */
+    seek: function() {
+      var self = this;
+      var args = arguments;
+      var seek, id;
+
+      // Determine the values based on arguments.
+      if (args.length === 0) {
+        // We will simply return the current position of the first node.
+        id = self._sounds[0]._id;
+      } else if (args.length === 1) {
+        // First check if this is an ID, and if not, assume it is a new seek position.
+        var ids = self._getSoundIds();
+        var index = ids.indexOf(args[0]);
+        if (index >= 0) {
+          id = parseInt(args[0], 10);
+        } else if (self._sounds.length) {
+          id = self._sounds[0]._id;
+          seek = parseFloat(args[0]);
+        }
+      } else if (args.length === 2) {
+        seek = parseFloat(args[0]);
+        id = parseInt(args[1], 10);
+      }
+
+      // If there is no ID, bail out.
+      if (typeof id === 'undefined') {
+        return self;
+      }
+
+      // If the sound hasn't loaded, add it to the load queue to seek when capable.
+      if (self._state !== 'loaded') {
+        self._queue.push({
+          event: 'seek',
+          action: function() {
+            self.seek.apply(self, args);
+          }
+        });
+
+        return self;
+      }
+
+      // Get the sound.
+      var sound = self._soundById(id);
+
+      if (sound) {
+        if (typeof seek === 'number' && seek >= 0) {
+          // Pause the sound and update position for restarting playback.
+          var playing = self.playing(id);
+          if (playing) {
+            self.pause(id, true);
+          }
+
+          // Move the position of the track and cancel timer.
+          sound._seek = seek;
+          sound._ended = false;
+          self._clearTimer(id);
+
+          // Restart the playback if the sound was playing.
+          if (playing) {
+            self.play(id, true);
+          }
+
+          // Update the seek position for HTML5 Audio.
+          if (!self._webAudio && sound._node) {
+            sound._node.currentTime = seek;
+          }
+
+          // Wait for the play lock to be unset before emitting (HTML5 Audio).
+          if (playing && !self._webAudio) {
+            var emitSeek = function() {
+              if (!self._playLock) {
+                self._emit('seek', id);
+              } else {
+                setTimeout(emitSeek, 0);
+              }
+            };
+            setTimeout(emitSeek, 0);
+          } else {
+            self._emit('seek', id);
+          }
+        } else {
+          if (self._webAudio) {
+            var realTime = self.playing(id) ? Howler.ctx.currentTime - sound._playStart : 0;
+            var rateSeek = sound._rateSeek ? sound._rateSeek - sound._seek : 0;
+            return sound._seek + (rateSeek + realTime * Math.abs(sound._rate));
+          } else {
+            return sound._node.currentTime;
+          }
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Check if a specific sound is currently playing or not (if id is provided), or check if at least one of the sounds in the group is playing or not.
+     * @param  {Number}  id The sound id to check. If none is passed, the whole sound group is checked.
+     * @return {Boolean} True if playing and false if not.
+     */
+    playing: function(id) {
+      var self = this;
+
+      // Check the passed sound ID (if any).
+      if (typeof id === 'number') {
+        var sound = self._soundById(id);
+        return sound ? !sound._paused : false;
+      }
+
+      // Otherwise, loop through all sounds and check if any are playing.
+      for (var i=0; i<self._sounds.length; i++) {
+        if (!self._sounds[i]._paused) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+
+    /**
+     * Get the duration of this sound. Passing a sound id will return the sprite duration.
+     * @param  {Number} id The sound id to check. If none is passed, return full source duration.
+     * @return {Number} Audio duration in seconds.
+     */
+    duration: function(id) {
+      var self = this;
+      var duration = self._duration;
+
+      // If we pass an ID, get the sound and return the sprite length.
+      var sound = self._soundById(id);
+      if (sound) {
+        duration = self._sprite[sound._sprite][1] / 1000;
+      }
+
+      return duration;
+    },
+
+    /**
+     * Returns the current loaded state of this Howl.
+     * @return {String} 'unloaded', 'loading', 'loaded'
+     */
+    state: function() {
+      return this._state;
+    },
+
+    /**
+     * Unload and destroy the current Howl object.
+     * This will immediately stop all sound instances attached to this group.
+     */
+    unload: function() {
+      var self = this;
+
+      // Stop playing any active sounds.
+      var sounds = self._sounds;
+      for (var i=0; i<sounds.length; i++) {
+        // Stop the sound if it is currently playing.
+        if (!sounds[i]._paused) {
+          self.stop(sounds[i]._id);
+        }
+
+        // Remove the source or disconnect.
+        if (!self._webAudio) {
+          // Set the source to 0-second silence to stop any downloading (except in IE).
+          var checkIE = /MSIE |Trident\//.test(Howler._navigator && Howler._navigator.userAgent);
+          if (!checkIE) {
+            sounds[i]._node.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+          }
+
+          // Remove any event listeners.
+          sounds[i]._node.removeEventListener('error', sounds[i]._errorFn, false);
+          sounds[i]._node.removeEventListener(Howler._canPlayEvent, sounds[i]._loadFn, false);
+        }
+
+        // Empty out all of the nodes.
+        delete sounds[i]._node;
+
+        // Make sure all timers are cleared out.
+        self._clearTimer(sounds[i]._id);
+
+        // Remove the references in the global Howler object.
+        var index = Howler._howls.indexOf(self);
+        if (index >= 0) {
+          Howler._howls.splice(index, 1);
+        }
+      }
+
+      // Delete this sound from the cache (if no other Howl is using it).
+      var remCache = true;
+      for (i=0; i<Howler._howls.length; i++) {
+        if (Howler._howls[i]._src === self._src) {
+          remCache = false;
+          break;
+        }
+      }
+
+      if (cache && remCache) {
+        delete cache[self._src];
+      }
+
+      // Clear global errors.
+      Howler.noAudio = false;
+
+      // Clear out `self`.
+      self._state = 'unloaded';
+      self._sounds = [];
+      self = null;
+
+      return null;
+    },
+
+    /**
+     * Listen to a custom event.
+     * @param  {String}   event Event name.
+     * @param  {Function} fn    Listener to call.
+     * @param  {Number}   id    (optional) Only listen to events for this sound.
+     * @param  {Number}   once  (INTERNAL) Marks event to fire only once.
+     * @return {Howl}
+     */
+    on: function(event, fn, id, once) {
+      var self = this;
+      var events = self['_on' + event];
+
+      if (typeof fn === 'function') {
+        events.push(once ? {id: id, fn: fn, once: once} : {id: id, fn: fn});
+      }
+
+      return self;
+    },
+
+    /**
+     * Remove a custom event. Call without parameters to remove all events.
+     * @param  {String}   event Event name.
+     * @param  {Function} fn    Listener to remove. Leave empty to remove all.
+     * @param  {Number}   id    (optional) Only remove events for this sound.
+     * @return {Howl}
+     */
+    off: function(event, fn, id) {
+      var self = this;
+      var events = self['_on' + event];
+      var i = 0;
+
+      // Allow passing just an event and ID.
+      if (typeof fn === 'number') {
+        id = fn;
+        fn = null;
+      }
+
+      if (fn || id) {
+        // Loop through event store and remove the passed function.
+        for (i=0; i<events.length; i++) {
+          var isId = (id === events[i].id);
+          if (fn === events[i].fn && isId || !fn && isId) {
+            events.splice(i, 1);
+            break;
+          }
+        }
+      } else if (event) {
+        // Clear out all events of this type.
+        self['_on' + event] = [];
+      } else {
+        // Clear out all events of every type.
+        var keys = Object.keys(self);
+        for (i=0; i<keys.length; i++) {
+          if ((keys[i].indexOf('_on') === 0) && Array.isArray(self[keys[i]])) {
+            self[keys[i]] = [];
+          }
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Listen to a custom event and remove it once fired.
+     * @param  {String}   event Event name.
+     * @param  {Function} fn    Listener to call.
+     * @param  {Number}   id    (optional) Only listen to events for this sound.
+     * @return {Howl}
+     */
+    once: function(event, fn, id) {
+      var self = this;
+
+      // Setup the event listener.
+      self.on(event, fn, id, 1);
+
+      return self;
+    },
+
+    /**
+     * Emit all events of a specific type and pass the sound id.
+     * @param  {String} event Event name.
+     * @param  {Number} id    Sound ID.
+     * @param  {Number} msg   Message to go with event.
+     * @return {Howl}
+     */
+    _emit: function(event, id, msg) {
+      var self = this;
+      var events = self['_on' + event];
+
+      // Loop through event store and fire all functions.
+      for (var i=events.length-1; i>=0; i--) {
+        // Only fire the listener if the correct ID is used.
+        if (!events[i].id || events[i].id === id || event === 'load') {
+          setTimeout(function(fn) {
+            fn.call(this, id, msg);
+          }.bind(self, events[i].fn), 0);
+
+          // If this event was setup with `once`, remove it.
+          if (events[i].once) {
+            self.off(event, events[i].fn, events[i].id);
+          }
+        }
+      }
+
+      // Pass the event type into load queue so that it can continue stepping.
+      self._loadQueue(event);
+
+      return self;
+    },
+
+    /**
+     * Queue of actions initiated before the sound has loaded.
+     * These will be called in sequence, with the next only firing
+     * after the previous has finished executing (even if async like play).
+     * @return {Howl}
+     */
+    _loadQueue: function(event) {
+      var self = this;
+
+      if (self._queue.length > 0) {
+        var task = self._queue[0];
+
+        // Remove this task if a matching event was passed.
+        if (task.event === event) {
+          self._queue.shift();
+          self._loadQueue();
+        }
+
+        // Run the task if no event type is passed.
+        if (!event) {
+          task.action();
+        }
+      }
+
+      return self;
+    },
+
+    /**
+     * Fired when playback ends at the end of the duration.
+     * @param  {Sound} sound The sound object to work with.
+     * @return {Howl}
+     */
+    _ended: function(sound) {
+      var self = this;
+      var sprite = sound._sprite;
+
+      // If we are using IE and there was network latency we may be clipping
+      // audio before it completes playing. Lets check the node to make sure it
+      // believes it has completed, before ending the playback.
+      if (!self._webAudio && sound._node && !sound._node.paused && !sound._node.ended && sound._node.currentTime < sound._stop) {
+        setTimeout(self._ended.bind(self, sound), 100);
+        return self;
+      }
+
+      // Should this sound loop?
+      var loop = !!(sound._loop || self._sprite[sprite][2]);
+
+      // Fire the ended event.
+      self._emit('end', sound._id);
+
+      // Restart the playback for HTML5 Audio loop.
+      if (!self._webAudio && loop) {
+        self.stop(sound._id, true).play(sound._id);
+      }
+
+      // Restart this timer if on a Web Audio loop.
+      if (self._webAudio && loop) {
+        self._emit('play', sound._id);
+        sound._seek = sound._start || 0;
+        sound._rateSeek = 0;
+        sound._playStart = Howler.ctx.currentTime;
+
+        var timeout = ((sound._stop - sound._start) * 1000) / Math.abs(sound._rate);
+        self._endTimers[sound._id] = setTimeout(self._ended.bind(self, sound), timeout);
+      }
+
+      // Mark the node as paused.
+      if (self._webAudio && !loop) {
+        sound._paused = true;
+        sound._ended = true;
+        sound._seek = sound._start || 0;
+        sound._rateSeek = 0;
+        self._clearTimer(sound._id);
+
+        // Clean up the buffer source.
+        self._cleanBuffer(sound._node);
+
+        // Attempt to auto-suspend AudioContext if no sounds are still playing.
+        Howler._autoSuspend();
+      }
+
+      // When using a sprite, end the track.
+      if (!self._webAudio && !loop) {
+        self.stop(sound._id);
+      }
+
+      return self;
+    },
+
+    /**
+     * Clear the end timer for a sound playback.
+     * @param  {Number} id The sound ID.
+     * @return {Howl}
+     */
+    _clearTimer: function(id) {
+      var self = this;
+
+      if (self._endTimers[id]) {
+        // Clear the timeout or remove the ended listener.
+        if (typeof self._endTimers[id] !== 'function') {
+          clearTimeout(self._endTimers[id]);
+        } else {
+          var sound = self._soundById(id);
+          if (sound && sound._node) {
+            sound._node.removeEventListener('ended', self._endTimers[id], false);
+          }
+        }
+
+        delete self._endTimers[id];
+      }
+
+      return self;
+    },
+
+    /**
+     * Return the sound identified by this ID, or return null.
+     * @param  {Number} id Sound ID
+     * @return {Object}    Sound object or null.
+     */
+    _soundById: function(id) {
+      var self = this;
+
+      // Loop through all sounds and find the one with this ID.
+      for (var i=0; i<self._sounds.length; i++) {
+        if (id === self._sounds[i]._id) {
+          return self._sounds[i];
+        }
+      }
+
+      return null;
+    },
+
+    /**
+     * Return an inactive sound from the pool or create a new one.
+     * @return {Sound} Sound playback object.
+     */
+    _inactiveSound: function() {
+      var self = this;
+
+      self._drain();
+
+      // Find the first inactive node to recycle.
+      for (var i=0; i<self._sounds.length; i++) {
+        if (self._sounds[i]._ended) {
+          return self._sounds[i].reset();
+        }
+      }
+
+      // If no inactive node was found, create a new one.
+      return new Sound(self);
+    },
+
+    /**
+     * Drain excess inactive sounds from the pool.
+     */
+    _drain: function() {
+      var self = this;
+      var limit = self._pool;
+      var cnt = 0;
+      var i = 0;
+
+      // If there are less sounds than the max pool size, we are done.
+      if (self._sounds.length < limit) {
+        return;
+      }
+
+      // Count the number of inactive sounds.
+      for (i=0; i<self._sounds.length; i++) {
+        if (self._sounds[i]._ended) {
+          cnt++;
+        }
+      }
+
+      // Remove excess inactive sounds, going in reverse order.
+      for (i=self._sounds.length - 1; i>=0; i--) {
+        if (cnt <= limit) {
+          return;
+        }
+
+        if (self._sounds[i]._ended) {
+          // Disconnect the audio source when using Web Audio.
+          if (self._webAudio && self._sounds[i]._node) {
+            self._sounds[i]._node.disconnect(0);
+          }
+
+          // Remove sounds until we have the pool size.
+          self._sounds.splice(i, 1);
+          cnt--;
+        }
+      }
+    },
+
+    /**
+     * Get all ID's from the sounds pool.
+     * @param  {Number} id Only return one ID if one is passed.
+     * @return {Array}    Array of IDs.
+     */
+    _getSoundIds: function(id) {
+      var self = this;
+
+      if (typeof id === 'undefined') {
+        var ids = [];
+        for (var i=0; i<self._sounds.length; i++) {
+          ids.push(self._sounds[i]._id);
+        }
+
+        return ids;
+      } else {
+        return [id];
+      }
+    },
+
+    /**
+     * Load the sound back into the buffer source.
+     * @param  {Sound} sound The sound object to work with.
+     * @return {Howl}
+     */
+    _refreshBuffer: function(sound) {
+      var self = this;
+
+      // Setup the buffer source for playback.
+      sound._node.bufferSource = Howler.ctx.createBufferSource();
+      sound._node.bufferSource.buffer = cache[self._src];
+
+      // Connect to the correct node.
+      if (sound._panner) {
+        sound._node.bufferSource.connect(sound._panner);
+      } else {
+        sound._node.bufferSource.connect(sound._node);
+      }
+
+      // Setup looping and playback rate.
+      sound._node.bufferSource.loop = sound._loop;
+      if (sound._loop) {
+        sound._node.bufferSource.loopStart = sound._start || 0;
+        sound._node.bufferSource.loopEnd = sound._stop;
+      }
+      sound._node.bufferSource.playbackRate.setValueAtTime(sound._rate, Howler.ctx.currentTime);
+
+      return self;
+    },
+
+    /**
+     * Prevent memory leaks by cleaning up the buffer source after playback.
+     * @param  {Object} node Sound's audio node containing the buffer source.
+     * @return {Howl}
+     */
+    _cleanBuffer: function(node) {
+      var self = this;
+
+      if (Howler._scratchBuffer) {
+        node.bufferSource.onended = null;
+        node.bufferSource.disconnect(0);
+        try { node.bufferSource.buffer = Howler._scratchBuffer; } catch(e) {}
+      }
+      node.bufferSource = null;
+
+      return self;
+    }
+  };
+
+  /** Single Sound Methods **/
+  /***************************************************************************/
+
+  /**
+   * Setup the sound object, which each node attached to a Howl group is contained in.
+   * @param {Object} howl The Howl parent group.
+   */
+  var Sound = function(howl) {
+    this._parent = howl;
+    this.init();
+  };
+  Sound.prototype = {
+    /**
+     * Initialize a new Sound object.
+     * @return {Sound}
+     */
+    init: function() {
+      var self = this;
+      var parent = self._parent;
+
+      // Setup the default parameters.
+      self._muted = parent._muted;
+      self._loop = parent._loop;
+      self._volume = parent._volume;
+      self._rate = parent._rate;
+      self._seek = 0;
+      self._paused = true;
+      self._ended = true;
+      self._sprite = '__default';
+
+      // Generate a unique ID for this sound.
+      self._id = ++Howler._counter;
+
+      // Add itself to the parent's pool.
+      parent._sounds.push(self);
+
+      // Create the new node.
+      self.create();
+
+      return self;
+    },
+
+    /**
+     * Create and setup a new sound object, whether HTML5 Audio or Web Audio.
+     * @return {Sound}
+     */
+    create: function() {
+      var self = this;
+      var parent = self._parent;
+      var volume = (Howler._muted || self._muted || self._parent._muted) ? 0 : self._volume;
+
+      if (parent._webAudio) {
+        // Create the gain node for controlling volume (the source will connect to this).
+        self._node = (typeof Howler.ctx.createGain === 'undefined') ? Howler.ctx.createGainNode() : Howler.ctx.createGain();
+        self._node.gain.setValueAtTime(volume, Howler.ctx.currentTime);
+        self._node.paused = true;
+        self._node.connect(Howler.masterGain);
+      } else {
+        self._node = new Audio();
+
+        // Listen for errors (http://dev.w3.org/html5/spec-author-view/spec.html#mediaerror).
+        self._errorFn = self._errorListener.bind(self);
+        self._node.addEventListener('error', self._errorFn, false);
+
+        // Listen for 'canplaythrough' event to let us know the sound is ready.
+        self._loadFn = self._loadListener.bind(self);
+        self._node.addEventListener(Howler._canPlayEvent, self._loadFn, false);
+
+        // Setup the new audio node.
+        self._node.src = parent._src;
+        self._node.preload = 'auto';
+        self._node.volume = volume * Howler.volume();
+
+        // Begin loading the source.
+        self._node.load();
+      }
+
+      return self;
+    },
+
+    /**
+     * Reset the parameters of this sound to the original state (for recycle).
+     * @return {Sound}
+     */
+    reset: function() {
+      var self = this;
+      var parent = self._parent;
+
+      // Reset all of the parameters of this sound.
+      self._muted = parent._muted;
+      self._loop = parent._loop;
+      self._volume = parent._volume;
+      self._rate = parent._rate;
+      self._seek = 0;
+      self._rateSeek = 0;
+      self._paused = true;
+      self._ended = true;
+      self._sprite = '__default';
+
+      // Generate a new ID so that it isn't confused with the previous sound.
+      self._id = ++Howler._counter;
+
+      return self;
+    },
+
+    /**
+     * HTML5 Audio error listener callback.
+     */
+    _errorListener: function() {
+      var self = this;
+
+      // Fire an error event and pass back the code.
+      self._parent._emit('loaderror', self._id, self._node.error ? self._node.error.code : 0);
+
+      // Clear the event listener.
+      self._node.removeEventListener('error', self._errorFn, false);
+    },
+
+    /**
+     * HTML5 Audio canplaythrough listener callback.
+     */
+    _loadListener: function() {
+      var self = this;
+      var parent = self._parent;
+
+      // Round up the duration to account for the lower precision in HTML5 Audio.
+      parent._duration = Math.ceil(self._node.duration * 10) / 10;
+
+      // Setup a sprite if none is defined.
+      if (Object.keys(parent._sprite).length === 0) {
+        parent._sprite = {__default: [0, parent._duration * 1000]};
+      }
+
+      if (parent._state !== 'loaded') {
+        parent._state = 'loaded';
+        parent._emit('load');
+        parent._loadQueue();
+      }
+
+      // Clear the event listener.
+      self._node.removeEventListener(Howler._canPlayEvent, self._loadFn, false);
+    }
+  };
+
+  /** Helper Methods **/
+  /***************************************************************************/
+
+  var cache = {};
+
+  /**
+   * Buffer a sound from URL, Data URI or cache and decode to audio source (Web Audio API).
+   * @param  {Howl} self
+   */
+  var loadBuffer = function(self) {
+    var url = self._src;
+
+    // Check if the buffer has already been cached and use it instead.
+    if (cache[url]) {
+      // Set the duration from the cache.
+      self._duration = cache[url].duration;
+
+      // Load the sound into this Howl.
+      loadSound(self);
+
+      return;
+    }
+
+    if (/^data:[^;]+;base64,/.test(url)) {
+      // Decode the base64 data URI without XHR, since some browsers don't support it.
+      var data = atob(url.split(',')[1]);
+      var dataView = new Uint8Array(data.length);
+      for (var i=0; i<data.length; ++i) {
+        dataView[i] = data.charCodeAt(i);
+      }
+
+      decodeAudioData(dataView.buffer, self);
+    } else {
+      // Load the buffer from the URL.
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.withCredentials = self._xhrWithCredentials;
+      xhr.responseType = 'arraybuffer';
+      xhr.onload = function() {
+        // Make sure we get a successful response back.
+        var code = (xhr.status + '')[0];
+        if (code !== '0' && code !== '2' && code !== '3') {
+          self._emit('loaderror', null, 'Failed loading audio file with status: ' + xhr.status + '.');
+          return;
+        }
+
+        decodeAudioData(xhr.response, self);
+      };
+      xhr.onerror = function() {
+        // If there is an error, switch to HTML5 Audio.
+        if (self._webAudio) {
+          self._html5 = true;
+          self._webAudio = false;
+          self._sounds = [];
+          delete cache[url];
+          self.load();
+        }
+      };
+      safeXhrSend(xhr);
+    }
+  };
+
+  /**
+   * Send the XHR request wrapped in a try/catch.
+   * @param  {Object} xhr XHR to send.
+   */
+  var safeXhrSend = function(xhr) {
+    try {
+      xhr.send();
+    } catch (e) {
+      xhr.onerror();
+    }
+  };
+
+  /**
+   * Decode audio data from an array buffer.
+   * @param  {ArrayBuffer} arraybuffer The audio data.
+   * @param  {Howl}        self
+   */
+  var decodeAudioData = function(arraybuffer, self) {
+    // Decode the buffer into an audio source.
+    Howler.ctx.decodeAudioData(arraybuffer, function(buffer) {
+      if (buffer && self._sounds.length > 0) {
+        cache[self._src] = buffer;
+        loadSound(self, buffer);
+      }
+    }, function() {
+      self._emit('loaderror', null, 'Decoding audio data failed.');
+    });
+  };
+
+  /**
+   * Sound is now loaded, so finish setting everything up and fire the loaded event.
+   * @param  {Howl} self
+   * @param  {Object} buffer The decoded buffer sound source.
+   */
+  var loadSound = function(self, buffer) {
+    // Set the duration.
+    if (buffer && !self._duration) {
+      self._duration = buffer.duration;
+    }
+
+    // Setup a sprite if none is defined.
+    if (Object.keys(self._sprite).length === 0) {
+      self._sprite = {__default: [0, self._duration * 1000]};
+    }
+
+    // Fire the loaded event.
+    if (self._state !== 'loaded') {
+      self._state = 'loaded';
+      self._emit('load');
+      self._loadQueue();
+    }
+  };
+
+  /**
+   * Setup the audio context when available, or switch to HTML5 Audio mode.
+   */
+  var setupAudioContext = function() {
+    // Check if we are using Web Audio and setup the AudioContext if we are.
+    try {
+      if (typeof AudioContext !== 'undefined') {
+        Howler.ctx = new AudioContext();
+      } else if (typeof webkitAudioContext !== 'undefined') {
+        Howler.ctx = new webkitAudioContext();
+      } else {
+        Howler.usingWebAudio = false;
+      }
+    } catch(e) {
+      Howler.usingWebAudio = false;
+    }
+
+    // Check if a webview is being used on iOS8 or earlier (rather than the browser).
+    // If it is, disable Web Audio as it causes crashing.
+    var iOS = (/iP(hone|od|ad)/.test(Howler._navigator && Howler._navigator.platform));
+    var appVersion = Howler._navigator && Howler._navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/);
+    var version = appVersion ? parseInt(appVersion[1], 10) : null;
+    if (iOS && version && version < 9) {
+      var safari = /safari/.test(Howler._navigator && Howler._navigator.userAgent.toLowerCase());
+      if (Howler._navigator && Howler._navigator.standalone && !safari || Howler._navigator && !Howler._navigator.standalone && !safari) {
+        Howler.usingWebAudio = false;
+      }
+    }
+
+    // Create and expose the master GainNode when using Web Audio (useful for plugins or advanced usage).
+    if (Howler.usingWebAudio) {
+      Howler.masterGain = (typeof Howler.ctx.createGain === 'undefined') ? Howler.ctx.createGainNode() : Howler.ctx.createGain();
+      Howler.masterGain.gain.setValueAtTime(Howler._muted ? 0 : 1, Howler.ctx.currentTime);
+      Howler.masterGain.connect(Howler.ctx.destination);
+    }
+
+    // Re-run the setup on Howler.
+    Howler._setup();
+  };
+
+  // Add support for AMD (Asynchronous Module Definition) libraries such as require.js.
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
+      return {
+        Howler: Howler,
+        Howl: Howl
+      };
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  }
+
+  // Add support for CommonJS libraries such as browserify.
+  if (true) {
+    exports.Howler = Howler;
+    exports.Howl = Howl;
+  }
+
+  // Define globally in case AMD is not available or unused.
+  if (typeof window !== 'undefined') {
+    window.HowlerGlobal = HowlerGlobal;
+    window.Howler = Howler;
+    window.Howl = Howl;
+    window.Sound = Sound;
+  } else if (typeof global !== 'undefined') { // Add to global in Node.js (for testing, etc).
+    global.HowlerGlobal = HowlerGlobal;
+    global.Howler = Howler;
+    global.Howl = Howl;
+    global.Sound = Sound;
+  }
+})();
+
+
+/*!
+ *  Spatial Plugin - Adds support for stereo and 3D audio where Web Audio is supported.
+ *  
+ *  howler.js v2.0.9
+ *  howlerjs.com
+ *
+ *  (c) 2013-2018, James Simpson of GoldFire Studios
+ *  goldfirestudios.com
+ *
+ *  MIT License
+ */
+
+(function() {
+
+  'use strict';
+
+  // Setup default properties.
+  HowlerGlobal.prototype._pos = [0, 0, 0];
+  HowlerGlobal.prototype._orientation = [0, 0, -1, 0, 1, 0];
+  
+  /** Global Methods **/
+  /***************************************************************************/
+
+  /**
+   * Helper method to update the stereo panning position of all current Howls.
+   * Future Howls will not use this value unless explicitly set.
+   * @param  {Number} pan A value of -1.0 is all the way left and 1.0 is all the way right.
+   * @return {Howler/Number}     Self or current stereo panning value.
+   */
+  HowlerGlobal.prototype.stereo = function(pan) {
+    var self = this;
+
+    // Stop right here if not using Web Audio.
+    if (!self.ctx || !self.ctx.listener) {
+      return self;
+    }
+
+    // Loop through all Howls and update their stereo panning.
+    for (var i=self._howls.length-1; i>=0; i--) {
+      self._howls[i].stereo(pan);
+    }
+
+    return self;
+  };
+
+  /**
+   * Get/set the position of the listener in 3D cartesian space. Sounds using
+   * 3D position will be relative to the listener's position.
+   * @param  {Number} x The x-position of the listener.
+   * @param  {Number} y The y-position of the listener.
+   * @param  {Number} z The z-position of the listener.
+   * @return {Howler/Array}   Self or current listener position.
+   */
+  HowlerGlobal.prototype.pos = function(x, y, z) {
+    var self = this;
+
+    // Stop right here if not using Web Audio.
+    if (!self.ctx || !self.ctx.listener) {
+      return self;
+    }
+
+    // Set the defaults for optional 'y' & 'z'.
+    y = (typeof y !== 'number') ? self._pos[1] : y;
+    z = (typeof z !== 'number') ? self._pos[2] : z;
+
+    if (typeof x === 'number') {
+      self._pos = [x, y, z];
+      self.ctx.listener.setPosition(self._pos[0], self._pos[1], self._pos[2]);
+    } else {
+      return self._pos;
+    }
+
+    return self;
+  };
+
+  /**
+   * Get/set the direction the listener is pointing in the 3D cartesian space.
+   * A front and up vector must be provided. The front is the direction the
+   * face of the listener is pointing, and up is the direction the top of the
+   * listener is pointing. Thus, these values are expected to be at right angles
+   * from each other.
+   * @param  {Number} x   The x-orientation of the listener.
+   * @param  {Number} y   The y-orientation of the listener.
+   * @param  {Number} z   The z-orientation of the listener.
+   * @param  {Number} xUp The x-orientation of the top of the listener.
+   * @param  {Number} yUp The y-orientation of the top of the listener.
+   * @param  {Number} zUp The z-orientation of the top of the listener.
+   * @return {Howler/Array}     Returns self or the current orientation vectors.
+   */
+  HowlerGlobal.prototype.orientation = function(x, y, z, xUp, yUp, zUp) {
+    var self = this;
+
+    // Stop right here if not using Web Audio.
+    if (!self.ctx || !self.ctx.listener) {
+      return self;
+    }
+
+    // Set the defaults for optional 'y' & 'z'.
+    var or = self._orientation;
+    y = (typeof y !== 'number') ? or[1] : y;
+    z = (typeof z !== 'number') ? or[2] : z;
+    xUp = (typeof xUp !== 'number') ? or[3] : xUp;
+    yUp = (typeof yUp !== 'number') ? or[4] : yUp;
+    zUp = (typeof zUp !== 'number') ? or[5] : zUp;
+
+    if (typeof x === 'number') {
+      self._orientation = [x, y, z, xUp, yUp, zUp];
+      self.ctx.listener.setOrientation(x, y, z, xUp, yUp, zUp);
+    } else {
+      return or;
+    }
+
+    return self;
+  };
+
+  /** Group Methods **/
+  /***************************************************************************/
+
+  /**
+   * Add new properties to the core init.
+   * @param  {Function} _super Core init method.
+   * @return {Howl}
+   */
+  Howl.prototype.init = (function(_super) {
+    return function(o) {
+      var self = this;
+
+      // Setup user-defined default properties.
+      self._orientation = o.orientation || [1, 0, 0];
+      self._stereo = o.stereo || null;
+      self._pos = o.pos || null;
+      self._pannerAttr = {
+        coneInnerAngle: typeof o.coneInnerAngle !== 'undefined' ? o.coneInnerAngle : 360,
+        coneOuterAngle: typeof o.coneOuterAngle !== 'undefined' ? o.coneOuterAngle : 360,
+        coneOuterGain: typeof o.coneOuterGain !== 'undefined' ? o.coneOuterGain : 0,
+        distanceModel: typeof o.distanceModel !== 'undefined' ? o.distanceModel : 'inverse',
+        maxDistance: typeof o.maxDistance !== 'undefined' ? o.maxDistance : 10000,
+        panningModel: typeof o.panningModel !== 'undefined' ? o.panningModel : 'HRTF',
+        refDistance: typeof o.refDistance !== 'undefined' ? o.refDistance : 1,
+        rolloffFactor: typeof o.rolloffFactor !== 'undefined' ? o.rolloffFactor : 1
+      };
+
+      // Setup event listeners.
+      self._onstereo = o.onstereo ? [{fn: o.onstereo}] : [];
+      self._onpos = o.onpos ? [{fn: o.onpos}] : [];
+      self._onorientation = o.onorientation ? [{fn: o.onorientation}] : [];
+
+      // Complete initilization with howler.js core's init function.
+      return _super.call(this, o);
+    };
+  })(Howl.prototype.init);
+
+  /**
+   * Get/set the stereo panning of the audio source for this sound or all in the group.
+   * @param  {Number} pan  A value of -1.0 is all the way left and 1.0 is all the way right.
+   * @param  {Number} id (optional) The sound ID. If none is passed, all in group will be updated.
+   * @return {Howl/Number}    Returns self or the current stereo panning value.
+   */
+  Howl.prototype.stereo = function(pan, id) {
+    var self = this;
+
+    // Stop right here if not using Web Audio.
+    if (!self._webAudio) {
+      return self;
+    }
+
+    // If the sound hasn't loaded, add it to the load queue to change stereo pan when capable.
+    if (self._state !== 'loaded') {
+      self._queue.push({
+        event: 'stereo',
+        action: function() {
+          self.stereo(pan, id);
+        }
+      });
+
+      return self;
+    }
+
+    // Check for PannerStereoNode support and fallback to PannerNode if it doesn't exist.
+    var pannerType = (typeof Howler.ctx.createStereoPanner === 'undefined') ? 'spatial' : 'stereo';
+
+    // Setup the group's stereo panning if no ID is passed.
+    if (typeof id === 'undefined') {
+      // Return the group's stereo panning if no parameters are passed.
+      if (typeof pan === 'number') {
+        self._stereo = pan;
+        self._pos = [pan, 0, 0];
+      } else {
+        return self._stereo;
+      }
+    }
+
+    // Change the streo panning of one or all sounds in group.
+    var ids = self._getSoundIds(id);
+    for (var i=0; i<ids.length; i++) {
+      // Get the sound.
+      var sound = self._soundById(ids[i]);
+
+      if (sound) {
+        if (typeof pan === 'number') {
+          sound._stereo = pan;
+          sound._pos = [pan, 0, 0];
+
+          if (sound._node) {
+            // If we are falling back, make sure the panningModel is equalpower.
+            sound._pannerAttr.panningModel = 'equalpower';
+
+            // Check if there is a panner setup and create a new one if not.
+            if (!sound._panner || !sound._panner.pan) {
+              setupPanner(sound, pannerType);
+            }
+
+            if (pannerType === 'spatial') {
+              sound._panner.setPosition(pan, 0, 0);
+            } else {
+              sound._panner.pan.setValueAtTime(pan, Howler.ctx.currentTime);
+            }
+          }
+
+          self._emit('stereo', sound._id);
+        } else {
+          return sound._stereo;
+        }
+      }
+    }
+
+    return self;
+  };
+
+  /**
+   * Get/set the 3D spatial position of the audio source for this sound or group relative to the global listener.
+   * @param  {Number} x  The x-position of the audio source.
+   * @param  {Number} y  The y-position of the audio source.
+   * @param  {Number} z  The z-position of the audio source.
+   * @param  {Number} id (optional) The sound ID. If none is passed, all in group will be updated.
+   * @return {Howl/Array}    Returns self or the current 3D spatial position: [x, y, z].
+   */
+  Howl.prototype.pos = function(x, y, z, id) {
+    var self = this;
+
+    // Stop right here if not using Web Audio.
+    if (!self._webAudio) {
+      return self;
+    }
+
+    // If the sound hasn't loaded, add it to the load queue to change position when capable.
+    if (self._state !== 'loaded') {
+      self._queue.push({
+        event: 'pos',
+        action: function() {
+          self.pos(x, y, z, id);
+        }
+      });
+
+      return self;
+    }
+
+    // Set the defaults for optional 'y' & 'z'.
+    y = (typeof y !== 'number') ? 0 : y;
+    z = (typeof z !== 'number') ? -0.5 : z;
+
+    // Setup the group's spatial position if no ID is passed.
+    if (typeof id === 'undefined') {
+      // Return the group's spatial position if no parameters are passed.
+      if (typeof x === 'number') {
+        self._pos = [x, y, z];
+      } else {
+        return self._pos;
+      }
+    }
+
+    // Change the spatial position of one or all sounds in group.
+    var ids = self._getSoundIds(id);
+    for (var i=0; i<ids.length; i++) {
+      // Get the sound.
+      var sound = self._soundById(ids[i]);
+
+      if (sound) {
+        if (typeof x === 'number') {
+          sound._pos = [x, y, z];
+
+          if (sound._node) {
+            // Check if there is a panner setup and create a new one if not.
+            if (!sound._panner || sound._panner.pan) {
+              setupPanner(sound, 'spatial');
+            }
+
+            sound._panner.setPosition(x, y, z);
+          }
+
+          self._emit('pos', sound._id);
+        } else {
+          return sound._pos;
+        }
+      }
+    }
+
+    return self;
+  };
+
+  /**
+   * Get/set the direction the audio source is pointing in the 3D cartesian coordinate
+   * space. Depending on how direction the sound is, based on the `cone` attributes,
+   * a sound pointing away from the listener can be quiet or silent.
+   * @param  {Number} x  The x-orientation of the source.
+   * @param  {Number} y  The y-orientation of the source.
+   * @param  {Number} z  The z-orientation of the source.
+   * @param  {Number} id (optional) The sound ID. If none is passed, all in group will be updated.
+   * @return {Howl/Array}    Returns self or the current 3D spatial orientation: [x, y, z].
+   */
+  Howl.prototype.orientation = function(x, y, z, id) {
+    var self = this;
+
+    // Stop right here if not using Web Audio.
+    if (!self._webAudio) {
+      return self;
+    }
+
+    // If the sound hasn't loaded, add it to the load queue to change orientation when capable.
+    if (self._state !== 'loaded') {
+      self._queue.push({
+        event: 'orientation',
+        action: function() {
+          self.orientation(x, y, z, id);
+        }
+      });
+
+      return self;
+    }
+
+    // Set the defaults for optional 'y' & 'z'.
+    y = (typeof y !== 'number') ? self._orientation[1] : y;
+    z = (typeof z !== 'number') ? self._orientation[2] : z;
+
+    // Setup the group's spatial orientation if no ID is passed.
+    if (typeof id === 'undefined') {
+      // Return the group's spatial orientation if no parameters are passed.
+      if (typeof x === 'number') {
+        self._orientation = [x, y, z];
+      } else {
+        return self._orientation;
+      }
+    }
+
+    // Change the spatial orientation of one or all sounds in group.
+    var ids = self._getSoundIds(id);
+    for (var i=0; i<ids.length; i++) {
+      // Get the sound.
+      var sound = self._soundById(ids[i]);
+
+      if (sound) {
+        if (typeof x === 'number') {
+          sound._orientation = [x, y, z];
+
+          if (sound._node) {
+            // Check if there is a panner setup and create a new one if not.
+            if (!sound._panner) {
+              // Make sure we have a position to setup the node with.
+              if (!sound._pos) {
+                sound._pos = self._pos || [0, 0, -0.5];
+              }
+
+              setupPanner(sound, 'spatial');
+            }
+
+            sound._panner.setOrientation(x, y, z);
+          }
+
+          self._emit('orientation', sound._id);
+        } else {
+          return sound._orientation;
+        }
+      }
+    }
+
+    return self;
+  };
+
+  /**
+   * Get/set the panner node's attributes for a sound or group of sounds.
+   * This method can optionall take 0, 1 or 2 arguments.
+   *   pannerAttr() -> Returns the group's values.
+   *   pannerAttr(id) -> Returns the sound id's values.
+   *   pannerAttr(o) -> Set's the values of all sounds in this Howl group.
+   *   pannerAttr(o, id) -> Set's the values of passed sound id.
+   *
+   *   Attributes:
+   *     coneInnerAngle - (360 by default) A parameter for directional audio sources, this is an angle, in degrees,
+   *                      inside of which there will be no volume reduction.
+   *     coneOuterAngle - (360 by default) A parameter for directional audio sources, this is an angle, in degrees,
+   *                      outside of which the volume will be reduced to a constant value of `coneOuterGain`.
+   *     coneOuterGain - (0 by default) A parameter for directional audio sources, this is the gain outside of the
+   *                     `coneOuterAngle`. It is a linear value in the range `[0, 1]`.
+   *     distanceModel - ('inverse' by default) Determines algorithm used to reduce volume as audio moves away from
+   *                     listener. Can be `linear`, `inverse` or `exponential.
+   *     maxDistance - (10000 by default) The maximum distance between source and listener, after which the volume
+   *                   will not be reduced any further.
+   *     refDistance - (1 by default) A reference distance for reducing volume as source moves further from the listener.
+   *                   This is simply a variable of the distance model and has a different effect depending on which model
+   *                   is used and the scale of your coordinates. Generally, volume will be equal to 1 at this distance.
+   *     rolloffFactor - (1 by default) How quickly the volume reduces as source moves from listener. This is simply a
+   *                     variable of the distance model and can be in the range of `[0, 1]` with `linear` and `[0, ∞]`
+   *                     with `inverse` and `exponential`.
+   *     panningModel - ('HRTF' by default) Determines which spatialization algorithm is used to position audio.
+   *                     Can be `HRTF` or `equalpower`.
+   * 
+   * @return {Howl/Object} Returns self or current panner attributes.
+   */
+  Howl.prototype.pannerAttr = function() {
+    var self = this;
+    var args = arguments;
+    var o, id, sound;
+
+    // Stop right here if not using Web Audio.
+    if (!self._webAudio) {
+      return self;
+    }
+
+    // Determine the values based on arguments.
+    if (args.length === 0) {
+      // Return the group's panner attribute values.
+      return self._pannerAttr;
+    } else if (args.length === 1) {
+      if (typeof args[0] === 'object') {
+        o = args[0];
+
+        // Set the grou's panner attribute values.
+        if (typeof id === 'undefined') {
+          if (!o.pannerAttr) {
+            o.pannerAttr = {
+              coneInnerAngle: o.coneInnerAngle,
+              coneOuterAngle: o.coneOuterAngle,
+              coneOuterGain: o.coneOuterGain,
+              distanceModel: o.distanceModel,
+              maxDistance: o.maxDistance,
+              refDistance: o.refDistance,
+              rolloffFactor: o.rolloffFactor,
+              panningModel: o.panningModel
+            };
+          }
+
+          self._pannerAttr = {
+            coneInnerAngle: typeof o.pannerAttr.coneInnerAngle !== 'undefined' ? o.pannerAttr.coneInnerAngle : self._coneInnerAngle,
+            coneOuterAngle: typeof o.pannerAttr.coneOuterAngle !== 'undefined' ? o.pannerAttr.coneOuterAngle : self._coneOuterAngle,
+            coneOuterGain: typeof o.pannerAttr.coneOuterGain !== 'undefined' ? o.pannerAttr.coneOuterGain : self._coneOuterGain,
+            distanceModel: typeof o.pannerAttr.distanceModel !== 'undefined' ? o.pannerAttr.distanceModel : self._distanceModel,
+            maxDistance: typeof o.pannerAttr.maxDistance !== 'undefined' ? o.pannerAttr.maxDistance : self._maxDistance,
+            refDistance: typeof o.pannerAttr.refDistance !== 'undefined' ? o.pannerAttr.refDistance : self._refDistance,
+            rolloffFactor: typeof o.pannerAttr.rolloffFactor !== 'undefined' ? o.pannerAttr.rolloffFactor : self._rolloffFactor,
+            panningModel: typeof o.pannerAttr.panningModel !== 'undefined' ? o.pannerAttr.panningModel : self._panningModel
+          };
+        }
+      } else {
+        // Return this sound's panner attribute values.
+        sound = self._soundById(parseInt(args[0], 10));
+        return sound ? sound._pannerAttr : self._pannerAttr;
+      }
+    } else if (args.length === 2) {
+      o = args[0];
+      id = parseInt(args[1], 10);
+    }
+
+    // Update the values of the specified sounds.
+    var ids = self._getSoundIds(id);
+    for (var i=0; i<ids.length; i++) {
+      sound = self._soundById(ids[i]);
+
+      if (sound) {
+        // Merge the new values into the sound.
+        var pa = sound._pannerAttr;
+        pa = {
+          coneInnerAngle: typeof o.coneInnerAngle !== 'undefined' ? o.coneInnerAngle : pa.coneInnerAngle,
+          coneOuterAngle: typeof o.coneOuterAngle !== 'undefined' ? o.coneOuterAngle : pa.coneOuterAngle,
+          coneOuterGain: typeof o.coneOuterGain !== 'undefined' ? o.coneOuterGain : pa.coneOuterGain,
+          distanceModel: typeof o.distanceModel !== 'undefined' ? o.distanceModel : pa.distanceModel,
+          maxDistance: typeof o.maxDistance !== 'undefined' ? o.maxDistance : pa.maxDistance,
+          refDistance: typeof o.refDistance !== 'undefined' ? o.refDistance : pa.refDistance,
+          rolloffFactor: typeof o.rolloffFactor !== 'undefined' ? o.rolloffFactor : pa.rolloffFactor,
+          panningModel: typeof o.panningModel !== 'undefined' ? o.panningModel : pa.panningModel
+        };
+
+        // Update the panner values or create a new panner if none exists.
+        var panner = sound._panner;
+        if (panner) {
+          panner.coneInnerAngle = pa.coneInnerAngle;
+          panner.coneOuterAngle = pa.coneOuterAngle;
+          panner.coneOuterGain = pa.coneOuterGain;
+          panner.distanceModel = pa.distanceModel;
+          panner.maxDistance = pa.maxDistance;
+          panner.refDistance = pa.refDistance;
+          panner.rolloffFactor = pa.rolloffFactor;
+          panner.panningModel = pa.panningModel;
+        } else {
+          // Make sure we have a position to setup the node with.
+          if (!sound._pos) {
+            sound._pos = self._pos || [0, 0, -0.5];
+          }
+
+          // Create a new panner node.
+          setupPanner(sound, 'spatial');
+        }
+      }
+    }
+
+    return self;
+  };
+
+  /** Single Sound Methods **/
+  /***************************************************************************/
+
+  /**
+   * Add new properties to the core Sound init.
+   * @param  {Function} _super Core Sound init method.
+   * @return {Sound}
+   */
+  Sound.prototype.init = (function(_super) {
+    return function() {
+      var self = this;
+      var parent = self._parent;
+
+      // Setup user-defined default properties.
+      self._orientation = parent._orientation;
+      self._stereo = parent._stereo;
+      self._pos = parent._pos;
+      self._pannerAttr = parent._pannerAttr;
+
+      // Complete initilization with howler.js core Sound's init function.
+      _super.call(this);
+
+      // If a stereo or position was specified, set it up.
+      if (self._stereo) {
+        parent.stereo(self._stereo);
+      } else if (self._pos) {
+        parent.pos(self._pos[0], self._pos[1], self._pos[2], self._id);
+      }
+    };
+  })(Sound.prototype.init);
+
+  /**
+   * Override the Sound.reset method to clean up properties from the spatial plugin.
+   * @param  {Function} _super Sound reset method.
+   * @return {Sound}
+   */
+  Sound.prototype.reset = (function(_super) {
+    return function() {
+      var self = this;
+      var parent = self._parent;
+
+      // Reset all spatial plugin properties on this sound.
+      self._orientation = parent._orientation;
+      self._pos = parent._pos;
+      self._pannerAttr = parent._pannerAttr;
+
+      // Complete resetting of the sound.
+      return _super.call(this);
+    };
+  })(Sound.prototype.reset);
+
+  /** Helper Methods **/
+  /***************************************************************************/
+
+  /**
+   * Create a new panner node and save it on the sound.
+   * @param  {Sound} sound Specific sound to setup panning on.
+   * @param {String} type Type of panner to create: 'stereo' or 'spatial'.
+   */
+  var setupPanner = function(sound, type) {
+    type = type || 'spatial';
+
+    // Create the new panner node.
+    if (type === 'spatial') {
+      sound._panner = Howler.ctx.createPanner();
+      sound._panner.coneInnerAngle = sound._pannerAttr.coneInnerAngle;
+      sound._panner.coneOuterAngle = sound._pannerAttr.coneOuterAngle;
+      sound._panner.coneOuterGain = sound._pannerAttr.coneOuterGain;
+      sound._panner.distanceModel = sound._pannerAttr.distanceModel;
+      sound._panner.maxDistance = sound._pannerAttr.maxDistance;
+      sound._panner.refDistance = sound._pannerAttr.refDistance;
+      sound._panner.rolloffFactor = sound._pannerAttr.rolloffFactor;
+      sound._panner.panningModel = sound._pannerAttr.panningModel;
+      sound._panner.setPosition(sound._pos[0], sound._pos[1], sound._pos[2]);
+      sound._panner.setOrientation(sound._orientation[0], sound._orientation[1], sound._orientation[2]);
+    } else {
+      sound._panner = Howler.ctx.createStereoPanner();
+      sound._panner.pan.setValueAtTime(sound._stereo, Howler.ctx.currentTime);
+    }
+
+    sound._panner.connect(sound._node);
+
+    // Update the connections.
+    if (!sound._paused) {
+      sound._parent.pause(sound._id, true).play(sound._id, true);
+    }
+  };
+})();
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+
+/***/ }),
+/* 87 */
 /***/ (function(module, exports) {
 
 module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nuniform mat4 u_Model;\r\nuniform mat4 u_ModelInvTr;  \r\n\r\nuniform mat4 u_View;   \r\nuniform mat4 u_Proj; \r\n\r\nin vec4 vs_Pos;\r\nin vec4 vs_Nor;\r\nin vec4 vs_Col;\r\nin vec2 vs_UV;\r\n\r\nout vec4 fs_Pos;\r\nout vec4 fs_Nor;            \r\nout vec4 fs_Col;           \r\nout vec2 fs_UV;\r\n\r\n//out vec4 fs_WorldPos;\r\n\r\nvoid main()\r\n{\r\n    fs_Col = vs_Col;\r\n    fs_UV = vs_UV;\r\n    fs_UV.y = 1.0 - fs_UV.y;\r\n\r\n    // fragment info is in view space\r\n    mat3 invTranspose = mat3(u_ModelInvTr);\r\n    mat3 view = mat3(u_View);\r\n    //fs_Nor = vec4(view * invTranspose * vec3(vs_Nor), 0);\r\n    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);\r\n    //fs_Pos = u_Model * vs_Pos;\r\n    fs_Pos = u_View * u_Model * vs_Pos;\r\n    //fs_WorldPos = u_Model * vs_Pos;\r\n    \r\n    gl_Position = u_Proj * u_View * u_Model * vs_Pos;\r\n}\r\n"
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports) {
 
 module.exports = "#version 300 es\r\nprecision highp float;\r\n\r\nin vec4 fs_Pos;\r\nin vec4 fs_Nor;\r\nin vec4 fs_Col;\r\nin vec2 fs_UV;\r\n\r\n//in vec4 fs_WorldPos;\r\n\r\nout vec4 fragColor[3]; // The data in the ith index of this array of outputs\r\n                       // is passed to the ith index of OpenGLRenderer's\r\n                       // gbTargets array, which is an array of textures.\r\n                       // This lets us output different types of data,\r\n                       // such as albedo, normal, and position, as\r\n                       // separate images from a single render pass.\r\n\r\nuniform sampler2D tex_Color;\r\n\r\nconst float DEPTH_OFFSET = 0.0;\r\n\r\nvoid main() {\r\n    // TODO: pass proper data into gbuffers\r\n    // Presently, the provided shader passes \"nothing\" to the first\r\n    // two gbuffers and basic color to the third.\r\n\r\n    vec3 col = texture(tex_Color, fs_UV).rgb;\r\n\r\n    // if using textures, inverse gamma correct\r\n    col = pow(col, vec3(2.2));\r\n\r\n    // normal.xyz, depth\r\n    fragColor[0] = vec4(fs_Nor.xyz, fs_Pos.z - DEPTH_OFFSET);\r\n    //fragColor[0] = vec4(fs_Nor.xyz, gl_FragCoord.w);\r\n    fragColor[1] = vec4(fs_Pos.xyz, 0.0);\r\n    //fragColor[1] = vec4(fs_Pos.xyz, 0.0);\r\n    fragColor[2] = vec4(col, 1.0);\r\n}\r\n"
