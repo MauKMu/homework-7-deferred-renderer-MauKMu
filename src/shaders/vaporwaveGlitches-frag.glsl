@@ -83,7 +83,7 @@ void main() {
     // outside of main noise stripe
     float time2 = u_Time * 4.0;
     vec2 forceRand = random2(vec2(floor(time2), fs_UV.y));
-    bool forceStart = mod(forceRand.x, 0.00001) > 0.0000095;
+    bool forceStart = mod(forceRand.x, 0.00001) > 0.0000097;
     // also compute a "flipFactor" -- sometimes make noise light instead of dark
     bool flipColor = mod(forceRand.y, 0.0001) > 0.00009;
     float flipFactor = (forceStart && flipColor) ? 0.5 : 0.2;

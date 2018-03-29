@@ -86,8 +86,11 @@ The following shaders are executed in this order:
   - Chromatic aberration: shifting the green channel horizontally. This becomes more intense the closer you are to the left or right edges of the screen.
   - TV static: noise is added in many ways to give the effect of a glitchy, old TV.
 
+The vaporwave effect has "interesting" effects when combined with other effects, like paintbrush. Consider this part of the `A E S T H E T I C`.
+
 ## External References
 
 - [Stack Overflow post for handling "any type" issues in TypeScript](https://stackoverflow.com/questions/32968332/how-do-i-prevent-the-error-index-signature-of-object-type-implicitly-has-an-an). This was used to cleanly have a GUI with arbitrary string keys (more importantly, keys with whitespace in them).
 - [Stack Overflow post for handling Maps in TypeScript correctly](https://stackoverflow.com/questions/34584578/typescript-es6-map-index-signature-of-object-type-implicitly-has-an-any-ty)
 - [Stack Overflow post about converting to/from HSV and RGB](https://stackoverflow.com/questions/15095909/from-rgb-to-hsv-in-opengl-glsl)
+- [Source for Vaporwave audio](https://www.youtube.com/watch?v=cU8HrO7XuiE)

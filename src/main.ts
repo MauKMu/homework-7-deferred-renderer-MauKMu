@@ -10,6 +10,7 @@ import {readTextFile} from './globals';
 import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 import Texture from './rendering/gl/Texture';
 import ShaderFlags from './rendering/gl/ShaderFlags';
+import * as Howler from 'howler';
 
 enum Model {
     WAHOO = 1,
@@ -38,14 +39,24 @@ const LOADED_MODEL = "Model";
 controls[ENABLE_DOF] = false;
 controls[ENABLE_BLOOM] = false;
 controls[ENABLE_POINTILISM] = false;
-controls[ENABLE_PAINT] = false;
-controls[ENABLE_VAPORWAVE] = true;
+controls[ENABLE_PAINT] = true;
+controls[ENABLE_VAPORWAVE] = false;
 controls[PAINT_COHERENCE] = 0.8;
 controls[PAINT_BRUSH_SIZE] = 0.5;
 controls[PAINT_BRUSH_NOISE] = 0.5;
 controls[LOADED_MODEL] = Model.WAHOO;
 
-let shaderFlags = ShaderFlags.VAPORWAVE;
+let shaderFlags = ShaderFlags.PAINT;
+
+const sound = new Howler.Howl({
+    src: ["resources/audio/vaporwave.mp3"],
+    volume: 0.5,
+    loop: true,
+    preload: false,
+    onload: function () {
+        console.log("Loaded vaporwave!");
+    }
+});
 
 function updateShaderFlags() {
     shaderFlags = ShaderFlags.NONE;
@@ -54,6 +65,14 @@ function updateShaderFlags() {
     shaderFlags |= controls[ENABLE_POINTILISM] ? ShaderFlags.POINTILISM : ShaderFlags.NONE;
     shaderFlags |= controls[ENABLE_PAINT] ? ShaderFlags.PAINT : ShaderFlags.NONE;
     shaderFlags |= controls[ENABLE_VAPORWAVE] ? ShaderFlags.VAPORWAVE : ShaderFlags.NONE;
+    if (shaderFlags & ShaderFlags.VAPORWAVE) {
+        if (!sound.playing()) {
+            sound.play();
+        }
+    }
+    else {
+        sound.stop();
+    }
 }
 
 let square: Square;
@@ -146,6 +165,11 @@ function main() {
     stats.domElement.style.left = '0px';
     stats.domElement.style.top = '0px';
     document.body.appendChild(stats.domElement);
+
+    // load audio
+    console.log("Loading vaporwave...");
+    sound.load();
+    updateShaderFlags();
 
     // Add controls to the gui
     const gui = new DAT.GUI();
