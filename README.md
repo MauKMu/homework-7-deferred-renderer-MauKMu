@@ -96,3 +96,4 @@ The vaporwave effect has "interesting" effects when combined with other effects,
 - [Stack Overflow post for handling Maps in TypeScript correctly](https://stackoverflow.com/questions/34584578/typescript-es6-map-index-signature-of-object-type-implicitly-has-an-any-ty)
 - [Stack Overflow post about converting to/from HSV and RGB](https://stackoverflow.com/questions/15095909/from-rgb-to-hsv-in-opengl-glsl)
 - [Source for Vaporwave audio](https://www.youtube.com/watch?v=cU8HrO7XuiE)
+- [Howler: library for playing audio](https://howlerjs.com/)
