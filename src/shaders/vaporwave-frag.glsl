@@ -35,7 +35,7 @@ vec2 random2(vec2 p) {
 
 const vec3 PURPLE_RGB = vec3(0.7098, 0.0392156, 1.0);
 const float X_TILE_DIM = 100.0;
-const float Y_TILE_DIM = 20.0;
+const float Y_TILE_DIM = 60.0;
 const float NOISE_TILE_DIM = 400.0;
 const float GREEN_OFFSET = 5.0;
 
@@ -47,7 +47,7 @@ void main() {
         float depth = texture(u_gb0, fs_UV).w;
         if (depth >= 0.0) {
             vec2 pixelDims = 1.0 / u_Dims;
-            float xTile = mod((-0.5 + fs_UV.x) * (0.2 + fs_UV.y), 2.0 * X_TILE_DIM * pixelDims.x);
+            float xTile = mod((-0.5 + fs_UV.x) * (4.0 / (-fs_UV.y + 2.1)), 2.0 * X_TILE_DIM * pixelDims.x);
             float yTile = mod(fs_UV.y, 2.0 * Y_TILE_DIM * pixelDims.y);
             bool isBlack = (xTile > X_TILE_DIM * pixelDims.x) ^^ (yTile > Y_TILE_DIM * pixelDims.y);
             if (isBlack) {
